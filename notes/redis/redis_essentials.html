@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>redis_essentials</title>
+<!-- 2017-05-02 Tue 10:44 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="your name" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+
+         <link href="http://fonts.googleapis.com/css?family=Droid+Sans+Mono|Galdeano|Open+Sans:600italic,400,600|Roboto+Condensed:400,700" rel="stylesheet" type="text/css">
+         <link rel="stylesheet" type="text/css" href="/static/css/main.css"/>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="org-div-home-and-up">
+ <a accesskey="h" href="http://harrifeng.github.io/sitemap.html"> UP </a>
+ |
+ <a accesskey="H" href="http://harrifeng.github.io/index.html"> HOME </a>
+</div><div id="preamble" class="status">
+
+         <div id="header">
+            <div id="header-top">
+                <div id="blog-title">Harrifeng's Path</div>
+                <div id="blog-sub-title">纸上得来终觉浅,绝知此事要Coding</div>
+            </div>
+            <div id="nav">
+                <ul>
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/about.html">About Me</a></li>
+                    <li>
+                    </li>
+                </ul>
+            </div>
+         </div>
+</div>
+<div id="content">
+<h1 class="title">redis_essentials</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">Chapter 1: Getting Started</a>
+<ul>
+<li><a href="#sec-1-1">Hello Redis</a></li>
+<li><a href="#sec-1-2">Hello World with Node.js and Redis</a></li>
+<li><a href="#sec-1-3">Redis data types</a>
+<ul>
+<li><a href="#sec-1-3-1">Strings</a></li>
+<li><a href="#sec-1-3-2">String examples with redis-cli</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">Chapter 1: Getting Started</h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1">Hello Redis</h3>
+<div class="outline-text-3" id="text-1-1">
+<ul class="org-ul">
+<li>安装就不介绍了,主要是可以使用源代码编译,或者是各种包管理软件安装
+</li>
+<li>redis和mysql一样,也是cs架构的系统:
+<ul class="org-ul">
+<li>相同的一点是两者的server都是后台运行,redis选择了端口6379(mysql是3306),以
+brew安装为例,如果希望开机后redis就开始运行,需要运行如下命令
+<div class="org-src-container">
+
+<pre class="src src-sh">brew services start redis
+</pre>
+</div>
+</li>
+<li>不同的是,mysql的client就叫做mysql,而redis为了不混淆使用了redis-cli作为自己
+的client
+</li>
+</ul>
+</li>
+<li>redis-cli不再使用SQL,而是使用redis定义的一些命令,比如我们使用SET来创建一个value
+为string类型的key;使用GET来读取这个key
+<div class="org-src-container">
+
+<pre class="src src-sh">127.0.0.1:6379&gt; SET philosopher <span style="color: #2aa198;">"socrates"</span>
+OK
+127.0.0.1:6379&gt; GET philosopher
+<span style="color: #2aa198;">"socrates"</span>
+</pre>
+</div>
+</li>
+<li>我们可以使用HELP来了解某个命令
+<div class="org-src-container">
+
+<pre class="src src-sh">127.0.0.1:6379&gt; HELP SET
+
+  SET key value <span style="color: #2aa198;">[</span>EX seconds<span style="color: #2aa198;">]</span> <span style="color: #2aa198;">[</span>PX milliseconds<span style="color: #2aa198;">]</span> <span style="color: #2aa198;">[</span>NX|XX<span style="color: #2aa198;">]</span>
+  summary: Set the string value of a key
+  since: 1.0.0
+  group: string
+</pre>
+</div>
+</li>
+<li>KEYS命令也非常重要,他会返回当前server存储的,满足某种特定pattern(这里的是
+glob-style pattern[<a href="https://en.wikipedia.org/wiki/Glob_(programming)">https://en.wikipedia.org/wiki/Glob_(programming)</a>])的key,
+比如我们查找以p开头的key
+<div class="org-src-container">
+
+<pre class="src src-sh">127.0.0.1:6379&gt; KEYS p*
+1<span style="color: #657b83; background-color: #fdf6e3;">)</span> <span style="color: #2aa198;">"philosopher"</span>
+</pre>
+</div>
+</li>
+<li>redis-cli只能起到简单的调试查询的功能,更多的功能我们需要写代码来展示,本书决定
+使用nodejs来书写和redis的example(主要是网站)代码
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2">Hello World with Node.js and Redis</h3>
+<div class="outline-text-3" id="text-1-2">
+<ul class="org-ul">
+<li>首先我们要安装nodejs,这就不多说了.然后我们要使用nodejs的package管理npm来创建
+一个空项目
+<div class="org-src-container">
+
+<pre class="src src-sh"><span style="color: #268bd2;">redis-nodejs-demo</span> <span style="color: #2aa198;">(</span>master<span style="color: #2aa198;">)</span> $ npm init --yes
+Wrote to /Users/hfeng/github/redis-nodejs-demo/package.json:
+
+<span style="color: #2aa198;">{</span>
+  <span style="color: #2aa198;">"name"</span>: <span style="color: #2aa198;">"redis-nodejs-demo"</span>,
+  <span style="color: #2aa198;">"version"</span>: <span style="color: #2aa198;">"1.0.0"</span>,
+  <span style="color: #2aa198;">"description"</span>: <span style="color: #2aa198;">"Learn redis with the help of nodejs"</span>,
+  <span style="color: #2aa198;">"main"</span>: <span style="color: #2aa198;">"index.js"</span>,
+  <span style="color: #2aa198;">"scripts"</span>: <span style="color: #b58900;">{</span>
+    <span style="color: #2aa198;">"test"</span>: <span style="color: #2aa198;">"echo \"Error: no test specified\" &amp;&amp; exit 1"</span>
+  <span style="color: #b58900;">}</span>,
+  <span style="color: #2aa198;">"repository"</span>: <span style="color: #b58900;">{</span>
+    <span style="color: #2aa198;">"type"</span>: <span style="color: #2aa198;">"git"</span>,
+    <span style="color: #2aa198;">"url"</span>: <span style="color: #2aa198;">"git+https://github.com/harrifeng/redis-nodejs-demo.git"</span>
+  <span style="color: #b58900;">}</span>,
+  <span style="color: #2aa198;">"keywords"</span>: <span style="color: #b58900;">[]</span>,
+  <span style="color: #2aa198;">"author"</span>: <span style="color: #2aa198;">""</span>,
+  <span style="color: #2aa198;">"license"</span>: <span style="color: #2aa198;">"ISC"</span>,
+  <span style="color: #2aa198;">"bugs"</span>: <span style="color: #b58900;">{</span>
+    <span style="color: #2aa198;">"url"</span>: <span style="color: #2aa198;">"https://github.com/harrifeng/redis-nodejs-demo/issues"</span>
+  <span style="color: #b58900;">}</span>,
+  <span style="color: #2aa198;">"homepage"</span>: <span style="color: #2aa198;">"https://github.com/harrifeng/redis-nodejs-demo#readme"</span>
+<span style="color: #2aa198;">}</span>
+</pre>
+</div>
+</li>
+<li>然后,安装链接redis所必须的"npm package redis"
+<div class="org-src-container">
+
+<pre class="src src-sh"><span style="color: #268bd2;">redis-nodejs-demo</span> <span style="color: #2aa198;">(</span>master<span style="color: #2aa198;">)</span> $ npm install -S redis
+redis-nodejs-demo@1.0.0 /Users/hfeng/github/redis-nodejs-demo
+&#9492;&#9472;&#9516; redis@2.6.5
+  &#9500;&#9472;&#9472; double-ended-queue@2.1.0-0
+  &#9500;&#9472;&#9472; redis-commands@1.3.0
+  &#9492;&#9472;&#9472; redis-parser@2.3.0
+</pre>
+</div>
+</li>
+<li>然后我们创建我们的index.js,里面的代码如下
+<div class="org-src-container">
+
+<pre class="src src-js"><span style="color: #859900; font-weight: bold;">var</span> <span style="color: #268bd2;">redis</span> = require<span style="color: #2aa198;">(</span><span style="color: #2aa198;">"redis"</span><span style="color: #2aa198;">)</span>;
+<span style="color: #859900; font-weight: bold;">var</span> <span style="color: #268bd2;">client</span> = redis.createClient<span style="color: #2aa198;">()</span>;
+client.set<span style="color: #2aa198;">(</span><span style="color: #2aa198;">"my_key"</span>, <span style="color: #2aa198;">"Hello World using Node.js and Redis"</span><span style="color: #2aa198;">)</span>;
+client.get<span style="color: #2aa198;">(</span><span style="color: #2aa198;">"my_key"</span>, redis.print<span style="color: #2aa198;">)</span>;
+client.quit<span style="color: #2aa198;">()</span>;
+
+<span style="color: #93a1a1;">// </span><span style="color: #93a1a1;">&lt;===================OUTPUT===================&gt;</span>
+<span style="color: #93a1a1;">// </span><span style="color: #93a1a1;">Reply: Hello World using Node.js and Redis</span>
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-1-3" class="outline-3">
+<h3 id="sec-1-3">Redis data types</h3>
+<div class="outline-text-3" id="text-1-3">
+<ul class="org-ul">
+<li>对redis data type的理解,有助于提高你设计更好的application,同时还会让你了解
+到你的问题最优的解决办法是不是redis
+</li>
+<li>redis创建多种data type的原因很简单:一种size并不能使用所有的情况,而且不同的
+问题需要不同的解决办法
+</li>
+</ul>
+</div>
+<div id="outline-container-sec-1-3-1" class="outline-4">
+<h4 id="sec-1-3-1">Strings</h4>
+<div class="outline-text-4" id="text-1-3-1">
+<ul class="org-ul">
+<li>在redis里面,string是最'多变'的类型.会为多种情况服务:
+<ul class="org-ul">
+<li>string会被用来作为redis里面的integer, flot, text string,设置是bitmap
+</li>
+<li>string还会用来存储各种各样的数据:text(XML, JSON, HTML, raw text), integer,
+float, 或者是binary data(video, image, audio).
+</li>
+<li>string的最大存储容量是512MB
+</li>
+</ul>
+</li>
+<li>如下几种情况是string最擅长的case:
+<ul class="org-ul">
+<li>Cache mechanisms: 可以在redis里面cache text或者binary数据,典型的text数据
+是HTML page.典型的binary数据是API返回的image和video.一个最简单的cache系统
+依赖SET,GET(MSET, MGET)就可以完成
+</li>
+<li>Cache with automatic expiration: String和key自动过期机制(automatic key
+expiration)可以创建一个健壮的cache system. 相关的命令是SETX, EXPIRE,
+EXPIREAT. 在数据库查询需要时间过长(但是其结果却在某个特定时间内可以不变)
+的情况下,这种处理特别有效.因为我们可以把"特定时间"设置过过期时间,在'不过
+期'的情况下,可以尽可能少的查询数据库
+</li>
+<li>Counting: redis里面的counter也是使用string类实现的(因为string能代表int么)
+使用命令INCR INCRBY能够非常容易的增加counter.常见的counter运用的例子是page
+view, video view等等.相关的命令还有DECR, DECRBY, INCRFLOATBY
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-1-3-2" class="outline-4">
+<h4 id="sec-1-3-2">String examples with redis-cli</h4>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+
+         <!-- Disqus Comment BEGIN -->
+          <div id="disqus_thread"></div>
+          <script type="text/javascript">
+              var disqus_shortname = 'harrifeng';
+
+              (function() {
+                  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+              })();
+          </script>
+          <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+         <!-- Disqus Comment END -->
+</div>
+</body>
+</html>

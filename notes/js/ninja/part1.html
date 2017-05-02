@@ -1,0 +1,831 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>part1</title>
+<!-- 2017-05-02 Tue 10:46 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="your name" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+
+         <link href="http://fonts.googleapis.com/css?family=Droid+Sans+Mono|Galdeano|Open+Sans:600italic,400,600|Roboto+Condensed:400,700" rel="stylesheet" type="text/css">
+         <link rel="stylesheet" type="text/css" href="/static/css/main.css"/>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="org-div-home-and-up">
+ <a accesskey="h" href="http://harrifeng.github.io/sitemap.html"> UP </a>
+ |
+ <a accesskey="H" href="http://harrifeng.github.io/index.html"> HOME </a>
+</div><div id="preamble" class="status">
+
+         <div id="header">
+            <div id="header-top">
+                <div id="blog-title">Harrifeng's Path</div>
+                <div id="blog-sub-title">纸上得来终觉浅,绝知此事要Coding</div>
+            </div>
+            <div id="nav">
+                <ul>
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/about.html">About Me</a></li>
+                    <li>
+                    </li>
+                </ul>
+            </div>
+         </div>
+</div>
+<div id="content">
+<h1 class="title">part1</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">Chapter 1: JavaScript is everywhere</a>
+<ul>
+<li><a href="#sec-1-1">Understanding the JavaScript language</a>
+<ul>
+<li><a href="#sec-1-1-1">How will JavaScript evolve?</a></li>
+<li><a href="#sec-1-1-2">Transpilers give us access to tomorrow's JavaScript today</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-2">Understanding the brower</a></li>
+<li><a href="#sec-1-3">Using current best practices</a>
+<ul>
+<li><a href="#sec-1-3-1">Debugging</a></li>
+<li><a href="#sec-1-3-2">Testing</a></li>
+<li><a href="#sec-1-3-3">Performance analysis</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sec-2">Chapter 2: Building the page at runtime</a>
+<ul>
+<li><a href="#sec-2-1">2.1 The lifecycle overview</a></li>
+<li><a href="#sec-2-2">The page-building phase</a>
+<ul>
+<li><a href="#sec-2-2-1">Parsing the HTML and building the DOM</a></li>
+<li><a href="#sec-2-2-2">Executing JavaScript Code</a>
+<ul>
+<li><a href="#sec-2-2-2-1">GLOBAL OBJECTS IN JAVASCRIPT</a></li>
+<li><a href="#sec-2-2-2-2">DIFFERENT TYPES OF JAVASCRIPT CODE</a></li>
+<li><a href="#sec-2-2-2-3">EXECUTING JAVASCRIPT CODE IN THE PAGE-BUILDING PHASE</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sec-2-3">Event handling phase</a>
+<ul>
+<li><a href="#sec-2-3-1">Event-handling overview</a>
+<ul>
+<li><a href="#sec-2-3-1-1">EVENTS ARE ASYNCHRONOUS</a></li>
+</ul>
+</li>
+<li><a href="#sec-2-3-2">Registering event handlers</a></li>
+<li><a href="#sec-2-3-3">Handling events</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">Chapter 1: JavaScript is everywhere</h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1">Understanding the JavaScript language</h3>
+<div class="outline-text-3" id="text-1-1">
+<ul class="org-ul">
+<li>很多的js coder都会在使用js的时候感到熟悉，因为他们会用到很多来自其他语言的
+特性
+</li>
+<li>然而除了一些很基本的情况以外，这些'相同感'却并不一定正确,不能因为js从C-like
+language那里借鉴了很多东西(比如关键字),就说js和他们在机制上也有相同点
+</li>
+<li>理解了java就理解了js是一种错觉,和其他语言相比,js拥有更多的functional语言的
+特性:
+<ul class="org-ul">
+<li>Function是first-class object:function是js最核心的概念, 在js中function和object
+拥有完全一样的能力,外加还能被call
+</li>
+<li>Function closure: function closure也是js最核心的概念,而且同时还被人民广泛
+的误解着.简单的理解就是,function本身就是一个closure,内部被使用的外部变量都
+在这个closure里面被维护着
+</li>
+<li>Scope: 知道ES5, js都没有block-level的variable,所以我们要依靠global variable
+和function level variable
+</li>
+<li>Prototype-based object orientation: 和其他的主流编程语言不同(它们主要使用
+class-based object orientation), js里面使用的是prototype.
+</li>
+</ul>
+</li>
+<li>js里面有两组紧密联系的概念, 理解这两组概念,有利于加深我们对js的理解
+<ul class="org-ul">
+<li>object和prototype
+</li>
+<li>function和closure
+</li>
+</ul>
+</li>
+<li>除了这些概念,一些js的feature可以帮助你写出更elegant和efficient的代码.这些feature
+有:
+<ul class="org-ul">
+<li>generators: 就是一个function,但是会generate多个value
+</li>
+<li>promises: 能够更好的控制asynchronous代码
+</li>
+<li>proxies:能够让我控制一些object
+</li>
+<li>Advanced array methods: 能够让array的处理更加优雅
+</li>
+<li>Map和set: 常用的数据结构
+</li>
+<li>Regular expression: 能让我们代码更简单
+</li>
+<li>Modules: 让代码变得更小,更容易维护
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="outline-container-sec-1-1-1" class="outline-4">
+<h4 id="sec-1-1-1">How will JavaScript evolve?</h4>
+<div class="outline-text-4" id="text-1-1-1">
+<ul class="org-ul">
+<li>ECMAScript委员会负责js的标准工作,并且已经提出了ES7/ES2016的标准
+</li>
+<li>这次升级比起ES6来说并不多,因为以后js每年都会升级
+</li>
+<li>yearly的升级很令人振奋,但是并不意味着web开发者能够马上用到这些特性,我们可
+以通过下面的链接来跟踪各大浏览器对最新规范的支持
+<a href="https://kangax.github.io/compat-table/es6/">https://kangax.github.io/compat-table/es6/</a>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-1-1-2" class="outline-4">
+<h4 id="sec-1-1-2">Transpilers give us access to tomorrow's JavaScript today</h4>
+<div class="outline-text-4" id="text-1-1-2">
+<ul class="org-ul">
+<li>即便浏览器更新的再快,我们也不能要求所有的用户马上开始使用最新版本的浏览器,
+还是会有老的浏览器在被使用.
+</li>
+<li>为了让我们包含最新feature的代码能够在所有老的浏览器里面也能跑,我们的办法是
+使用transpiler把包含最新feature的代码,转换成大部分浏览器支持的代码.尽可能
+保证代码的功效一致
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2">Understanding the brower</h3>
+<div class="outline-text-3" id="text-1-2">
+<ul class="org-ul">
+<li>今天,js可以从多个平台进行运行(指的nodejs已经诞生),但是这一切的根源还是来自
+于浏览器
+</li>
+<li>对于浏览器来说,主要的三个重点是:
+<ul class="org-ul">
+<li>Document Object Model (DOM): 所谓DOM,是client-side web application UI的一
+种'结构化的表达方式'.理解DOM对于能够写好js非常重要
+</li>
+<li>Events: 大部分的JS application都是event-driven的application,这就意味着大
+部分的代码被运行,其实是为了响应某些event,比如click,mouse move, keyboard
+press. 而其中的timer则是更让人难以理解的部分
+</li>
+<li>Browser API: 为了帮助我们和world进行交流,browser提供了一个API,让我们来了解
+设备信息,存储local data,和远程的server通信
+</li>
+</ul>
+</li>
+<li>但是我们首先面对的,却是浏览器的各种不方便,因为浏览器总是存在各种bug,而且对API
+的支持也不充分
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-1-3" class="outline-3">
+<h3 id="sec-1-3">Using current best practices</h3>
+<div class="outline-text-3" id="text-1-3">
+<ul class="org-ul">
+<li>掌握js语言,并且理解跨浏览器的coding issue罪域我们变成web 开发高手非常重要,但
+是除了这两者以外,前人的,被经验证明好的一些实践也很重要.这就是我们说的best
+practice, 包括:
+<ul class="org-ul">
+<li>Debuggin skill
+</li>
+<li>Testing
+</li>
+<li>Performance analysis
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="outline-container-sec-1-3-1" class="outline-4">
+<h4 id="sec-1-3-1">Debugging</h4>
+<div class="outline-text-4" id="text-1-3-1">
+<ul class="org-ul">
+<li>曾经对于js来说, 调试就是使用alter来打印变量,但是今天已经有很多的浏览器都有
+内置的developer工具了
+</li>
+<li>大部分的浏览器都内置了debug工具,这些工具的功能相同,都来源于Firebug的创意,
+包括如下的几个方面:
+<ul class="org-ul">
+<li>对DOM的探索
+</li>
+<li>debug js
+</li>
+<li>编辑Css
+</li>
+<li>跟踪network
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-1-3-2" class="outline-4">
+<h4 id="sec-1-3-2">Testing</h4>
+<div class="outline-text-4" id="text-1-3-2">
+<ul class="org-ul">
+<li>本书采用的是assert(condition, message)的方式来测试是否结果如愿,比如测试a是
+否为1
+<div class="org-src-container">
+
+<pre class="src src-js">assert<span style="color: #2aa198;">(</span>a === 1, <span style="color: #2aa198;">"Disaster! a is not 1!"</span><span style="color: #2aa198;">)</span>;
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-1-3-3" class="outline-4">
+<h4 id="sec-1-3-3">Performance analysis</h4>
+<div class="outline-text-4" id="text-1-3-3">
+<ul class="org-ul">
+<li>JS engine已经为performance做了很多努力,但是我们还要在自己的代码中测试自己
+的性能,我们代码的主要逻辑如下
+<div class="org-src-container">
+
+<pre class="src src-web">&lt;html&gt;
+    &lt;head&gt;
+        &lt;script&gt;
+         console.<span style="color: #268bd2;">time</span><span style="color: #2aa198;">(</span>"my start"<span style="color: #2aa198;">)</span>;
+         <span style="color: #b58900;">for</span> <span style="color: #2aa198;">(</span><span style="color: #b58900;">var</span> <span style="color: #268bd2;">n</span> = 0;  n &lt; 12345; n++<span style="color: #2aa198;">)</span> <span style="color: #2aa198;">{</span>
+             console.<span style="color: #268bd2;">log</span><span style="color: #b58900;">(</span>'log'<span style="color: #b58900;">)</span>;
+         <span style="color: #2aa198;">}</span>
+         console.<span style="color: #268bd2;">timeEnd</span><span style="color: #2aa198;">(</span>'end'<span style="color: #2aa198;">)</span>;
+        &lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">Chapter 2: Building the page at runtime</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li>我们对js的探索主要是在client-side的context下进行的,并且把browser作为执行的engine
+</li>
+<li>为了让我们的探索更加容易,我们首先要理解完整的web application lifecycle,特别
+是如何把js嵌入到这个lifecycle里面
+</li>
+<li>我们从page开始被request开始来查看client-side web application的lifecycle.在接
+下来的过程中,用户会有交互,直到page被关闭
+</li>
+<li>开始的时候是HTML代码的执行,然后关注js code,最后就是event handle
+</li>
+<li>在这个过程中,我们会探索一些概念,比如DOM,或者event loop(决定event如何被application
+处理)
+</li>
+</ul>
+</div>
+<div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1">2.1 The lifecycle overview</h3>
+<div class="outline-text-3" id="text-2-1">
+<ul class="org-ul">
+<li>client-side的lifecycle开始于我们在浏览器里面打入url,比如google.com
+</li>
+<li>浏览器会为用户服务,把刚才的url转换成一股request,并把这个request发给server
+</li>
+<li>server会处理这个request,然后把这个request转换成一个response返回给server, 这
+个response里面往往就包含HTML, CSS, JS等
+</li>
+<li>浏览器接收到response的时候,就是我们client-side web app真正开始它的life的时候
+</li>
+<li>我们的client-side web application(js代码和浏览器一起)是一个GUI程序,GUI程序
+无论是我们web的,还是desktop的,都遵守一些相似的phase,比如如下两个步骤:
+<ul class="org-ul">
+<li>page building: 设置user interface
+</li>
+<li>event handling: 进入一个loop然后等待event来临,然后event来临以后就触发event
+handler
+</li>
+</ul>
+</li>
+<li>event handling就是一个循环了,只有用户关闭这个页面才会结束这个循环
+</li>
+<li>下面我们看一个例子
+<div class="org-src-container">
+
+<pre class="src src-html">&lt;<span style="color: #859900; font-weight: bold;">!DOCTYPE</span> html&gt;
+&lt;<span style="color: #268bd2;">html</span>&gt;
+    &lt;<span style="color: #268bd2;">head</span>&gt;
+        &lt;<span style="color: #268bd2;">title</span>&gt;<span style="font-weight: bold;"> Web app lifecycle</span>&lt;/<span style="color: #268bd2;">title</span>&gt;
+        &lt;<span style="color: #268bd2;">style</span>&gt;
+         #first { color: green; }
+         #second { color: red; }
+        &lt;/<span style="color: #268bd2;">style</span>&gt;
+    &lt;/<span style="color: #268bd2;">head</span>&gt;
+    &lt;<span style="color: #268bd2;">body</span>&gt;
+        &lt;<span style="color: #268bd2;">ul</span> <span style="color: #268bd2;">id</span>=<span style="color: #2aa198;">"first"</span>&gt;&lt;/<span style="color: #268bd2;">ul</span>&gt;
+        &lt;<span style="color: #268bd2;">script</span>&gt;
+         function addMessage(element, message) {
+             var messageElement = document.createElement(<span style="color: #2aa198;">"li"</span>);
+             messageElement.textContent = message;
+             element.appendChild(messageElement);
+         }
+         var first = document.getElementById(<span style="color: #2aa198;">"first"</span>);
+         addMessage(first, <span style="color: #2aa198;">"Page loading"</span>);
+        &lt;/<span style="color: #268bd2;">script</span>&gt;
+
+        &lt;<span style="color: #268bd2;">ul</span> id =<span style="color: #2aa198;">"second"</span>&gt;&lt;/<span style="color: #268bd2;">ul</span>&gt;
+        &lt;<span style="color: #268bd2;">script</span>&gt;
+         document.body.addEventListener(<span style="color: #2aa198;">"mousemove"</span>, function(){
+             var second = document.getElementById(<span style="color: #2aa198;">"second"</span>);
+             addMessage(second, <span style="color: #2aa198;">"Event: mousemove"</span>);
+         });
+
+         document.body.addEventListener(<span style="color: #2aa198;">"click"</span>, function(){
+             var second = document.getElementById(<span style="color: #2aa198;">"second"</span>);
+             addMessage(second, <span style="color: #2aa198;">"Event: click"</span>);
+         });
+        &lt;/<span style="color: #268bd2;">script</span>&gt;
+    &lt;/<span style="color: #268bd2;">body</span>&gt;
+&lt;/<span style="color: #268bd2;">html</span>&gt;
+</pre>
+</div>
+</li>
+<li>这个例子主要有两个部分:
+<ul class="org-ul">
+<li>创建一个first &lt;ul&gt; element,然后使用js加载一个&lt;ul&gt;的&lt;li&gt; element,写上'page
+loading', 这代表了page building的过程
+</li>
+<li>创建一个second &lt;ul&gt; element,然后使用js在document.body里面增加了两个event
+listener: 一个是mouse move一个是mouse click. 用户一旦有相应的鼠标动作,则
+最后会打印在页面上.这个代表了event handling的过程
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2">The page-building phase</h3>
+<div class="outline-text-3" id="text-2-2">
+<ul class="org-ul">
+<li>在一个web application可以被展示(进而操作)之前, 一个page必须使用server传过来
+的response(包括html, css, js)来组合成自己的页面.这个phase的目标就是建设好web
+application的UI, 而这个phase又分成了两个step:
+<ol class="org-ol">
+<li>分析HTML,并且建设好Document Object Model(DOM)
+</li>
+<li>执行JS 代码
+</li>
+</ol>
+</li>
+<li>简单点说,step1就是分析html element代码(除了script的部分),而step2就是分析script
+的部分.这两个部分的分析可以交替进行,并不是严格的一个接着一个
+</li>
+</ul>
+</div>
+<div id="outline-container-sec-2-2-1" class="outline-4">
+<h4 id="sec-2-2-1">Parsing the HTML and building the DOM</h4>
+<div class="outline-text-4" id="text-2-2-1">
+<ul class="org-ul">
+<li>page-building phase是从接到html代码开始的, 浏览器根据对html代码的分析建立起
+一个DOM结构,所谓DOM就是对HTML的一种structured的表达方式
+</li>
+<li>DOM通常会被叫做DOM tree,因为它确实是一种树形结构的,比如我们上面代码在遇到
+&lt;script&gt; tag之前就会建设成如下的一种DOM tree
+<pre class="example">
+                            +--------+
+                  +---------+  html  +----------+
+                  |         +--------+          |
+                  |                             |
+                  |                             |
+            +-----+--+                      +---+----+
+     +------+  head  +---+               +--+  body  +---+
+     |      +--------+   |               |  +--------+   |
+     |                   |               |               |
++----+---+         +-----+--+         +--+-----+   +-----+--+
+| title  |         | style  |         |   ul   |   | script |
++--------+         +--------+         +--------+   +--------+
+</pre>
+</li>
+<li>需要注意的是html和DOM不是一回事,html是DOM的蓝图,DOM是根据html来创建的,而且
+浏览器有时候还会修正html里面的一些错误.比如下面的例子,&lt;p&gt;写在了&lt;head&gt;里面
+其实&lt;p&gt;是要在body里面才会有意义,DOM创建的时候就会自动修正
+<div class="org-src-container">
+
+<pre class="src src-html">&lt;<span style="color: #268bd2;">html</span>&gt;
+  &lt;<span style="color: #268bd2;">head</span>&gt;
+    &lt;<span style="color: #268bd2;">p</span>&gt;
+      Hello
+    &lt;/<span style="color: #268bd2;">p</span>&gt;
+  &lt;/<span style="color: #268bd2;">head</span>&gt;
+  &lt;<span style="color: #268bd2;">body</span>&gt;
+  &lt;/<span style="color: #268bd2;">body</span>&gt;
+&lt;/<span style="color: #268bd2;">html</span>&gt;
+</pre>
+</div>
+</li>
+<li>当DOM碰到特殊的tag的时候,比如&lt;script&gt;它会停下自己的脚步,转换为另外一个step,
+也就是js代码执行阶段(当然了两个step是交替执行的,一会还会回来)
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-2-2-2" class="outline-4">
+<h4 id="sec-2-2-2">Executing JavaScript Code</h4>
+<div class="outline-text-4" id="text-2-2-2">
+<ul class="org-ul">
+<li>所有html里面的script element都是由浏览器的javascript engine来执行的,这些引
+擎最出名的就是google的V8了,同时还有firefox的Spidermonkey
+</li>
+<li>js和浏览器交互的方法是: 浏览器通过'global object'提供了一些API,让js来和page
+进行互动
+</li>
+</ul>
+</div>
+<div id="outline-container-sec-2-2-2-1" class="outline-5">
+<h5 id="sec-2-2-2-1">GLOBAL OBJECTS IN JAVASCRIPT</h5>
+<div class="outline-text-5" id="text-2-2-2-1">
+<ul class="org-ul">
+<li>浏览器expose给js引擎最重要的global object是window object,这个object代表了
+包含当前page的窗口!
+</li>
+<li>这个window object有很多properties,每个property都是对我们非常重要的.换句话
+说, window的最主要作用就是包裹了一系列properties给我们用
+</li>
+<li>被包裹的一系列properties最重要的是document,也就是DOM的js表示.
+</li>
+<li>这里插入介绍一个重要的概念的解读,就是
+<pre class="example">
+JavaScript that runs in the browser has Window as it's top level
+</pre>
+</li>
+<li>换句话说,定义在浏览器js里面的global variable就会变成window的properties,而
+windows在设计的时候的哪些'有用的property'同时也会变成我们js代码的global
+variable.
+<div class="org-src-container">
+
+<pre class="src src-js">window.document === document    <span style="color: #93a1a1;">// </span><span style="color: #93a1a1;">true</span>
+</pre>
+</div>
+</li>
+<li>这也为什么我们可以直接在html里面使用document,而不需要window.document
+<div class="org-src-container">
+
+<pre class="src src-js"><span style="color: #859900; font-weight: bold;">var</span> <span style="color: #268bd2;">first</span> = document.getElementById<span style="color: #2aa198;">(</span><span style="color: #2aa198;">"first"</span><span style="color: #2aa198;">)</span>;
+</pre>
+</div>
+</li>
+<li>我们得到了这个first的变量,其实就是一个object啦,它指代的就是id为'first'的
+html element. 我们可以通过代码来给这个element增加一个child,或者更改这个
+element本身.这个例子是为这个element增加了一个&lt;li&gt;的element作为child
+<div class="org-src-container">
+
+<pre class="src src-js"><span style="color: #859900; font-weight: bold;">var</span> <span style="color: #268bd2;">messageElement</span> = document.createElement<span style="color: #2aa198;">(</span><span style="color: #2aa198;">"li"</span><span style="color: #2aa198;">)</span>;
+element.appendChild<span style="color: #2aa198;">(</span>messageElement<span style="color: #2aa198;">)</span>;
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-2-2-2-2" class="outline-5">
+<h5 id="sec-2-2-2-2">DIFFERENT TYPES OF JAVASCRIPT CODE</h5>
+<div class="outline-text-5" id="text-2-2-2-2">
+<ul class="org-ul">
+<li>在广义上,运行在浏览器里面的js代码会被分成两类:
+<ul class="org-ul">
+<li>global code: 会被浏览器js engine'自动'调用运行
+</li>
+<li>function code: 定义逻辑,不会被'自动'运行
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-2-2-2-3" class="outline-5">
+<h5 id="sec-2-2-2-3">EXECUTING JAVASCRIPT CODE IN THE PAGE-BUILDING PHASE</h5>
+<div class="outline-text-5" id="text-2-2-2-3">
+<ul class="org-ul">
+<li>当浏览器遇到script tag的时候,它只能放下自己的DOM创建工作,腾出手来处理&lt;script&gt;
+tag带来的js code
+</li>
+<li>在这个例子里面就是第一个&lt;script&gt; tag,在这个tag里面会为id为'first'的&lt;ul&gt;创
+建一个&lt;li&gt; tag
+</li>
+<li>通过document.getElementById找到某个element以后,理论上我们可以对"DOM做任何
+事情",但也不是绝对,比如我们就没法对id为"second"的element做什么,因为在第一
+个&lt;script&gt; tag里面还没有创建"second" element.这也是为什么很多人选择把js的
+代码放在最后的原因
+</li>
+<li>执行完&lt;script&gt;tag,我们的代码就会继续自己的'根据html element来创建DOM'的工
+作,然后遇到&lt;script&gt;tag在来依靠js engine工作,循环往复这两个过程,直到所有的
+html代码都处理完毕
+</li>
+<li>需要注意的是,因为window这个top level的存在,所以在某个&lt;script&gt;里面创建的全
+局变量,在其他的&lt;script&gt; tag里面都继续可用
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2-3" class="outline-3">
+<h3 id="sec-2-3">Event handling phase</h3>
+<div class="outline-text-3" id="text-2-3">
+<ul class="org-ul">
+<li>client-side web application其实也是一种GUI: 它也是处理用户的点击,键盘敲动,
+鼠标移动等操作
+</li>
+<li>所以我们在page-building phase阶段的js代码除了可以'帮助创建DOM tree'以外,还
+可以register event listener.所谓event listener就是
+<pre class="example">
+Functions that are executed by the browser when an event occurs.
+</pre>
+</li>
+</ul>
+</div>
+<div id="outline-container-sec-2-3-1" class="outline-4">
+<h4 id="sec-2-3-1">Event-handling overview</h4>
+<div class="outline-text-4" id="text-2-3-1">
+<ul class="org-ul">
+<li>browser运行的核心model是single-threaded execution model,也就是说浏览器内部
+最多只有一个thread在运行,那么也只有一段代码可以"占据"浏览器而运行
+</li>
+<li>single-threaded execution model的特点是需要一个queue来存储所有的发生的event
+原因很简单,event的发生是快速的,异步的.不过不记录下的话,你不能保证browser都
+能记住,使用queue的原因是因为这个是一个明显的"先到先服务"的例子
+</li>
+<li>所有的event(包括user-generated,比如点击页面,和server-generated,比如Ajax event)
+都会放到同一个queue里面,顺序是browser发现他们的顺序
+</li>
+<li>queue的处理顺序是我们很熟悉的了:
+<ul class="org-ul">
+<li>browser会去queue里面找head的event
+</li>
+<li>如果queue里面没有event,那么就keep checking
+</li>
+<li>在处理head event的时候,queue里面的其他的event要耐心的等待
+</li>
+</ul>
+</li>
+<li>因为event handle是一次处理一个的,所以我们非常的小心handle event的时间不要
+太长
+</li>
+<li>还需要注意的是,我们是调用的windows的API来添加的event listener,但是如下两个
+方面不在我们本书的讨论范围:
+<ul class="org-ul">
+<li>具体browser如何把event放到自己的queue里面
+</li>
+<li>browser如何发现的有新的event发生
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="outline-container-sec-2-3-1-1" class="outline-5">
+<h5 id="sec-2-3-1-1">EVENTS ARE ASYNCHRONOUS</h5>
+<div class="outline-text-5" id="text-2-3-1-1">
+<ul class="org-ul">
+<li>event的发生是没法预料的,顺序也是没有规则的.所以我们说对event的handling(以
+及对于handling function的调用)都是"异步的(asynchronous)"
+</li>
+<li>event可能是下面的任何一种type:
+<ul class="org-ul">
+<li>Browser event: 比如'page load完成'就是一种event
+</li>
+<li>Network event: 比如server发送来response
+</li>
+<li>User event: 比如mouse clicks, mouse move, key press等等
+</li>
+<li>Timer event: 比如当一个timeout到期了
+</li>
+</ul>
+</li>
+<li>除了global code 以外,我们放到&lt;script&gt;里面的绝大部分的代码都是"某种event发
+生"后才会去执行的
+</li>
+<li>哪些代码会"钟意"哪些event是由我们的注册机制决定的
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2-3-2" class="outline-4">
+<h4 id="sec-2-3-2">Registering event handlers</h4>
+<div class="outline-text-4" id="text-2-3-2">
+<ul class="org-ul">
+<li>在client-side web application里面,有两种方式来设置event:
+<ul class="org-ul">
+<li>把某个function设置成object'特殊的'几个property,比如onload. 注意,所有window
+下面的任意的object的onload如果被设置成了某个function都会注册相应的handler
+<div class="org-src-container">
+
+<pre class="src src-js">window.onload = <span style="color: #859900; font-weight: bold;">function</span><span style="color: #2aa198;">()</span> <span style="color: #2aa198;">{}</span>
+document.body.onload = <span style="color: #859900; font-weight: bold;">function</span><span style="color: #2aa198;">()</span> <span style="color: #2aa198;">{}</span>
+</pre>
+</div>
+</li>
+<li>使用内置的addEventListener函数
+<div class="org-src-container">
+
+<pre class="src src-js">document.body.addEventListener<span style="color: #2aa198;">(</span><span style="color: #2aa198;">"mousemove"</span>, <span style="color: #859900; font-weight: bold;">function</span><span style="color: #b58900;">(){}</span><span style="color: #2aa198;">)</span>;
+</pre>
+</div>
+</li>
+</ul>
+</li>
+<li>这里两种方法,我们更推荐第二种,因为第二种是'add',也就是在现有的event handler
+里面为某个event'再加一个event', 而第一种是'replace',会覆盖掉原来的event handler
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-2-3-3" class="outline-4">
+<h4 id="sec-2-3-3">Handling events</h4>
+<div class="outline-text-4" id="text-2-3-3">
+<ul class="org-ul">
+<li>event handling的方式很简单,浏览器发现了新的event以后,就调用相应的handler
+function,需要注意的是只有某个function fully 返回以后,下一个handler function
+才有机会
+</li>
+<li>所以我们要注意,我们的event handler的时间不要太长,否则client-side web app会
+看起来没有响应
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+
+         <!-- Disqus Comment BEGIN -->
+          <div id="disqus_thread"></div>
+          <script type="text/javascript">
+              var disqus_shortname = 'harrifeng';
+
+              (function() {
+                  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+              })();
+          </script>
+          <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+         <!-- Disqus Comment END -->
+</div>
+</body>
+</html>

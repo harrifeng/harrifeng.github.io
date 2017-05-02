@@ -1,0 +1,1731 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>redux</title>
+<!-- 2017-05-02 Tue 10:45 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="your name" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+
+         <link href="http://fonts.googleapis.com/css?family=Droid+Sans+Mono|Galdeano|Open+Sans:600italic,400,600|Roboto+Condensed:400,700" rel="stylesheet" type="text/css">
+         <link rel="stylesheet" type="text/css" href="/static/css/main.css"/>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="org-div-home-and-up">
+ <a accesskey="h" href="http://harrifeng.github.io/sitemap.html"> UP </a>
+ |
+ <a accesskey="H" href="http://harrifeng.github.io/index.html"> HOME </a>
+</div><div id="preamble" class="status">
+
+         <div id="header">
+            <div id="header-top">
+                <div id="blog-title">Harrifeng's Path</div>
+                <div id="blog-sub-title">纸上得来终觉浅,绝知此事要Coding</div>
+            </div>
+            <div id="nav">
+                <ul>
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/about.html">About Me</a></li>
+                    <li>
+                    </li>
+                </ul>
+            </div>
+         </div>
+</div>
+<div id="content">
+<h1 class="title">redux</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">Read Me</a>
+<ul>
+<li><a href="#sec-1-1">Installation</a></li>
+<li><a href="#sec-1-2">Gist</a></li>
+</ul>
+</li>
+<li><a href="#sec-2">Introduction</a>
+<ul>
+<li><a href="#sec-2-1">Motivation</a></li>
+<li><a href="#sec-2-2">Three Principles</a>
+<ul>
+<li><a href="#sec-2-2-1">Single source of truth</a></li>
+<li><a href="#sec-2-2-2">State is read-only</a></li>
+<li><a href="#sec-2-2-3">Changes are made with pure functions</a></li>
+</ul>
+</li>
+<li><a href="#sec-2-3">Prior Art</a>
+<ul>
+<li><a href="#sec-2-3-1">Flux</a></li>
+<li><a href="#sec-2-3-2">Elm</a></li>
+<li><a href="#sec-2-3-3">Immutable</a></li>
+<li><a href="#sec-2-3-4">Baobab</a></li>
+<li><a href="#sec-2-3-5">Rx</a></li>
+</ul>
+</li>
+<li><a href="#sec-2-4">Ecosystem</a></li>
+<li><a href="#sec-2-5">Example</a></li>
+</ul>
+</li>
+<li><a href="#sec-3">Basics</a>
+<ul>
+<li><a href="#sec-3-1">Actions</a>
+<ul>
+<li><a href="#sec-3-1-1">Action Creators</a></li>
+</ul>
+</li>
+<li><a href="#sec-3-2">Reducers</a>
+<ul>
+<li><a href="#sec-3-2-1">Designing the State Shape</a></li>
+<li><a href="#sec-3-2-2">Handling Actions</a></li>
+<li><a href="#sec-3-2-3">Handling More Actions</a></li>
+<li><a href="#sec-3-2-4">Spliting Reducers</a></li>
+</ul>
+</li>
+<li><a href="#sec-3-3">Store</a>
+<ul>
+<li><a href="#sec-3-3-1">Dispatching Actions</a></li>
+</ul>
+</li>
+<li><a href="#sec-3-4">Data Flow</a></li>
+<li><a href="#sec-3-5">Usage with React</a>
+<ul>
+<li><a href="#sec-3-5-1">Installing React Redux</a></li>
+<li><a href="#sec-3-5-2">Presentational and Container Components</a></li>
+<li><a href="#sec-3-5-3">Designing Component Hierarchy</a>
+<ul>
+<li><a href="#sec-3-5-3-1">Presentational Component</a></li>
+<li><a href="#sec-3-5-3-2">Container Components</a></li>
+<li><a href="#sec-3-5-3-3">Other Component</a></li>
+</ul>
+</li>
+<li><a href="#sec-3-5-4">Implementing Components</a>
+<ul>
+<li><a href="#sec-3-5-4-1">Presentational Components</a></li>
+<li><a href="#sec-3-5-4-2">Container Components</a></li>
+</ul>
+</li>
+<li><a href="#sec-3-5-5">Passing the Store</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sec-4">Advanced</a>
+<ul>
+<li><a href="#sec-4-1">Async Actions</a>
+<ul>
+<li><a href="#sec-4-1-1">Actions</a></li>
+<li><a href="#sec-4-1-2">Synchronous Action Creators</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">Read Me</h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1">Installation</h3>
+<div class="outline-text-3" id="text-1-1">
+<ul class="org-ul">
+<li>除了不可避免的redux以外,通常还需要binding react的react-redux和一些helper工
+具redux-devtools
+<div class="org-src-container">
+
+<pre class="src src-sh">npm install --save redux
+npm install --save react-redux
+npm install --save-dev redux-devtools
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2">Gist</h3>
+<div class="outline-text-3" id="text-1-2">
+<ul class="org-ul">
+<li>下面三条是一个redux框架的精髓,总结起来redux就三个动作
+<ol class="org-ol">
+<li>你的app的所有的state都存在一个object tree里面,而这个object tree存放在"唯
+一的一个store里面"
+</li>
+<li>而改动这个"唯一的store"的方法就是触发一个action,而这个action也是一个object,
+这个object描述了"发生了某种事情"
+</li>
+<li>而"发生了某种事情"以后,应该如何改动state tree,是由reducer来完成的
+</li>
+</ol>
+</li>
+<li>我们来看一个redux的例子
+<ul class="org-ul">
+<li>首先是从redux import一些文件
+<div class="org-src-container">
+
+<pre class="src src-js"><span style="color: #859900; font-weight: bold;">import</span> <span style="color: #2aa198;">{</span> createStore <span style="color: #2aa198;">}</span> from <span style="color: #2aa198;">'redux'</span>
+</pre>
+</div>
+</li>
+<li>然后是一个reducer, 一个reducer肯定是一个pure function,其声明如下, 也就是
+说是一个输入'老的state'和action,然后返回'新的action'的过程.
+<div class="org-src-container">
+
+<pre class="src src-js"><span style="color: #2aa198;">(</span>state, action<span style="color: #2aa198;">)</span> =&gt; state
+</pre>
+</div>
+</li>
+<li>state到底是什么类型,不重要,它可以是primitive, array, object,或者是Immutable.js
+但是的确重要的是:'老的state'不能被改动!如果有改动的话,我们要生成一个新的
+state object 然后返回
+</li>
+<li>下面就是我们reducer的例子,使用switch来判断action到底是什么
+<div class="org-src-container">
+
+<pre class="src src-js"><span style="color: #859900; font-weight: bold;">import</span> <span style="color: #2aa198;">{</span> createStore <span style="color: #2aa198;">}</span> from <span style="color: #2aa198;">'redux'</span>
+
+<span style="color: #93a1a1;">//</span>
+<span style="color: #859900; font-weight: bold;">function</span> <span style="color: #268bd2;">counter</span><span style="color: #2aa198;">(</span><span style="color: #268bd2;">state</span> = 0, <span style="color: #268bd2;">action</span><span style="color: #2aa198;">)</span> <span style="color: #2aa198;">{</span>
+    <span style="color: #859900; font-weight: bold;">switch</span> <span style="color: #b58900;">(</span>action.type<span style="color: #b58900;">)</span> <span style="color: #b58900;">{</span>
+    <span style="color: #859900; font-weight: bold;">case</span> <span style="color: #2aa198;">'INCREMENT'</span>:
+        <span style="color: #859900; font-weight: bold;">return</span> state + 1
+    <span style="color: #859900; font-weight: bold;">case</span> <span style="color: #2aa198;">'DECREMENT'</span>:
+        <span style="color: #859900; font-weight: bold;">return</span> state - 1
+    <span style="color: #859900; font-weight: bold;">default</span>:
+        <span style="color: #859900; font-weight: bold;">return</span> state
+    <span style="color: #b58900;">}</span>
+<span style="color: #2aa198;">}</span>
+</pre>
+</div>
+</li>
+<li>下面创建一个Redux store来保存我们'整个app的state', createStore的第一个参
+数没有输入,那么就是默认state为一个Number, 其值为0. 我们的createStore函数
+就是用来创建我们的store的(注意store就是全体state的别称)
+<div class="org-src-container">
+
+<pre class="src src-js"><span style="color: #859900; font-weight: bold;">let</span> <span style="color: #268bd2;">store</span> = createStore<span style="color: #2aa198;">(</span>counter<span style="color: #2aa198;">)</span>
+</pre>
+</div>
+</li>
+<li>返回值肯定是一棵树(object)而不再是一个Number啦, 从源代码(src/createStore.js)
+我们可以看到这是一个带有几个函数的object
+<div class="org-src-container">
+
+<pre class="src src-js"><span style="color: #859900; font-weight: bold;">return</span> <span style="color: #2aa198;">{</span>
+  dispatch,
+  subscribe,
+  getState,
+  replaceReducer,
+  <span style="color: #b58900;">[</span>$$observable<span style="color: #b58900;">]</span>: observable
+<span style="color: #2aa198;">}</span>
+</pre>
+</div>
+</li>
+<li>getState是获取当前的state,而subscribe则是用来更新UI(在state更新的情况下),
+大多数情况下,要使用binding library(比如react-redux)来调用这个subscribe,当
+然了我们也可以为了log而手动调用
+<div class="org-src-container">
+
+<pre class="src src-js">store.subscribe<span style="color: #2aa198;">(</span>
+    <span style="color: #b58900;">()</span> =&gt; console.log<span style="color: #b58900;">(</span>store.getState<span style="color: #268bd2;">()</span><span style="color: #b58900;">)</span>;
+<span style="color: #2aa198;">)</span>
+</pre>
+</div>
+</li>
+<li>唯一能改动内部state的方法就是'didpatch一个action',方法如下
+<div class="org-src-container">
+
+<pre class="src src-js">store.dispatch<span style="color: #2aa198;">(</span><span style="color: #b58900;">{</span>type: <span style="color: #2aa198;">'INCREMENT'</span><span style="color: #b58900;">}</span><span style="color: #2aa198;">)</span> <span style="color: #93a1a1;">// </span><span style="color: #93a1a1;">1</span>
+store.dispatch<span style="color: #2aa198;">(</span><span style="color: #b58900;">{</span>type: <span style="color: #2aa198;">'INCREMENT'</span><span style="color: #b58900;">}</span><span style="color: #2aa198;">)</span> <span style="color: #93a1a1;">// </span><span style="color: #93a1a1;">2</span>
+store.dispatch<span style="color: #2aa198;">(</span><span style="color: #b58900;">{</span>type: <span style="color: #2aa198;">'DECREMENT'</span><span style="color: #b58900;">}</span><span style="color: #2aa198;">)</span> <span style="color: #93a1a1;">// </span><span style="color: #93a1a1;">1</span>
+</pre>
+</div>
+</li>
+</ul>
+</li>
+<li>好,我们来总结一下这个例子:
+<ul class="org-ul">
+<li>我们没有"直接的改动state",而是定义了一些action(action本身就是简单的case
+object)
+</li>
+<li>我们调用action的方法,是创建了一个reducer function,由它来统一管理这些action
+</li>
+<li>而我们的store是用来管理'所有的state'的,它调用dispatch的时候,参数是一个action
+很明显,store内部是调用reducer来应对这个action(store初始化的时候,会要求这个
+reducer)
+</li>
+</ul>
+</li>
+<li>我们的redux,只有一个state,存放在store里面,也只有一个root reducer,但是你可以
+把reducer分成多个来处理state的不同部分,当然了,最后要把reducer合并起来成一个
+这样才能初始化我们的store(store只有一个初始化参数root reducer)
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">Introduction</h2>
+<div class="outline-text-2" id="text-2">
+</div><div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1">Motivation</h3>
+<div class="outline-text-3" id="text-2-1">
+<ul class="org-ul">
+<li>js的single-page的application越来越多,我们的代码要处理比以往更多的state,这些
+个state可能包括server的response和cached data或者是当前创建的还没有和远程同步
+的数据
+</li>
+<li>UI的state也非常的多,因为我们要处理active route, selected tab,pagination等等
+</li>
+<li>处理不停改变的state是非常难的,因为model之间可能会自动触发一些机制而自动改变,
+我们无法控制这些东西
+</li>
+<li>而这些复杂度的来源,在于我们弄混了下面两个concept:
+<ul class="org-ul">
+<li>mutation
+</li>
+<li>asynchronicity
+</li>
+</ul>
+</li>
+<li>react处理这些问题的办法是把asynchrony和direct DOM从view里面移除,但是处理state
+依然需要你自己来做(当然了,react只是mvc中的v), 这就是redux所做的
+</li>
+<li>和Flux不一样的是, redux试图让statemutation变得更容易预测到,其方法是施加了一
+些restriction,这种restriction来决定了how and when updates can happen,我们把
+这些restriction总结成三个准则,如下
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2">Three Principles</h3>
+<div class="outline-text-3" id="text-2-2">
+<ul class="org-ul">
+<li>Redux可以简单的总结为如下三个准则:
+</li>
+</ul>
+</div>
+<div id="outline-container-sec-2-2-1" class="outline-4">
+<h4 id="sec-2-2-1">Single source of truth</h4>
+<div class="outline-text-4" id="text-2-2-1">
+<ul class="org-ul">
+<li>你整个application的state都存在一个单独的store里面
+</li>
+<li>这会很容易的创建universal app,这也会让你的代码很容易调试
+</li>
+<li>而且传统意义上面非常困难的事情,比如Undo/Redo可以里面变动很容易,因为你的state
+都存在以single tree里面,下面就是我们打印的一个store的例子
+<div class="org-src-container">
+
+<pre class="src src-js">console.log<span style="color: #2aa198;">(</span>store.getState<span style="color: #b58900;">()</span><span style="color: #2aa198;">)</span>;
+
+<span style="color: #93a1a1;">////////////////////////////////////////////////////</span>
+<span style="color: #93a1a1;">// </span><span style="color: #93a1a1;">&lt;===================OUTPUT===================&gt; //</span>
+<span style="color: #93a1a1;">// </span><span style="color: #93a1a1;">{                                              //</span>
+<span style="color: #93a1a1;">//   </span><span style="color: #93a1a1;">visibilityFilter: 'SHOW_ALL',                //</span>
+<span style="color: #93a1a1;">//   </span><span style="color: #93a1a1;">todos: [                                     //</span>
+<span style="color: #93a1a1;">//     </span><span style="color: #93a1a1;">{                                          //</span>
+<span style="color: #93a1a1;">//       </span><span style="color: #93a1a1;">text: 'Consider using Redux',            //</span>
+<span style="color: #93a1a1;">//       </span><span style="color: #93a1a1;">completed: true,                         //</span>
+<span style="color: #93a1a1;">//     </span><span style="color: #93a1a1;">},                                         //</span>
+<span style="color: #93a1a1;">//     </span><span style="color: #93a1a1;">{                                          //</span>
+<span style="color: #93a1a1;">//       </span><span style="color: #93a1a1;">text: 'Keep all state in a single tree', //</span>
+<span style="color: #93a1a1;">//       </span><span style="color: #93a1a1;">completed: false                         //</span>
+<span style="color: #93a1a1;">//     </span><span style="color: #93a1a1;">}                                          //</span>
+<span style="color: #93a1a1;">//   </span><span style="color: #93a1a1;">]                                            //</span>
+<span style="color: #93a1a1;">// </span><span style="color: #93a1a1;">}                                              //</span>
+<span style="color: #93a1a1;">////////////////////////////////////////////////////</span>
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-2-2-2" class="outline-4">
+<h4 id="sec-2-2-2">State is read-only</h4>
+<div class="outline-text-4" id="text-2-2-2">
+<ul class="org-ul">
+<li>改动state的唯一方法,就是赋予这个state一个action, 这个action是用来描述"发生
+了什么事情(比如用户按了一个按钮)"
+</li>
+<li>因为action只不过是一个plain object,它可以被log, serialize, store,并且以后
+用做测试用途
+</li>
+<li>而所有的change是统一管理在一个store里面的,也就不会出现race condition,如下,
+我们总是对一个store进行操作,操作肯定是有顺序的,非异步的,也就不会有race condition
+<div class="org-src-container">
+
+<pre class="src src-js">store.dispatch<span style="color: #2aa198;">(</span><span style="color: #b58900;">{</span>
+    type: <span style="color: #2aa198;">'COMPLETE_TODO'</span>,
+    index: 1
+<span style="color: #b58900;">}</span><span style="color: #2aa198;">)</span>
+
+store.dispatch<span style="color: #2aa198;">(</span><span style="color: #b58900;">{</span>
+    type: <span style="color: #2aa198;">'SET_VISIBILITY_FILTER'</span>,
+    filter: <span style="color: #2aa198;">'SHOW_COMPLETED'</span>
+<span style="color: #b58900;">}</span><span style="color: #2aa198;">)</span>
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-2-2-3" class="outline-4">
+<h4 id="sec-2-2-3">Changes are made with pure functions</h4>
+<div class="outline-text-4" id="text-2-2-3">
+<ul class="org-ul">
+<li>action描述了"发生了什么", action可能有多种,而根据不同的action来决定state如
+何改变的函数叫做reducer
+</li>
+<li>redux的reducer的特点在于,其pick一个state,分析了action以后,决定使用某种改动
+之于state,然后会生成一个新的state来返回!
+</li>
+<li>最开始的时候你可能只有一个reducer,但是随着项目的扩大,你可以把你的reducer分
+成多个每个都对应一个state tree(然后最后再合起来).因为reducer是简单的function
+所以你完全可以复用它们, 传递additional data给它们, 控制它们调用的顺序,redux
+的灵活性,就体现在reducer里面了
+</li>
+<li>下面就是我们的一个例子,我们有两个reducer,分别处理不同的state tree,最后把它
+们合并成一个,再用这一个reducer来初始化一个store
+<div class="org-src-container">
+
+<pre class="src src-js"><span style="color: #859900; font-weight: bold;">function</span> <span style="color: #268bd2;">visibilityFilter</span><span style="color: #2aa198;">(</span><span style="color: #268bd2;">state</span> = <span style="color: #2aa198;">'SHOW_ALL'</span>, <span style="color: #268bd2;">action</span><span style="color: #2aa198;">)</span> <span style="color: #2aa198;">{</span>
+    <span style="color: #859900; font-weight: bold;">switch</span> <span style="color: #b58900;">(</span>action.type<span style="color: #b58900;">)</span> <span style="color: #b58900;">{</span>
+        <span style="color: #859900; font-weight: bold;">case</span> <span style="color: #2aa198;">'SET_VISIBILITY_FILTER'</span>:
+            <span style="color: #859900; font-weight: bold;">return</span> action.filter
+        <span style="color: #859900; font-weight: bold;">default</span>:
+            <span style="color: #859900; font-weight: bold;">return</span> state
+    <span style="color: #b58900;">}</span>
+<span style="color: #2aa198;">}</span>
+
+<span style="color: #859900; font-weight: bold;">function</span> <span style="color: #268bd2;">todos</span><span style="color: #2aa198;">(</span><span style="color: #268bd2;">state</span> = <span style="color: #b58900;">[]</span>, <span style="color: #268bd2;">action</span><span style="color: #2aa198;">)</span> <span style="color: #2aa198;">{</span>
+    <span style="color: #859900; font-weight: bold;">switch</span> <span style="color: #b58900;">(</span>action.type<span style="color: #b58900;">)</span> <span style="color: #b58900;">{</span>
+        <span style="color: #859900; font-weight: bold;">case</span> <span style="color: #2aa198;">'ADD_TODO'</span>:
+            <span style="color: #859900; font-weight: bold;">return</span> <span style="color: #268bd2;">[</span>
+                ...state, <span style="color: #6c71c4;">{</span>
+                    text: action.text,
+                    completed: <span style="color: #268bd2; font-weight: bold;">false</span>
+                <span style="color: #6c71c4;">}</span>
+            <span style="color: #268bd2;">]</span>
+        <span style="color: #859900; font-weight: bold;">case</span> <span style="color: #2aa198;">'COMPLETED_TODO'</span>:
+            <span style="color: #859900; font-weight: bold;">return</span> state.map<span style="color: #268bd2;">(</span><span style="color: #6c71c4;">(</span>todo, index<span style="color: #6c71c4;">)</span> =&gt; <span style="color: #6c71c4;">{</span>
+                <span style="color: #859900; font-weight: bold;">if</span> <span style="color: #859900;">(</span>index === action.index<span style="color: #859900;">)</span> <span style="color: #859900;">{</span>
+                    <span style="color: #859900; font-weight: bold;">return</span> Object.assign<span style="color: #b58900;">(</span><span style="color: #268bd2;">{}</span>, todo, <span style="color: #268bd2;">{</span>
+                        completed: <span style="color: #268bd2; font-weight: bold;">true</span>
+                    <span style="color: #268bd2;">}</span><span style="color: #b58900;">)</span>
+                <span style="color: #859900;">}</span>
+                <span style="color: #859900; font-weight: bold;">return</span> todo
+            <span style="color: #6c71c4;">}</span><span style="color: #268bd2;">)</span>
+        <span style="color: #859900; font-weight: bold;">default</span>:
+            <span style="color: #859900; font-weight: bold;">return</span> state
+    <span style="color: #b58900;">}</span>
+<span style="color: #2aa198;">}</span>
+
+<span style="color: #859900; font-weight: bold;">import</span> <span style="color: #2aa198;">{</span>
+    combineReducers,
+    createStore
+<span style="color: #2aa198;">}</span> from <span style="color: #2aa198;">'redux'</span>
+<span style="color: #859900; font-weight: bold;">let</span> <span style="color: #268bd2;">reducer</span> = combineReducers<span style="color: #2aa198;">(</span><span style="color: #b58900;">{</span>
+    visibilityFilter,
+    todos
+<span style="color: #b58900;">}</span><span style="color: #2aa198;">)</span>
+<span style="color: #859900; font-weight: bold;">let</span> <span style="color: #268bd2;">store</span> = createStore<span style="color: #2aa198;">(</span>reducer<span style="color: #2aa198;">)</span>
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2-3" class="outline-3">
+<h3 id="sec-2-3">Prior Art</h3>
+<div class="outline-text-3" id="text-2-3">
+<ul class="org-ul">
+<li>Redux是多种科技的组合,有很多相同点和不同点
+</li>
+</ul>
+</div>
+<div id="outline-container-sec-2-3-1" class="outline-4">
+<h4 id="sec-2-3-1">Flux</h4>
+<div class="outline-text-4" id="text-2-3-1">
+<ul class="org-ul">
+<li>redux从flux借鉴来的是"使用action来描述产生了哪些改变"
+</li>
+<li>但是和flux不同的是:
+<ul class="org-ul">
+<li>Redux没有Dispatcher的概念
+</li>
+<li>Redux不让你更改data,而是创建一个新的data
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-2-3-2" class="outline-4">
+<h4 id="sec-2-3-2">Elm</h4>
+<div class="outline-text-4" id="text-2-3-2">
+<ul class="org-ul">
+<li>Elm是一个functional programming language, 在elm里面更新要遵守如下格式
+<div class="org-src-container">
+
+<pre class="src src-js"><span style="color: #2aa198;">(</span>action, state<span style="color: #2aa198;">)</span> =&gt; state
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-2-3-3" class="outline-4">
+<h4 id="sec-2-3-3">Immutable</h4>
+<div class="outline-text-4" id="text-2-3-3">
+<ul class="org-ul">
+<li>Immutable是一个js library,它和redux和合拍,所以我们推荐你使用这个library
+</li>
+<li>说推荐使用,是因为redux根本不care你使用什么来存储state,可是object,可以是immutable
+js object,也可以是任何的其他什么对象.但是redux do care你的object必须是
+immutable的.所以Backbone就不能做Redux的state啦,因为Backbone model是mutable
+的
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-2-3-4" class="outline-4">
+<h4 id="sec-2-3-4">Baobab</h4>
+<div class="outline-text-4" id="text-2-3-4">
+<ul class="org-ul">
+<li>Baobab是另外一个immutable的API,用来更新plain js object
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-2-3-5" class="outline-4">
+<h4 id="sec-2-3-5">Rx</h4>
+<div class="outline-text-4" id="text-2-3-5">
+<ul class="org-ul">
+<li>Reactive Extensions的简称,是一个优秀的管理复杂asynchronous app的方法
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2-4" class="outline-3">
+<h3 id="sec-2-4">Ecosystem</h3>
+<div class="outline-text-3" id="text-2-4">
+<ul class="org-ul">
+<li>一些资料,重要的总结在<a href="https://github.com/xgrommx/awesome-redux">https://github.com/xgrommx/awesome-redux</a>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-2-5" class="outline-3">
+<h3 id="sec-2-5">Example</h3>
+<div class="outline-text-3" id="text-2-5">
+<ul class="org-ul">
+<li>redux还有一些例子和自己的source code一起发布<a href="https://github.com/reactjs/redux/tree/master/examples">https://github.com/reactjs/redux/tree/master/examples</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">Basics</h2>
+<div class="outline-text-2" id="text-3">
+<ul class="org-ul">
+<li>redux的结构非常简单,下面我们通过Todo app的例子来介绍一下
+</li>
+</ul>
+</div>
+<div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1">Actions</h3>
+<div class="outline-text-3" id="text-3-1">
+<ul class="org-ul">
+<li>action名字看起来很"动态",其实就是一个object,其描述了"发生了什么事情".它们是
+store所有信息的来源.你通过store.dispatch(xxaction)来发送action
+</li>
+<li>下面是添加新的todo item的代码:
+<ul class="org-ul">
+<li>action就是下面这个plain object的样子, 对这个plain object的唯一要求就是要
+有string类型的type
+<div class="org-src-container">
+
+<pre class="src src-js"><span style="color: #2aa198;">{</span>
+    type: ADD_TODO,
+    text: <span style="color: #2aa198;">'Build my first Redux app'</span>
+<span style="color: #2aa198;">}</span>
+</pre>
+</div>
+</li>
+<li>那我们就要设置一个const变量来存储这个string,使用const是ES6以来的一个特点
+只有明确要改动的变量才不是const的
+<div class="org-src-container">
+
+<pre class="src src-js"><span style="color: #859900; font-weight: bold;">const</span> <span style="color: #268bd2;">ADD_TODO</span> = <span style="color: #2aa198;">'ADD_TODO'</span>
+</pre>
+</div>
+</li>
+<li>如果你的app足够大了,那么你就需要把这些const变量移到一个文件里面
+<div class="org-src-container">
+
+<pre class="src src-js"><span style="color: #859900; font-weight: bold;">import</span> <span style="color: #2aa198;">{</span> ADD_TODO, REMOVE_TODO <span style="color: #2aa198;">}</span> from <span style="color: #2aa198;">'../actionTypes'</span>
+</pre>
+</div>
+</li>
+</ul>
+</li>
+<li>除了type这个property以外,其他的地方都自便,比如我们这里就加上了一个index
+<div class="org-src-container">
+
+<pre class="src src-js"><span style="color: #2aa198;">{</span>
+    type: TOGGLE_TODO,
+    index: 5
+<span style="color: #2aa198;">}</span>
+</pre>
+</div>
+</li>
+</ul>
+</div>
+<div id="outline-container-sec-3-1-1" class="outline-4">
+<h4 id="sec-3-1-1">Action Creators</h4>
+<div class="outline-text-4" id="text-3-1-1">
+<ul class="org-ul">
+<li>action creator和action不是一回事,action creator说白了就是一个'创建并返回
+action的function',比如下面就是一个action creator
+<div class="org-src-container">
+
+<pre class="src src-js"><span style="color: #859900; font-weight: bold;">function</span> <span style="color: #268bd2;">addTodo</span><span style="color: #2aa198;">(</span><span style="color: #268bd2;">text</span><span style="color: #2aa198;">)</span> <span style="color: #2aa198;">{</span>
+    <span style="color: #859900; font-weight: bold;">return</span> <span style="color: #b58900;">{</span>
+        type: ADD_TODO,
+        text
+    <span style="color: #b58900;">}</span>
+<span style="color: #2aa198;">}</span>
+</pre>
+</div>
+</li>
+<li>在传统的flux里面,也有action creator(action的概念就是从flux里面来的),但是flux
+里面的action creator还得负责trigger dispatch, 但是我们的redux里面,dispatch
+函数是要自己主动触发的(前面的例子是store调用了dispatch, 而我们这里是直接调
+用dispatch函数, 看过源代码后就知道,js是定义了这个函数,然后把这个函数作为
+store object的一个组成部分而已,在任何地方都可以使用这个函数Redux.dispatch)
+<ul class="org-ul">
+<li>在flux里面,action creator主动调用dispatch
+<div class="org-src-container">
+
+<pre class="src src-js"><span style="color: #859900; font-weight: bold;">function</span> <span style="color: #268bd2;">addTodoWithDispatch</span><span style="color: #2aa198;">(</span><span style="color: #268bd2;">text</span><span style="color: #2aa198;">)</span> <span style="color: #2aa198;">{</span>
+    <span style="color: #859900; font-weight: bold;">const</span> <span style="color: #268bd2;">action</span> = <span style="color: #b58900;">{</span>
+        type: ADD_TODO,
+        text
+    <span style="color: #b58900;">}</span>
+    dispatch<span style="color: #b58900;">(</span>action<span style="color: #b58900;">)</span>
+<span style="color: #2aa198;">}</span>
+</pre>
+</div>
+</li>
+<li>在Redux里面,使用下面代码,直接调用dispatch(xxaction)
+<div class="org-src-container">
+
+<pre class="src src-js">dispatch<span style="color: #2aa198;">(</span>addTodo<span style="color: #b58900;">(</span>text<span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
+dispatch<span style="color: #2aa198;">(</span>completeTodo<span style="color: #b58900;">(</span>index<span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
+</pre>
+</div>
+</li>
+<li>当然也可以达到flux'自动'调用的样子,这种叫做bound action creator
+<div class="org-src-container">
+
+<pre class="src src-js"><span style="color: #859900; font-weight: bold;">const</span> <span style="color: #268bd2;">boundAddTodo</span> = <span style="color: #2aa198;">(</span>text<span style="color: #2aa198;">)</span> =&gt; dispatch<span style="color: #2aa198;">(</span>addTodo<span style="color: #b58900;">(</span>text<span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
+
+<span style="color: #93a1a1;">// </span><span style="color: #93a1a1;">call example</span>
+boundAddTodo<span style="color: #2aa198;">(</span>text<span style="color: #2aa198;">)</span>
+</pre>
+</div>
+</li>
+<li>虽然我们可以直接调用dispatch(),或者使用store.dispatch(),但是更多的情况下
+你很可能会使用helper函数,比如react-redux里面的connect()
+</li>
+<li>另外你可以给dispatch()函数邦迪很多个action creator,方法是函数bindActionCreators()
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2">Reducers</h3>
+<div class="outline-text-3" id="text-3-2">
+<ul class="org-ul">
+<li>action提供了"发生了什么",而reducer就是app对"每一种情况"的response
+</li>
+</ul>
+</div>
+<div id="outline-container-sec-3-2-1" class="outline-4">
+<h4 id="sec-3-2-1">Designing the State Shape</h4>
+<div class="outline-text-4" id="text-3-2-1">
+<ul class="org-ul">
+<li>在redux里面,所有的application state都存在一个single object里面,我们先来看看
+一个最最简单的object是什么样子的, 对于一个todo app,我们就存两种东西:
+<ul class="org-ul">
+<li>我们当前选择的filter方式(全显示,只显示已完成,还是只显示未完成)
+</li>
+<li>全部的todo list
+</li>
+</ul>
+</li>
+<li>下面就是我们的state tree
+<div class="org-src-container">
+
+<pre class="src src-js"><span style="color: #2aa198;">{</span>
+    visibilityFilter: <span style="color: #2aa198;">'SHOW_ALL'</span>,
+    todos: <span style="color: #b58900;">[</span>
+        <span style="color: #268bd2;">{</span>
+            text: <span style="color: #2aa198;">'Consider using Redux'</span>,
+            completed: <span style="color: #268bd2; font-weight: bold;">true</span>
+        <span style="color: #268bd2;">}</span>,
+        <span style="color: #268bd2;">{</span>
+            text: <span style="color: #2aa198;">'Keep all state in a single tree'</span>,
+            completed: <span style="color: #268bd2; font-weight: bold;">false</span>
+        <span style="color: #268bd2;">}</span>
+    <span style="color: #b58900;">]</span>
+
+<span style="color: #2aa198;">}</span>
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-3-2-2" class="outline-4">
+<h4 id="sec-3-2-2">Handling Actions</h4>
+<div class="outline-text-4" id="text-3-2-2">
+<ul class="org-ul">
+<li>好了,设计好state的样子之后,下面就来创建reducer, reducer是一个pure function
+它的输入是一个老的State和一个action,返回值是一个新的state
+<div class="org-src-container">
+
+<pre class="src src-js"><span style="color: #2aa198;">(</span>previousState, action<span style="color: #2aa198;">)</span> =&gt; newState
+</pre>
+</div>
+</li>
+<li>reducer之所以被叫做reducer,是因为像我们reducerFun()这样的函数(输入一个state,
+更改后返回新的state)在历史上经常传递给Array.prototype.reduce, 也就是说reducerFun
+就好像是reduce()的跟班一样.但是其实我们redux的reducer并不会传递给一个reduce函数!
+</li>
+<li>下面是一个reduce的例子
+<div class="org-src-container">
+
+<pre class="src src-js"><span style="color: #93a1a1;">// </span><span style="color: #93a1a1;">Sum all the values of an array</span>
+<span style="color: #859900; font-weight: bold;">var</span> <span style="color: #268bd2;">total</span> = <span style="color: #2aa198;">[</span>0, 1, 2, 3<span style="color: #2aa198;">]</span>.reduce<span style="color: #2aa198;">(</span><span style="color: #b58900;">(</span>acc, cur<span style="color: #b58900;">)</span> =&gt; acc + cur, 0<span style="color: #2aa198;">)</span>; <span style="color: #93a1a1;">// </span><span style="color: #93a1a1;">total = 6</span>
+</pre>
+</div>
+</li>
+<li>作为一个pure function,你不能再reducer里面做下面的事情. reducer最好只做计算
+<ul class="org-ul">
+<li>改变parameter
+</li>
+<li>调用会产生side effect的API
+</li>
+<li>调用non-pure的函数,比如Date.now()或者是Math.random()
+</li>
+</ul>
+</li>
+<li>我们的reducer还要设置initial state, 这个是和常规我们理解的reducer不一样的,
+这是因为常规的reducer会传入reduce(),这个reduce()会自带initial value,而我们
+没有这个便利,我们要自己设置初始化参数
+<div class="org-src-container">
+
+<pre class="src src-js"><span style="color: #859900; font-weight: bold;">import</span> <span style="color: #2aa198;">{</span> VisibilityFilters <span style="color: #2aa198;">}</span> from <span style="color: #2aa198;">'./actions'</span>
+
+<span style="color: #859900; font-weight: bold;">const</span> <span style="color: #268bd2;">initialState</span> = <span style="color: #2aa198;">{</span>
+    visibilityFilter: VisibilityFilters.SHOW_ALL,
+    todos: <span style="color: #b58900;">[]</span>
+<span style="color: #2aa198;">}</span>
+
+<span style="color: #859900; font-weight: bold;">function</span> <span style="color: #268bd2;">todoApp</span><span style="color: #2aa198;">(</span><span style="color: #268bd2;">state</span>, <span style="color: #268bd2;">action</span><span style="color: #2aa198;">)</span> <span style="color: #2aa198;">{</span>
+    <span style="color: #859900; font-weight: bold;">if</span> <span style="color: #b58900;">(</span><span style="color: #859900; font-weight: bold;">typeof</span> state === <span style="color: #2aa198;">'undefined'</span><span style="color: #b58900;">)</span> <span style="color: #b58900;">{</span>
+        <span style="color: #859900; font-weight: bold;">return</span> initialState
+    <span style="color: #b58900;">}</span>
+
+    <span style="color: #93a1a1;">// </span><span style="color: #93a1a1;">for now, don't handle any actions</span>
+    <span style="color: #859900; font-weight: bold;">return</span> state
+<span style="color: #2aa198;">}</span>
+</pre>
+</div>
+</li>
+<li>当然了我们可以使用ES6的default argument来写,也就是
+<div class="org-src-container">
+
+<pre class="src src-js"><span style="color: #859900; font-weight: bold;">function</span> <span style="color: #268bd2;">todoApp</span><span style="color: #2aa198;">(</span><span style="color: #268bd2;">state</span> = <span style="color: #268bd2;">initialState</span>, <span style="color: #268bd2;">action</span><span style="color: #2aa198;">)</span> <span style="color: #2aa198;">{</span>
+    <span style="color: #93a1a1;">// </span><span style="color: #93a1a1;">...</span>
+    <span style="color: #859900; font-weight: bold;">return</span> state
+<span style="color: #2aa198;">}</span>
+</pre>
+</div>
+</li>
+<li>好了,我们来处理一个action,比如SET_VISIBILITY_FILTER
+<div class="org-src-container">
+
+<pre class="src src-js"><span style="color: #859900; font-weight: bold;">function</span> <span style="color: #268bd2;">todoApp</span><span style="color: #2aa198;">(</span><span style="color: #268bd2;">state</span> = <span style="color: #268bd2;">initialState</span>, <span style="color: #268bd2;">action</span><span style="color: #2aa198;">)</span> <span style="color: #2aa198;">{</span>
+    <span style="color: #859900; font-weight: bold;">switch</span> <span style="color: #b58900;">(</span>action.type<span style="color: #b58900;">)</span> <span style="color: #b58900;">{</span>
+    <span style="color: #859900; font-weight: bold;">case</span> SET_VISIBILITY_FILTER:
+        <span style="color: #859900; font-weight: bold;">return</span> Object.assign<span style="color: #268bd2;">(</span><span style="color: #6c71c4;">{}</span>, state, <span style="color: #6c71c4;">{</span>
+            visibilityFilter: action.filter
+        <span style="color: #6c71c4;">}</span><span style="color: #268bd2;">)</span>
+    <span style="color: #859900; font-weight: bold;">default</span>:
+        <span style="color: #859900; font-weight: bold;">return</span> state
+    <span style="color: #b58900;">}</span>
+<span style="color: #2aa198;">}</span>
+</pre>
+</div>
+</li>
+<li>注意Object.assign()是创建一些新的object,注意,第一个参数还得设置成空的object,
+这是为了保护state不被改动.Object.assign()会把自己从第二个参数开始的所有参数
+加入第一个参数,然后返回第一个参数的copy
+</li>
+<li>默认情况下返回原来的state,也是一个好主意(至少不会遭到破坏)
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-3-2-3" class="outline-4">
+<h4 id="sec-3-2-3">Handling More Actions</h4>
+<div class="outline-text-4" id="text-3-2-3">
+<ul class="org-ul">
+<li>让我们来处理更多的action,加case就好了
+<div class="org-src-container">
+
+<pre class="src src-js"><span style="color: #859900; font-weight: bold;">function</span> <span style="color: #268bd2;">todoApp</span><span style="color: #2aa198;">(</span><span style="color: #268bd2;">state</span> = <span style="color: #268bd2;">initialState</span>, <span style="color: #268bd2;">action</span><span style="color: #2aa198;">)</span> <span style="color: #2aa198;">{</span>
+    <span style="color: #859900; font-weight: bold;">switch</span> <span style="color: #b58900;">(</span>action.type<span style="color: #b58900;">)</span> <span style="color: #b58900;">{</span>
+        <span style="color: #859900; font-weight: bold;">case</span> SET_VISIBILITY_FILTER:
+            <span style="color: #859900; font-weight: bold;">return</span> Object.assign<span style="color: #268bd2;">(</span><span style="color: #6c71c4;">{}</span>, state, <span style="color: #6c71c4;">{</span>
+                visibilityFilter: action.filter
+            <span style="color: #6c71c4;">}</span><span style="color: #268bd2;">)</span>
+        <span style="color: #859900; font-weight: bold;">case</span> ADD_TODO:
+            <span style="color: #859900; font-weight: bold;">return</span> Object.assign<span style="color: #268bd2;">(</span><span style="color: #6c71c4;">{}</span>, state, <span style="color: #6c71c4;">{</span>
+                todos: <span style="color: #859900;">[</span>
+                    ...state.todos, <span style="color: #b58900;">{</span>
+                        text: action.text,
+                        completed: <span style="color: #268bd2; font-weight: bold;">false</span>
+                    <span style="color: #b58900;">}</span>
+                <span style="color: #859900;">]</span>
+            <span style="color: #6c71c4;">}</span><span style="color: #268bd2;">)</span>
+        <span style="color: #859900; font-weight: bold;">default</span>:
+            <span style="color: #859900; font-weight: bold;">return</span> state
+    <span style="color: #b58900;">}</span>
+<span style="color: #2aa198;">}</span>
+</pre>
+</div>
+</li>
+<li>这里我们还是新建了一个state, 这个state使用了array spread operator来展现array
+的所有成员
+</li>
+<li>再增加一个case也是很轻松的事情了
+<div class="org-src-container">
+
+<pre class="src src-js"><span style="color: #859900; font-weight: bold;">case</span> TOGGLE_TODO:
+    <span style="color: #859900; font-weight: bold;">return</span> Object.assign<span style="color: #2aa198;">(</span><span style="color: #b58900;">{}</span>, state, <span style="color: #b58900;">{</span>
+        todos: state.todos.map<span style="color: #268bd2;">(</span><span style="color: #6c71c4;">(</span>todo, index<span style="color: #6c71c4;">)</span> =&gt; <span style="color: #6c71c4;">{</span>
+            <span style="color: #859900; font-weight: bold;">if</span> <span style="color: #859900;">(</span>index === action.index<span style="color: #859900;">)</span> <span style="color: #859900;">{</span>
+                <span style="color: #859900; font-weight: bold;">return</span> Object.assign<span style="color: #b58900;">(</span><span style="color: #268bd2;">{}</span>, todo, <span style="color: #268bd2;">{</span>
+                    comleted: !todo.completed
+                <span style="color: #268bd2;">}</span><span style="color: #b58900;">)</span>
+            <span style="color: #859900;">}</span>
+        <span style="color: #6c71c4;">}</span><span style="color: #268bd2;">)</span>
+    <span style="color: #b58900;">}</span><span style="color: #2aa198;">)</span>
+</pre>
+</div>
+</li>
+<li>如果经常做这样的"无损更新"可能你就会想要使用类似Immutable这样的原生的immutable
+支持,所以deep update也就支持的很好了
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-3-2-4" class="outline-4">
+<h4 id="sec-3-2-4">Spliting Reducers</h4>
+<div class="outline-text-4" id="text-3-2-4">
+<ul class="org-ul">
+<li>我们把代码写出来就发现了一个问题,更新todo和更新visibilityFilter其实是两个
+完全独立的事件,我们写在一个reducer里面就会造成函数特别的大,一个解决的办法
+就是把我们的reducer分开, reducer分开的同时,我们也要把state分开!:
+<ul class="org-ul">
+<li>一部分处理visibilityFilter,state初始值是一个string
+<div class="org-src-container">
+
+<pre class="src src-js"><span style="color: #859900; font-weight: bold;">function</span> <span style="color: #268bd2;">visibilityFilter</span><span style="color: #2aa198;">(</span><span style="color: #268bd2;">state</span> = <span style="color: #268bd2;">SHOW_ALL</span>, <span style="color: #268bd2;">action</span><span style="color: #2aa198;">)</span> <span style="color: #2aa198;">{</span>
+    <span style="color: #859900; font-weight: bold;">switch</span> <span style="color: #b58900;">(</span>action.type<span style="color: #b58900;">)</span> <span style="color: #b58900;">{</span>
+    <span style="color: #859900; font-weight: bold;">case</span> SET_VISIBILITY_FILTER:
+        <span style="color: #859900; font-weight: bold;">return</span> action.filter
+    <span style="color: #859900; font-weight: bold;">default</span>:
+        <span style="color: #859900; font-weight: bold;">return</span> state
+    <span style="color: #b58900;">}</span>
+<span style="color: #2aa198;">}</span>
+</pre>
+</div>
+</li>
+<li>另外一部分处理todos,初始值是一个数组
+<div class="org-src-container">
+
+<pre class="src src-js"><span style="color: #859900; font-weight: bold;">function</span> <span style="color: #268bd2;">todos</span><span style="color: #2aa198;">(</span><span style="color: #268bd2;">state</span> = <span style="color: #b58900;">[]</span>, <span style="color: #268bd2;">action</span><span style="color: #2aa198;">)</span> <span style="color: #2aa198;">{</span>
+    <span style="color: #859900; font-weight: bold;">switch</span> <span style="color: #b58900;">(</span>action.type<span style="color: #b58900;">)</span> <span style="color: #b58900;">{</span>
+    <span style="color: #859900; font-weight: bold;">case</span> ADD_TODO:
+        <span style="color: #859900; font-weight: bold;">return</span> <span style="color: #268bd2;">[</span>
+                ...state,
+            <span style="color: #6c71c4;">{</span>
+                text: action.text,
+                completed: <span style="color: #268bd2; font-weight: bold;">false</span>
+            <span style="color: #6c71c4;">}</span>
+        <span style="color: #268bd2;">]</span>
+    <span style="color: #859900; font-weight: bold;">case</span> TOGGLE_TODO:
+        <span style="color: #859900; font-weight: bold;">return</span> state.map<span style="color: #268bd2;">(</span><span style="color: #6c71c4;">(</span>todo, index<span style="color: #6c71c4;">)</span> =&gt; <span style="color: #6c71c4;">{</span>
+            <span style="color: #859900; font-weight: bold;">if</span> <span style="color: #859900;">(</span>index === action.index<span style="color: #859900;">)</span> <span style="color: #859900;">{</span>
+                <span style="color: #859900; font-weight: bold;">return</span> Object.assign<span style="color: #b58900;">(</span><span style="color: #268bd2;">{}</span>, todo, <span style="color: #268bd2;">{</span>
+                    completed: !todo.completed
+                <span style="color: #268bd2;">}</span><span style="color: #b58900;">)</span>
+            <span style="color: #859900;">}</span>
+            <span style="color: #859900; font-weight: bold;">return</span> todo
+        <span style="color: #6c71c4;">}</span><span style="color: #268bd2;">)</span>
+    <span style="color: #859900; font-weight: bold;">default</span>:
+        <span style="color: #859900; font-weight: bold;">return</span> state
+    <span style="color: #b58900;">}</span>
+<span style="color: #2aa198;">}</span>
+</pre>
+</div>
+</li>
+<li>最后,要把两个reducer结合起来
+<div class="org-src-container">
+
+<pre class="src src-js"><span style="color: #859900; font-weight: bold;">function</span> <span style="color: #268bd2;">todoApp</span><span style="color: #2aa198;">(</span><span style="color: #268bd2;">state</span> = <span style="color: #b58900;">{}</span>, <span style="color: #268bd2;">action</span><span style="color: #2aa198;">)</span> <span style="color: #2aa198;">{</span>
+    <span style="color: #859900; font-weight: bold;">return</span> <span style="color: #b58900;">{</span>
+        visibilityFilter: visibilityFilter<span style="color: #268bd2;">(</span>state.visibilityFilter, action<span style="color: #268bd2;">)</span>,
+        todos: todos<span style="color: #268bd2;">(</span>state.todos, action<span style="color: #268bd2;">)</span>
+    <span style="color: #b58900;">}</span>
+<span style="color: #2aa198;">}</span>
+</pre>
+</div>
+</li>
+<li>上面的结合由于经常会用到,redux设计了一个helper函数
+<div class="org-src-container">
+
+<pre class="src src-js"><span style="color: #859900; font-weight: bold;">import</span> <span style="color: #2aa198;">{</span> combineReducers <span style="color: #2aa198;">}</span> from <span style="color: #2aa198;">'redux'</span>
+
+<span style="color: #859900; font-weight: bold;">const</span> <span style="color: #268bd2;">todoApp</span> = combineReducers<span style="color: #2aa198;">(</span><span style="color: #b58900;">{</span>
+    visibilityFilter,
+    todos
+<span style="color: #b58900;">}</span><span style="color: #2aa198;">)</span>
+
+<span style="color: #859900; font-weight: bold;">export</span> <span style="color: #859900; font-weight: bold;">default</span> todoApp
+</pre>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-3-3" class="outline-3">
+<h3 id="sec-3-3">Store</h3>
+<div class="outline-text-3" id="text-3-3">
+<ul class="org-ul">
+<li>前面我们已经定义了action(发生了什么), reducer(根据action来更新state)
+</li>
+<li>而store则是把action和reducer联系起来的纽带,它有如下的责任:
+<ul class="org-ul">
+<li>保存application的state
+</li>
+<li>允许对state的访问-&gt; getState()
+</li>
+<li>允许对state的更新-&gt; dispatch(action)
+</li>
+<li>注册listener-&gt; subscribe(listener)
+</li>
+<li>处理没有注册过的listener
+</li>
+</ul>
+</li>
+<li>需要注意的是,你的app只有一个store,如果你想需要把store里面的data分成不同的logic
+来处理的话,你需要的是把reducer分成几个,然后在combine,而不是把store分成几个
+</li>
+<li>在有了reducer以后,创建store就很容易了.前面我们使用combineReducers()把多个reducer
+合成了一个,现在我们使用这一个reducer来初始化store
+<div class="org-src-container">
+
+<pre class="src src-js"><span style="color: #859900; font-weight: bold;">import</span> <span style="color: #2aa198;">{</span> createStore <span style="color: #2aa198;">}</span> from <span style="color: #2aa198;">'redux'</span>
+<span style="color: #859900; font-weight: bold;">import</span> todoApp from <span style="color: #2aa198;">'./reducers'</span>
+<span style="color: #859900; font-weight: bold;">let</span> <span style="color: #268bd2;">store</span> = createStore<span style="color: #2aa198;">(</span>todoApp<span style="color: #2aa198;">)</span>
+</pre>
+</div>
+</li>
+<li>createStore也可以指定第二个参数为initial state
+<div class="org-src-container">
+
+<pre class="src src-js"><span style="color: #859900; font-weight: bold;">let</span> <span style="color: #268bd2;">store</span> = createStore<span style="color: #2aa198;">(</span>todoApp, window.STATE_FROM_SERVER<span style="color: #2aa198;">)</span>
+</pre>
+</div>
+</li>
+</ul>
+</div>
+<div id="outline-container-sec-3-3-1" class="outline-4">
+<h4 id="sec-3-3-1">Dispatching Actions</h4>
+<div class="outline-text-4" id="text-3-3-1">
+<ul class="org-ul">
+<li>我们使用pure function的好处,是我们可以在没有UI的情况下进行测试,我们连mock
+都不需要,下面就是我们的例子:每次改动后,都去打印state
+<div class="org-src-container">
+
+<pre class="src src-js"><span style="color: #859900; font-weight: bold;">import</span> <span style="color: #2aa198;">{</span> addTodo, toggleTodo, setVisibilityFilter, VisibilityFilters <span style="color: #2aa198;">}</span> from <span style="color: #2aa198;">'./actions'</span>
+
+<span style="color: #93a1a1;">// </span><span style="color: #93a1a1;">Log the initial state</span>
+console.log<span style="color: #2aa198;">(</span>store.getState<span style="color: #b58900;">()</span><span style="color: #2aa198;">)</span>
+
+<span style="color: #93a1a1;">// </span><span style="color: #93a1a1;">Every time the state changes, log it</span>
+<span style="color: #93a1a1;">// </span><span style="color: #93a1a1;">Note that subscribe() returns a function for unregistering the listener</span>
+<span style="color: #859900; font-weight: bold;">let</span> <span style="color: #268bd2;">unsubscribe</span> = store.subscribe<span style="color: #2aa198;">(</span><span style="color: #b58900;">()</span> =&gt;
+  console.log<span style="color: #b58900;">(</span>store.getState<span style="color: #268bd2;">()</span><span style="color: #b58900;">)</span>
+<span style="color: #2aa198;">)</span>
+
+<span style="color: #93a1a1;">// </span><span style="color: #93a1a1;">Dispatch some actions</span>
+store.dispatch<span style="color: #2aa198;">(</span>addTodo<span style="color: #b58900;">(</span><span style="color: #2aa198;">'Learn about actions'</span><span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
+store.dispatch<span style="color: #2aa198;">(</span>addTodo<span style="color: #b58900;">(</span><span style="color: #2aa198;">'Learn about reducers'</span><span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
+store.dispatch<span style="color: #2aa198;">(</span>addTodo<span style="color: #b58900;">(</span><span style="color: #2aa198;">'Learn about store'</span><span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
+store.dispatch<span style="color: #2aa198;">(</span>toggleTodo<span style="color: #b58900;">(</span>0<span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
+store.dispatch<span style="color: #2aa198;">(</span>toggleTodo<span style="color: #b58900;">(</span>1<span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
+store.dispatch<span style="color: #2aa198;">(</span>setVisibilityFilter<span style="color: #b58900;">(</span>VisibilityFilters.SHOW_COMPLETED<span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
+
+<span style="color: #93a1a1;">// </span><span style="color: #93a1a1;">Stop listening to state updates</span>
+unsubscribe<span style="color: #2aa198;">()</span>
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-3-4" class="outline-3">
+<h3 id="sec-3-4">Data Flow</h3>
+<div class="outline-text-3" id="text-3-4">
+<ul class="org-ul">
+<li>redux其实是规定了一种"严格的,单向数据流动(data flow)"
+</li>
+<li>这样就意味着你的app里面的data是follow了一个同样的lifeycle pattern,你的app的
+logic也就更加的predictable并且易于理解
+</li>
+<li>严格的单向数据流动也同时鼓励你的数据"范式化(数据库中的范式的意思,减少数据冗余)"
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-3-5" class="outline-3">
+<h3 id="sec-3-5">Usage with React</h3>
+<div class="outline-text-3" id="text-3-5">
+<ul class="org-ul">
+<li>在最开始,我们需要强调下,redux并不是绑定了react,我们可以使用redux来写react,
+anguler, ember, jQuery,甚至是纯js
+</li>
+<li>但是我们却真的可以说,Redux和react(或Deku)配合的非常的好,因为React(或Deku)让
+你把UI描述成'function of state', 而我们的Redux则去处理这个'function of state'
+里面的state就好了
+</li>
+</ul>
+</div>
+<div id="outline-container-sec-3-5-1" class="outline-4">
+<h4 id="sec-3-5-1">Installing React Redux</h4>
+<div class="outline-text-4" id="text-3-5-1">
+<ul class="org-ul">
+<li>React bindings没有默认安装在Redux, 所以你需要如下命令安装
+<div class="org-src-container">
+
+<pre class="src src-js">npm install --save react-redux
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-3-5-2" class="outline-4">
+<h4 id="sec-3-5-2">Presentational and Container Components</h4>
+<div class="outline-text-4" id="text-3-5-2">
+<ul class="org-ul">
+<li>React bindings for Redux的理论支持来源于对如下两个概念的区分:
+<ul class="org-ul">
+<li>presentational component: 我们可以简单理解为只用来展示(往往有DOM对应),而
+没有state的react component
+</li>
+<li>container component: 我们可以理解为用来应对更改,从而state比较丰富,但是一
+般没有DOM对应的component
+</li>
+</ul>
+</li>
+<li>下面我们用表格来对这两种component来做个比较
+<table border="2" cellspacing="0" cellpadding="6" rules="all" frame="border">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">Presentational Components</td>
+<td class="left">Container Components</td>
+</tr>
+
+<tr>
+<td class="left">Purpose</td>
+<td class="left">How things look</td>
+<td class="left">How thins work</td>
+</tr>
+
+<tr>
+<td class="left">Aware of Redux</td>
+<td class="left">No</td>
+<td class="left">Yes</td>
+</tr>
+
+<tr>
+<td class="left">To read data</td>
+<td class="left">Read data from props</td>
+<td class="left">Subscribe to Redux state</td>
+</tr>
+
+<tr>
+<td class="left">To change data</td>
+<td class="left">Invoke callbacks from props</td>
+<td class="left">Dispatch Redux actions</td>
+</tr>
+
+<tr>
+<td class="left">Are written</td>
+<td class="left">By hand</td>
+<td class="left">Usually generated by React Redux</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>我们大部分写出来的component都是presentational的,但是也需要一些和Redux store
+联系的component:从技术上来讲,我们当然可以使用store.subscribe()来自己书写,
+但是为了享受到React Redux为我们做的optimization, 我们要使用connect()来自动
+生成这component!
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-3-5-3" class="outline-4">
+<h4 id="sec-3-5-3">Designing Component Hierarchy</h4>
+<div class="outline-text-4" id="text-3-5-3">
+<ul class="org-ul">
+<li>我们前面已经设计好了root state object,现在来设计UI
+</li>
+</ul>
+</div>
+<div id="outline-container-sec-3-5-3-1" class="outline-5">
+<h5 id="sec-3-5-3-1">Presentational Component</h5>
+<div class="outline-text-5" id="text-3-5-3-1">
+<ul class="org-ul">
+<li>所有展现出来的component肯定就是我们自己写的啦,主要有如下的component, 并且
+包含它们的props:
+<ul class="org-ul">
+<li>TodoList是一个list来显示todos
+<ol class="org-ol">
+<li>todos: 一个array包含了{id, text, completed}
+</li>
+<li>onTodoClick(id: number) 一个callback,当todo被点击的时候调用
+</li>
+</ol>
+</li>
+<li>Todo是一个single todo item:
+<ol class="org-ol">
+<li>text:是string类型的text
+</li>
+<li>completed: boolean类型的来表达一个todo是否显示的
+</li>
+<li>onClick()是当一个todo被点击的时候,被调用的callback
+</li>
+</ol>
+</li>
+<li>Link是一个包含callback的link
+<ol class="org-ol">
+<li>onClick()是触发时候的callback
+</li>
+</ol>
+</li>
+<li>Footer:是让用户选择可见todo的类型
+</li>
+<li>App: root component用来render everything else
+</li>
+</ul>
+</li>
+<li>presentational component就设计好了,它们的问题是,它们只显示了look,但是不知
+道data从哪里来,也不知道如何更改这些data.
+</li>
+<li>说白了,它们只知道render发送给它们的东西
+</li>
+<li>如果你要从Redux转向其他,那么这些项目都可以保留,它们是和redux无关的项目
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-3-5-3-2" class="outline-5">
+<h5 id="sec-3-5-3-2">Container Components</h5>
+<div class="outline-text-5" id="text-3-5-3-2">
+<ul class="org-ul">
+<li>我们还需要如下container components来为Presentational component传送数据
+<ul class="org-ul">
+<li>VisibleTodoList: 根据当前的visibility filter来筛选todos,并render出一个
+TodoList来
+</li>
+<li>FilterLink: 根据当前的visibility Filter来render出一个Link来
+<ol class="org-ol">
+<li>filter: string是它拥有的visibility filter
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-3-5-3-3" class="outline-5">
+<h5 id="sec-3-5-3-3">Other Component</h5>
+<div class="outline-text-5" id="text-3-5-3-3">
+<ul class="org-ul">
+<li>某些情况下,有些特别小的component,分不出是不是presentational,我们就把这种
+component单列出来
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-3-5-4" class="outline-4">
+<h4 id="sec-3-5-4">Implementing Components</h4>
+<div class="outline-text-4" id="text-3-5-4">
+<ul class="org-ul">
+<li>好了我们下面来实现这些component,我们先实现presentational component,这些component
+根本不需要redux的知识
+</li>
+</ul>
+</div>
+<div id="outline-container-sec-3-5-4-1" class="outline-5">
+<h5 id="sec-3-5-4-1">Presentational Components</h5>
+<div class="outline-text-5" id="text-3-5-4-1">
+<ul class="org-ul">
+<li>因为这些component都是没有state的,所以我们把它们写成funtional stateless
+component,当然了你也可以不这么functional,但是我们这么做肯定更容易define它
+们.
+</li>
+<li>这里插播一句,一个react component可以是function,也可以是class. class版本的
+component会多一些功能(带有private state),但是如果没有privte state,完全就
+可以使用function版本的component.下面两个版本的component是完全相等的:
+<ul class="org-ul">
+<li>function版本,带有一个props object作为参数,然后返回React内置的component
+<div class="org-src-container">
+
+<pre class="src src-js"><span style="color: #859900; font-weight: bold;">function</span> <span style="color: #268bd2;">Welcome</span><span style="color: #2aa198;">(</span><span style="color: #268bd2;">props</span><span style="color: #2aa198;">)</span> <span style="color: #2aa198;">{</span>
+    <span style="color: #859900; font-weight: bold;">return</span> &lt;h1&gt; Hello, <span style="color: #b58900;">{</span>props.name<span style="color: #b58900;">}</span> &lt;/h1&gt;;
+<span style="color: #2aa198;">}</span>
+</pre>
+</div>
+</li>
+<li>class版本(es6)component,要含有一个render()函数来返回合法的component
+<div class="org-src-container">
+
+<pre class="src src-js"><span style="color: #859900; font-weight: bold;">class</span> Welcome <span style="color: #859900; font-weight: bold;">extends</span> React.Component <span style="color: #2aa198;">{</span>
+    render<span style="color: #b58900;">()</span> <span style="color: #b58900;">{</span>
+        <span style="color: #859900; font-weight: bold;">return</span> &lt;h1&gt;Hello, <span style="color: #268bd2;">{</span><span style="color: #268bd2; font-weight: bold;">this</span>.props.name<span style="color: #268bd2;">}</span> &lt;/h1&gt;;
+    <span style="color: #b58900;">}</span>
+<span style="color: #2aa198;">}</span>
+</pre>
+</div>
+</li>
+</ul>
+</li>
+<li>既然你要以functional的形式来书写这些component,那么这些component就会以js
+function的形式,被export出去.只有当它们的确需要local state的时候,才把它们
+转换成class
+</li>
+<li>下面是components/Todo.js的代码
+<div class="org-src-container">
+
+<pre class="src src-js"><span style="color: #859900; font-weight: bold;">import</span> React, <span style="color: #2aa198;">{</span> PropTypes <span style="color: #2aa198;">}</span> from <span style="color: #2aa198;">'react'</span>
+
+<span style="color: #859900; font-weight: bold;">const</span> <span style="color: #268bd2;">Todo</span> = <span style="color: #2aa198;">(</span><span style="color: #b58900;">{</span> onClick, completed, text <span style="color: #b58900;">}</span><span style="color: #2aa198;">)</span> =&gt; <span style="color: #2aa198;">(</span>
+&lt;li
+    onClick=<span style="color: #b58900;">{</span>onClick<span style="color: #b58900;">}</span>
+    style=<span style="color: #b58900;">{</span><span style="color: #268bd2;">{</span>
+          textDecoration: completed ? <span style="color: #2aa198;">'line-through'</span> : <span style="color: #2aa198;">'none'</span>
+          <span style="color: #268bd2;">}</span><span style="color: #b58900;">}</span>
+&gt;
+    <span style="color: #b58900;">{</span>text<span style="color: #b58900;">}</span>
+&lt;/li&gt;
+<span style="color: #2aa198;">)</span>
+
+Todo.propTypes = <span style="color: #2aa198;">{</span>
+onClick: PropTypes.func.isRequired,
+completed: PropTypes.bool.isRequired,
+text: PropTypes.string.isRequired
+<span style="color: #2aa198;">}</span>
+
+<span style="color: #859900; font-weight: bold;">export</span> <span style="color: #859900; font-weight: bold;">default</span> Todo
+</pre>
+</div>
+</li>
+<li>下面是component/TodoList.js的代码
+<div class="org-src-container">
+
+<pre class="src src-web">import React, <span style="color: #2aa198;">{</span> PropTypes <span style="color: #2aa198;">}</span> from 'react'
+import Todo from './Todo'
+
+const TodoList = <span style="color: #2aa198;">(</span><span style="color: #b58900;">{</span>todos, onTodoClick <span style="color: #b58900;">}</span><span style="color: #2aa198;">)</span> =&gt; <span style="color: #2aa198;">(</span>
+&lt;ul&gt;
+    <span style="color: #b58900;">{</span>todos.map<span style="color: #268bd2;">(</span>todo =&gt;
+    &lt;Todo
+        key=<span style="color: #6c71c4;">{</span>todo.id<span style="color: #6c71c4;">}</span>
+        <span style="color: #6c71c4;">{</span>...todo<span style="color: #6c71c4;">}</span>
+        onClick=<span style="color: #6c71c4;">{</span><span style="color: #859900;">()</span> =&gt; onTodoClick<span style="color: #859900;">(</span>todo.id<span style="color: #859900;">)</span><span style="color: #6c71c4;">}</span>
+    /&gt;
+    <span style="color: #268bd2;">)</span><span style="color: #b58900;">}</span>
+&lt;/ul&gt;
+<span style="color: #2aa198;">)</span>
+
+TodoList.propTyps = <span style="color: #2aa198;">{</span>
+  todos: PropTypes.arrayOf<span style="color: #b58900;">(</span>PropTypes.shape<span style="color: #268bd2;">(</span><span style="color: #6c71c4;">{</span>
+    id: PropTypes.number.isRequired,
+    completed: PropTypes.bool.isRequired,
+    text: PropTypes.string.isRequired
+<span style="color: #6c71c4;">}</span><span style="color: #268bd2;">)</span>.isRequired<span style="color: #b58900;">)</span>.isRequired,
+  onTodoClick: PropTypes.func.isRequired
+<span style="color: #2aa198;">}</span>
+
+export default TodoList
+</pre>
+</div>
+</li>
+<li>然后是components/Link.js
+<div class="org-src-container">
+
+<pre class="src src-js"><span style="color: #859900; font-weight: bold;">import</span> React, <span style="color: #2aa198;">{</span> PropTypes <span style="color: #2aa198;">}</span> from <span style="color: #2aa198;">'react'</span>
+
+<span style="color: #859900; font-weight: bold;">const</span> <span style="color: #268bd2;">Link</span> = <span style="color: #2aa198;">(</span><span style="color: #b58900;">{</span> active, children, onClick <span style="color: #b58900;">}</span><span style="color: #2aa198;">)</span> =&gt; <span style="color: #2aa198;">{</span>
+    <span style="color: #859900; font-weight: bold;">if</span> <span style="color: #b58900;">(</span>active<span style="color: #b58900;">)</span> <span style="color: #b58900;">{</span>
+        <span style="color: #859900; font-weight: bold;">return</span> &lt;span&gt; <span style="color: #268bd2;">{</span>children<span style="color: #268bd2;">}</span> &lt;/span&gt;
+    <span style="color: #b58900;">}</span>
+
+    <span style="color: #859900; font-weight: bold;">return</span> <span style="color: #b58900;">(</span>
+            &lt;a href=<span style="color: #2aa198;">"#"</span>
+        onClick = <span style="color: #268bd2;">{</span>e =&gt; <span style="color: #6c71c4;">{</span>
+            e.preventDefault<span style="color: #859900;">()</span>
+            onClick<span style="color: #859900;">()</span>
+        <span style="color: #6c71c4;">}</span><span style="color: #268bd2;">}</span>
+            &gt;
+            <span style="color: #268bd2;">{</span>children<span style="color: #268bd2;">}</span>
+            &lt;/a&gt;
+    <span style="color: #b58900;">)</span>
+<span style="color: #2aa198;">}</span>
+
+Link.propTypes = <span style="color: #2aa198;">{</span>
+    active: PropTypes.bool.isRequired,
+    children: PropTypes.node.isRequired,
+    onClick: PropTypes.func.isRequired
+<span style="color: #2aa198;">}</span>
+
+<span style="color: #859900; font-weight: bold;">export</span> <span style="color: #859900; font-weight: bold;">default</span> Link
+</pre>
+</div>
+</li>
+<li>components/Footer.js就更简单了,没有props
+<div class="org-src-container">
+
+<pre class="src src-js"><span style="color: #859900; font-weight: bold;">import</span> React from <span style="color: #2aa198;">'react'</span>
+<span style="color: #859900; font-weight: bold;">import</span> FilterLink from <span style="color: #2aa198;">'../containers/FilterLink'</span>
+
+<span style="color: #859900; font-weight: bold;">const</span> <span style="color: #268bd2;">Footer</span> = <span style="color: #2aa198;">()</span> =&gt; <span style="color: #2aa198;">(</span>
+&lt;p&gt;
+    Show:
+    <span style="color: #b58900;">{</span><span style="color: #2aa198;">" "</span><span style="color: #b58900;">}</span>
+    &lt;FilterLink filter=<span style="color: #2aa198;">"SHOW_ALL"</span>&gt;
+        All
+    &lt;/FilterLink&gt;
+    <span style="color: #b58900;">{</span><span style="color: #2aa198;">", "</span><span style="color: #b58900;">}</span>
+    &lt;FilterLink filter=<span style="color: #2aa198;">"SHOW_ACTIVE"</span>&gt;
+        Active
+    &lt;/FilterLink&gt;
+    <span style="color: #b58900;">{</span><span style="color: #2aa198;">", "</span><span style="color: #b58900;">}</span>
+    &lt;FilterLink filter=<span style="color: #2aa198;">"SHOW_COMPLETED"</span>&gt;
+        Completed
+    &lt;/FilterLink&gt;
+&lt;/p&gt;
+<span style="color: #2aa198;">)</span>
+
+<span style="color: #859900; font-weight: bold;">export</span> <span style="color: #859900; font-weight: bold;">default</span> Footer
+</pre>
+</div>
+</li>
+<li>最后是components/App.js
+<div class="org-src-container">
+
+<pre class="src src-js"><span style="color: #859900; font-weight: bold;">import</span> React from <span style="color: #2aa198;">'react'</span>
+<span style="color: #859900; font-weight: bold;">import</span> Footer from <span style="color: #2aa198;">'./Footer'</span>
+<span style="color: #859900; font-weight: bold;">import</span> AddTodo from <span style="color: #2aa198;">'../containers/AddTodo'</span>
+<span style="color: #859900; font-weight: bold;">import</span> VisibleTodoList from <span style="color: #2aa198;">'../containers/VisibleTodoList'</span>
+
+<span style="color: #859900; font-weight: bold;">const</span> <span style="color: #268bd2;">App</span> = <span style="color: #2aa198;">()</span> =&gt; <span style="color: #2aa198;">(</span>
+        &lt;div&gt;
+        &lt;AddTodo /&gt;
+        &lt;VisibleTodoList /&gt;
+        &lt;Footer /&gt;
+        &lt;/div&gt;
+<span style="color: #2aa198;">)</span>
+
+<span style="color: #859900; font-weight: bold;">export</span> <span style="color: #859900; font-weight: bold;">default</span> App
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-3-5-4-2" class="outline-5">
+<h5 id="sec-3-5-4-2">Container Components</h5>
+<div class="outline-text-5" id="text-3-5-4-2">
+<ul class="org-ul">
+<li>好了,下面就是真的redux时间了.我们要把这些presentational component和Redux联
+系起来.联系的方式就是创建一些新的container component
+</li>
+<li>从技术角度上讲, container component就是这么一类React Component:
+<ul class="org-ul">
+<li>使用了store.subscribe()读取一部分Redux state tree
+</li>
+<li>然后把这些读取到的state,作为prop传递给presentational component,让他们来
+进行展示
+</li>
+</ul>
+</li>
+<li>满足这两点即可,那么你当然可以自己"手写"一个container component,但是我们的
+建议是你使用React Redux 的library connect()来"自动生成"这些container component
+因为它会提供很多optimization来防止re-renders(哈哈,你再也不用去写那些麻烦的
+shouldComponentUpdate之类的函数了)
+</li>
+<li>为了使用connect(), 你必须定义一个特殊的函数叫做mapStateToProps,这个函数的
+作用,是如何把当前的Redux store state转换成presentational component需要的props
+举个例子VisibleTodoList需要计算传递给TodoList需要的的todos,回顾一下我们TodoList
+的形式如下
+<div class="org-src-container">
+
+<pre class="src src-js"><span style="color: #859900; font-weight: bold;">const</span> <span style="color: #268bd2;">TodoList</span> = <span style="color: #2aa198;">(</span><span style="color: #b58900;">{</span>todos, onTodoClick <span style="color: #b58900;">}</span><span style="color: #2aa198;">)</span>
+</pre>
+</div>
+</li>
+
+<li>好了,我们的代码如下
+<div class="org-src-container">
+
+<pre class="src src-js"><span style="color: #859900; font-weight: bold;">const</span> <span style="color: #268bd2;">getVisibleTodos</span> = <span style="color: #2aa198;">(</span>todos, filter<span style="color: #2aa198;">)</span> =&gt; <span style="color: #2aa198;">{</span>
+    <span style="color: #859900; font-weight: bold;">switch</span><span style="color: #b58900;">(</span>filter<span style="color: #b58900;">)</span> <span style="color: #b58900;">{</span>
+    <span style="color: #859900; font-weight: bold;">case</span> <span style="color: #2aa198;">'SHOW_ALL'</span>:
+        <span style="color: #859900; font-weight: bold;">return</span> todos
+    <span style="color: #859900; font-weight: bold;">case</span> <span style="color: #2aa198;">'SHOW_COMPLETED'</span>:
+        <span style="color: #859900; font-weight: bold;">return</span> todos.filter<span style="color: #268bd2;">(</span>t =&gt; t.complted<span style="color: #268bd2;">)</span>
+    <span style="color: #859900; font-weight: bold;">case</span> <span style="color: #2aa198;">'SHOW_ACTIVE'</span>:
+        <span style="color: #859900; font-weight: bold;">return</span> todos.filter<span style="color: #268bd2;">(</span>t =&gt; !t.complted<span style="color: #268bd2;">)</span>
+    <span style="color: #b58900;">}</span>
+<span style="color: #2aa198;">}</span>
+
+<span style="color: #859900; font-weight: bold;">const</span> <span style="color: #268bd2;">mapStateToProps</span> = <span style="color: #2aa198;">(</span>state<span style="color: #2aa198;">)</span> =&gt; <span style="color: #2aa198;">{</span>
+    <span style="color: #859900; font-weight: bold;">return</span> <span style="color: #b58900;">{</span>
+        todos: getVisibleTodos<span style="color: #268bd2;">(</span>state.todos, state.visibilityFilter<span style="color: #268bd2;">)</span>
+    <span style="color: #b58900;">}</span>
+<span style="color: #2aa198;">}</span>
+</pre>
+</div>
+</li>
+<li>除了'从store读取state给presentational component', 还有一个作用就是'从
+presentational component读取action,然后dispatch,然后改变state(当然这里是改
+变currentState), 然后把这个新的state传递给presentational component的props'
+</li>
+<li>后面这个其实是要把'更改curretState的能力'传递给presentational component,方
+法是为presentional component的某个prop赋予一个callback
+<div class="org-src-container">
+
+<pre class="src src-js"><span style="color: #859900; font-weight: bold;">const</span> <span style="color: #268bd2;">mapDispatchToProps</span> = <span style="color: #2aa198;">(</span>dispatch<span style="color: #2aa198;">)</span> =&gt; <span style="color: #2aa198;">{</span>
+    <span style="color: #859900; font-weight: bold;">return</span> <span style="color: #b58900;">{</span>
+        onTodoClick: <span style="color: #268bd2;">(</span>id<span style="color: #268bd2;">)</span> =&gt; <span style="color: #268bd2;">{</span>
+            dispatch<span style="color: #6c71c4;">(</span>toggleTodo<span style="color: #859900;">(</span>id<span style="color: #859900;">)</span><span style="color: #6c71c4;">)</span>
+        <span style="color: #268bd2;">}</span>
+    <span style="color: #b58900;">}</span>
+<span style="color: #2aa198;">}</span>
+</pre>
+</div>
+</li>
+<li>这两个map函数一创建,最后就是我们把它们'赋给'presentational component的过程
+了,这个过程使用了函数connect()
+<div class="org-src-container">
+
+<pre class="src src-js"><span style="color: #859900; font-weight: bold;">import</span> <span style="color: #2aa198;">{</span> connect <span style="color: #2aa198;">}</span> from <span style="color: #2aa198;">'react-redux'</span>
+
+<span style="color: #859900; font-weight: bold;">const</span> <span style="color: #268bd2;">VisibleTodoList</span> = connect<span style="color: #2aa198;">(</span>
+    mapStateToProps,
+    mapDispatchToProps
+<span style="color: #2aa198;">)(</span>TodoList<span style="color: #2aa198;">)</span>
+
+<span style="color: #859900; font-weight: bold;">export</span> <span style="color: #859900; font-weight: bold;">default</span> VisibleTodoList
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-3-5-5" class="outline-4">
+<h4 id="sec-3-5-5">Passing the Store</h4>
+<div class="outline-text-4" id="text-3-5-5">
+<ul class="org-ul">
+<li>我们的store是所有的commponent都必须接触到的,给每个component都传递一个包含
+store的props显然是可以的,但是这也就不能叫做store了对吧
+</li>
+<li>我们的方法是使用&lt;Provider&gt;,这个方法可以让所有的component获得store,而不用再
+props里面显示设置
+<div class="org-src-container">
+
+<pre class="src src-js"><span style="color: #859900; font-weight: bold;">import</span> React from <span style="color: #2aa198;">'react'</span>
+<span style="color: #859900; font-weight: bold;">import</span> <span style="color: #2aa198;">{</span> render <span style="color: #2aa198;">}</span> from <span style="color: #2aa198;">'react-dom'</span>
+<span style="color: #859900; font-weight: bold;">import</span> <span style="color: #2aa198;">{</span> Provider <span style="color: #2aa198;">}</span> from <span style="color: #2aa198;">'react-redux'</span>
+<span style="color: #859900; font-weight: bold;">import</span> <span style="color: #2aa198;">{</span> createSotre <span style="color: #2aa198;">}</span> from <span style="color: #2aa198;">'redux'</span>
+<span style="color: #859900; font-weight: bold;">import</span> todoApp from <span style="color: #2aa198;">'./reducers'</span>
+<span style="color: #859900; font-weight: bold;">import</span> App from <span style="color: #2aa198;">'./components/App'</span>
+
+<span style="color: #859900; font-weight: bold;">let</span> <span style="color: #268bd2;">store</span> = createStore<span style="color: #2aa198;">(</span>todoApp<span style="color: #2aa198;">)</span>
+
+render<span style="color: #2aa198;">(</span>
+        &lt;Provider store= <span style="color: #b58900;">{</span>store<span style="color: #b58900;">}</span>&gt;
+        &lt;App/&gt;
+        &lt;/Provider&gt;,
+    document.getElementById<span style="color: #b58900;">(</span><span style="color: #2aa198;">'root'</span><span style="color: #b58900;">)</span>
+<span style="color: #2aa198;">)</span>
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">Advanced</h2>
+<div class="outline-text-2" id="text-4">
+</div><div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1">Async Actions</h3>
+<div class="outline-text-3" id="text-4-1">
+<ul class="org-ul">
+<li>前面我们的例子都是synchronous的,也就是说每当一个action被dispatch了以后, state
+会immediately的update
+</li>
+<li>下面我们会讲解asynchronous 的app,会使用reddit api来讲解
+</li>
+</ul>
+</div>
+<div id="outline-container-sec-4-1-1" class="outline-4">
+<h4 id="sec-4-1-1">Actions</h4>
+<div class="outline-text-4" id="text-4-1-1">
+<ul class="org-ul">
+<li>当你使用asynchronous API的时候,会有两个特别的时间点:
+<ul class="org-ul">
+<li>你发出call的moment
+</li>
+<li>你接受到answer(timeout也算)的moment
+</li>
+</ul>
+</li>
+<li>一般情况下一个API请求都需要处理三个action:
+<ul class="org-ul">
+<li>一种通知reducer请求开始的action
+</li>
+<li>一种通知reducer请求成功结束的action
+</li>
+<li>一种通知reducer请求失败的action
+</li>
+</ul>
+</li>
+<li>我们可以使用一个status字段来处理三种action
+<div class="org-src-container">
+
+<pre class="src src-js"><span style="color: #2aa198;">{</span> type: <span style="color: #2aa198;">'FETCH_POSTS'</span> <span style="color: #2aa198;">}</span>
+<span style="color: #2aa198;">{</span> type: <span style="color: #2aa198;">'FETCH_POSTS'</span> , status: <span style="color: #2aa198;">'error'</span>, error: <span style="color: #2aa198;">'Oops'</span><span style="color: #2aa198;">}</span>
+<span style="color: #2aa198;">{</span> type: <span style="color: #2aa198;">'FETCH_POSTS'</span> , status: <span style="color: #2aa198;">'success'</span>, response: <span style="color: #b58900;">{</span>...<span style="color: #b58900;">}</span><span style="color: #2aa198;">}</span>
+</pre>
+</div>
+</li>
+<li>但是更好的方案是定义不同的type
+<div class="org-src-container">
+
+<pre class="src src-js"><span style="color: #2aa198;">{</span> type: <span style="color: #2aa198;">'FETCH_POSTS_REQUEST'</span> <span style="color: #2aa198;">}</span>
+<span style="color: #2aa198;">{</span> type: <span style="color: #2aa198;">'FETCH_POSTS_FAILURE'</span>, error: <span style="color: #2aa198;">'Oops'</span><span style="color: #2aa198;">}</span>
+<span style="color: #2aa198;">{</span> type: <span style="color: #2aa198;">'FETCH_POSTS_SUCCESS'</span>, response: <span style="color: #b58900;">{</span> ... <span style="color: #b58900;">}</span><span style="color: #2aa198;">}</span>
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-4-1-2" class="outline-4">
+<h4 id="sec-4-1-2">Synchronous Action Creators</h4>
+<div class="outline-text-4" id="text-4-1-2">
+<ul class="org-ul">
+<li></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+
+         <!-- Disqus Comment BEGIN -->
+          <div id="disqus_thread"></div>
+          <script type="text/javascript">
+              var disqus_shortname = 'harrifeng';
+
+              (function() {
+                  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+              })();
+          </script>
+          <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+         <!-- Disqus Comment END -->
+</div>
+</body>
+</html>

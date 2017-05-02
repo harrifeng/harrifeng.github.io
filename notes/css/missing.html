@@ -1,0 +1,540 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>missing</title>
+<!-- 2017-05-02 Tue 10:51 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="your name" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+
+         <link href="http://fonts.googleapis.com/css?family=Droid+Sans+Mono|Galdeano|Open+Sans:600italic,400,600|Roboto+Condensed:400,700" rel="stylesheet" type="text/css">
+         <link rel="stylesheet" type="text/css" href="/static/css/main.css"/>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="org-div-home-and-up">
+ <a accesskey="h" href="http://harrifeng.github.io/sitemap.html"> UP </a>
+ |
+ <a accesskey="H" href="http://harrifeng.github.io/index.html"> HOME </a>
+</div><div id="preamble" class="status">
+
+         <div id="header">
+            <div id="header-top">
+                <div id="blog-title">Harrifeng's Path</div>
+                <div id="blog-sub-title">纸上得来终觉浅,绝知此事要Coding</div>
+            </div>
+            <div id="nav">
+                <ul>
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/about.html">About Me</a></li>
+                    <li>
+                    </li>
+                </ul>
+            </div>
+         </div>
+</div>
+<div id="content">
+<h1 class="title">missing</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">Chapter 01: HTMLA and CSS</a>
+<ul>
+<li><a href="#sec-1-1">HTML: Past and Present</a>
+<ul>
+<li><a href="#sec-1-1-1">HTML Past: Whatever Looked Good</a></li>
+<li><a href="#sec-1-1-2">HTML Present: Scaffolding for CSS</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-2">Writing HTML for CSS</a>
+<ul>
+<li><a href="#sec-1-2-1">Think Structure</a></li>
+<li><a href="#sec-1-2-2">More HTML Tags to Keep in Mind</a></li>
+<li><a href="#sec-1-2-3">Keep Your Layout in Mind</a></li>
+<li><a href="#sec-1-2-4">HTML to Forget</a></li>
+<li><a href="#sec-1-2-5">Tips to Guide Your Way</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-3">The Importance of the Doctype</a></li>
+<li><a href="#sec-1-4">How CSS Works</a></li>
+</ul>
+</li>
+<li><a href="#sec-2">Chapter 02: Creating Styles and Style Sheets</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">Chapter 01: HTMLA and CSS</h2>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li>如果没有html，那么css就什么都不是.所以我们学习css,也需要对html有所了解
+</li>
+</ul>
+</div>
+<div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1">HTML: Past and Present</h3>
+<div class="outline-text-3" id="text-1-1">
+<ul class="org-ul">
+<li>HTML是网络上所有page的基础,当你加入css到html的时候,其实是减轻了html的负担,
+因为html不再用关注style,类似&lt;font&gt; tag的代码就不需要写在html里面了.这些工作
+转交给了css来完成
+</li>
+</ul>
+</div>
+<div id="outline-container-sec-1-1-1" class="outline-4">
+<h4 id="sec-1-1-1">HTML Past: Whatever Looked Good</h4>
+<div class="outline-text-4" id="text-1-1-1">
+<ul class="org-ul">
+<li>HTML最开始的应用,是一些科学家用来分享技术文档,在最初的需求中,结构化是比较
+重要的,所以会有h1,h2等等.但是显然一开始不需要图形化的设计师
+</li>
+<li>当HTML的使用者扩大到普通人的时候,显然结构化文档已经不能满足他们的需求了,图
+形化变得更加重要,从而也诞生了专门来处理这方面工作的web designer
+</li>
+<li>最开始,web designer的工具只有tag,比如使用&lt;blockquote&gt;来引用,使用table来做
+图表.但问题在于,这些tag也是为了结构化文档设计的,所以web designer需要非常有
+创造性才能用好这些tag来做一些美化的工作
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-1-1-2" class="outline-4">
+<h4 id="sec-1-1-2">HTML Present: Scaffolding for CSS</h4>
+<div class="outline-text-4" id="text-1-1-2">
+<ul class="org-ul">
+<li>web designer的救星就是css,当前的web界, html更"纯粹的"负责结构化文档,而所有
+关于样式的代码,都在css里面进行处理
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2">Writing HTML for CSS</h3>
+<div class="outline-text-3" id="text-1-2">
+<ul class="org-ul">
+<li>下面我们要介绍一些好的,写html的practice,遵守这些practice可以让我们的html更好
+的和css进行工作:
+</li>
+</ul>
+</div>
+<div id="outline-container-sec-1-2-1" class="outline-4">
+<h4 id="sec-1-2-1">Think Structure</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<ul class="org-ul">
+<li>HTML的对于text的哲学在于,首先逻辑上把text分成不同的部分,其次使用不同的tag来
+区分这些部分.比如
+<ul class="org-ul">
+<li>html使用&lt;h1&gt;来把htmld的最大文档和其他部分分别开来
+</li>
+<li>html使用&lt;p&gt;来区分段落
+</li>
+<li>html使用&lt;ul&gt;来创建项目序号列表
+</li>
+<li>html使用&lt;abbr&gt;来代表缩写
+</li>
+</ul>
+</li>
+<li>当我们为css书写html的时候,先不要去太纠结样式,而要关注于内容的逻辑性.比如在
+网站上部通常都有一系列navigation link.这些link相互之间的关系并列,显然是使
+用&lt;ul&gt;串联起来更好,那你就在html里面把他们写成&lt;ul&gt;,至于怎么把"竖着的列表"改
+成"横着的列表",这是css考虑的问题
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-1-2-2" class="outline-4">
+<h4 id="sec-1-2-2">More HTML Tags to Keep in Mind</h4>
+<div class="outline-text-4" id="text-1-2-2">
+<ul class="org-ul">
+<li>HTML虽然有很多的tag,但是现实的需求更为旺盛.HTML5又再次引入了新的tag,我们要
+熟悉这些新的tag,从而找到"最合适"我们文档的tag
+</li>
+<li>HTML里面最特别的两个tag是&lt;div&gt;和&lt;span&gt;,这两个tag是用在哪些你"找不到任何的tag
+能够包裹自己"的content,换句话说&lt;div&gt;和&lt;span&gt;类似于一个万金油的角色
+</li>
+<li>在"万金油"的路上,div和span又各有千秋:
+<ul class="org-ul">
+<li>div是一个block,也就是说,dive会在其"之前"和"之后"各有一个line break
+</li>
+<li>span是inline的,所以它是可以"无缝"的放入paragraph里面
+</li>
+</ul>
+</li>
+<li>div和span的共同点是:他们没有继承任何的visual properties,所以你可以使用css
+来让它们变成任何的样子
+</li>
+<li>div的本意是&lt;division&gt;其实是和&lt;p&gt;差不多的意思,但是实际应用中,&lt;div&gt;往往是起到
+一个容器的作用,用来"包裹"任意数目的其他element.利用div这个特性,可以把一个page
+分成不同的logic area都单独"包裹"进一个div(后面再使用css进行排列),一个页面
+常见的logic area有:
+<ul class="org-ul">
+<li>banner一个div
+</li>
+<li>footer一个div
+</li>
+<li>sidebar一个div
+</li>
+</ul>
+</li>
+<li>&lt;span&gt;是inline的,所以你可以把它看成是另外的一种inline tag,比如&lt;strong&gt;.&lt;strong&gt;
+很显然是加粗段落里面某个文字,你也可以在这个数字左右加上&lt;span&gt;,然后再css里面
+使用各种各样的格式来处理&lt;span&gt;里面的内容,比strong复杂的多的都很容易完成.
+</li>
+<li>下面就是一个div和span的应用例子,span的css直接写在了html里面,div的可以在css
+文件里面标记id为footer,然后进行处理
+<div class="org-src-container">
+
+<pre class="src src-html">&lt;<span style="color: #268bd2;">div</span> <span style="color: #268bd2;">id</span>=<span style="color: #2aa198;">"footer"</span>&gt;
+  &lt;<span style="color: #268bd2;">p</span>&gt;Copyright 2015, &lt;<span style="color: #268bd2;">span</span> <span style="color: #268bd2;">class</span>=<span style="color: #2aa198;">"bizName"</span>&gt;SuperCo.com&lt;/<span style="color: #268bd2;">span</span>&gt;&lt;/<span style="color: #268bd2;">p</span>&gt;
+  &lt;<span style="color: #268bd2;">p</span>&gt;Call customer service at 555-555-5501 for more information.&lt;/<span style="color: #268bd2;">p</span>&gt;
+&lt;/<span style="color: #268bd2;">div</span>&gt;
+</pre>
+</div>
+</li>
+<li>div的问题在于它"太generic"了,以至于大部分的tag都是div的,html本来的"结构化"
+有所减弱的趋势,为了遏制这种趋势,html5引入了更多的tag来"分担"div的功能:
+<ul class="org-ul">
+<li>&lt;article&gt;来包裹文章主体
+</li>
+<li>&lt;section&gt;来包裹文章的一个节选
+</li>
+<li>&lt;aside&gt;来包裹和content相关的部分
+</li>
+<li>&lt;footer&gt;来包裹copyright, legal information等经常放到页面最下面的东西
+</li>
+<li>&lt;nav&gt;来包裹主要的navigation links
+</li>
+<li>&lt;figure&gt;来包裹图片
+</li>
+</ul>
+</li>
+<li>当然了你继续使用div还是可以的,因为html5的规范并没有强制你替换一部分的div为
+新的generic tag.但是使用了肯定有好处(比如新的generic tag对搜索引擎更友好).
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-1-2-3" class="outline-4">
+<h4 id="sec-1-2-3">Keep Your Layout in Mind</h4>
+<div class="outline-text-4" id="text-1-2-3">
+<ul class="org-ul">
+<li>我们会在第三部分讲解css如何设计layout,现在你不妨可以把layout想成是艺术化的
+组织一些box形状的区域,一个典型的layout如下图
+<pre class="example">
++------------------------------------------------------------+
+|                        Banner                              |
+|                                                            |
++--------------------------------------+---------------------+
+|                                      |                     |
+|     Main content                     |   Sidebar           |
+|                                      |                     |
+|                                      |                     |
+|                                      |                     |
++--------------------------------------+---------------------+
+|                        Footbar                             |
++------------------------------------------------------------+
+</pre>
+</li>
+<li>上图的layout中,包括如下的box:
+<ul class="org-ul">
+<li>banner一般包括logo, search box, site navigation
+</li>
+<li>main content就是网站主要内容
+</li>
+<li>sidebar是一些快速链接(不断更新)
+</li>
+<li>footer是一些版权信息
+</li>
+</ul>
+</li>
+<li>在html中,你使用&lt;div&gt;来创建这些"box",而在html5中你可以有更多选择可以分别使用
+最合适的generic tag:
+<ul class="org-ul">
+<li>banner box: &lt;header&gt;
+</li>
+<li>main content box: &lt;article&gt;
+</li>
+<li>sidbar box: &lt;aside&gt;
+</li>
+<li>footbar box: &lt;footer&gt;
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-1-2-4" class="outline-4">
+<h4 id="sec-1-2-4">HTML to Forget</h4>
+<div class="outline-text-4" id="text-1-2-4">
+<ul class="org-ul">
+<li>HTML的有些tag早就应该abadon了,如果你坚持使用这些tag(而不是css)来创建网页,
+你当然写不出更好更简单的网页.一个最应该被放弃的tag就是&lt;font&gt;,其主要的功能
+是来更改font的大小,颜色等"style",完全不具备"结构化文档"的作用
+</li>
+<li>类似&lt;font&gt;的tag还有几个:
+<ul class="org-ul">
+<li>不要再使用&lt;b&gt;&lt;i&gt;来强调text
+</li>
+<li>不要再使用&lt;table&gt;来做page layout
+</li>
+<li>不要乱用&lt;br&gt;来添加换行符
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-1-2-5" class="outline-4">
+<h4 id="sec-1-2-5">Tips to Guide Your Way</h4>
+<div class="outline-text-4" id="text-1-2-5">
+<ul class="org-ul">
+<li>html的使命仅仅是结构化文档,follow下面的几个tips会更好的完成你的工作
+<ul class="org-ul">
+<li>使用headings(也就是&lt;h1&gt;&lt;h2&gt;等等)来表明你text的相对重要性,注意&lt;h1&gt;的文字
+大小你不满意没问题,后面会使用CSS替换.还有就是不要跳过某些数字,比如&lt;h2&gt;后
+面不要紧接着跟&lt;h5&gt;
+</li>
+<li>使用&lt;p&gt;来结构化文章的段落
+</li>
+<li>使用&lt;ul&gt;来表示一系列的相似的item,比如navigation links, headlines等等
+</li>
+<li>使用&lt;ol&gt;来表示一系列有先后顺序的item,比如"这个月最流行的十大网站"
+</li>
+<li>创建专业术语及其解释,使用&lt;dl&gt;(definition list), &lt;dt&gt;(definitionterm),
+&lt;dd&gt;(definition description)
+</li>
+<li>大段引用使用&lt;blockquote&gt;,小段引用在&lt;p&gt;里面使用&lt;p&gt;
+</li>
+<li>使用&lt;city&gt;来作为book的题目,文章标题.&lt;address&gt;来作为联系地址
+</li>
+<li>放弃类似&lt;font&gt;那种只做style处理的html tag
+</li>
+<li>如果还是找不到合适的generic tag,那么就使用&lt;div&gt;, &lt;span&gt;
+</li>
+<li>不要滥用&lt;div&gt;,在html5里面,当你找不到完全合乎的tag的时候才用&lt;div&gt;
+</li>
+<li>记得close tag:比如&lt;p&gt;后面要跟着&lt;/p&gt;.只有少数例外,比如&lt;br&gt;
+</li>
+<li>使用W3C validator来validate你的页面
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-3" class="outline-3">
+<h3 id="sec-1-3">The Importance of the Doctype</h3>
+<div class="outline-text-3" id="text-1-3">
+<ul class="org-ul">
+<li>html文件的第一行通常是一个doctype,用来告诉浏览器,你遵守的是哪个版本的html规
+范(比如是html5还是html4),如果第一行的doctype有错误的话,浏览器会默认把你放入
+quirks mode(1999年的html标准),你的精美的css就无法被解析了
+</li>
+<li>幸运的是,从html5开始,doctype变得非常简单,短短一行
+<div class="org-src-container">
+
+<pre class="src src-html">&lt;<span style="color: #859900; font-weight: bold;">!doctype</span> html&gt;
+</pre>
+</div>
+</li>
+<li>4.0版本的doctype就麻烦的多
+<div class="org-src-container">
+
+<pre class="src src-html">&lt;<span style="color: #859900; font-weight: bold;">!DOCTYPE</span> HTML PUBLIC <span style="color: #2aa198;">"-//W3C//DTD HTML 4.01 Transitional//EN"</span> <span style="color: #2aa198;">"http://www.</span>
+<span style="color: #2aa198;">w3.org/TR/html4/loose.dtd"</span>&gt;
+</pre>
+</div>
+</li>
+<li>XHTML 1.0版本的doctype也很麻烦
+<div class="org-src-container">
+
+<pre class="src src-html">&lt;<span style="color: #859900; font-weight: bold;">!DOCTYPE</span> html PUBLIC <span style="color: #2aa198;">"-//W3C//DTD XHTML 1.0 Transitional//EN"</span> <span style="color: #2aa198;">"http://www.</span>
+<span style="color: #2aa198;">w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"</span>&gt;
+&lt;<span style="color: #268bd2;">html</span> <span style="color: #268bd2;">xmlns</span>=<span style="color: #2aa198;">"http://www.w3.org/1999/xhtml"</span>&gt;
+</pre>
+</div>
+</li>
+<li>所以推荐大家直接使用html5的最新版本doctype
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-1-4" class="outline-3">
+<h3 id="sec-1-4">How CSS Works</h3>
+<div class="outline-text-3" id="text-1-4">
+<ul class="org-ul">
+<li>前面已经说过HTML是来负责结构化文本的,而CSS作用简单来说,就是让HTML的结构化的
+文本看起来更好看
+</li>
+<li>比如你想让你的网站页面标题使用:红色大号文字,离开浏览器页面50个像素.这个就是
+一个style.
+</li>
+<li>多个这种style结合起来,就是一个style sheet
+</li>
+<li>一个style可以作用在:
+<ul class="org-ul">
+<li>一个特定的tag上面(通过id)
+</li>
+<li>也可以作用在某一类tag上面(比如&lt;h1&gt;)
+</li>
+<li>还可以作用在自己创建的一类tag里面(通过class)
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">Chapter 02: Creating Styles and Style Sheets</h2>
+</div>
+</div>
+<div id="postamble" class="status">
+
+         <!-- Disqus Comment BEGIN -->
+          <div id="disqus_thread"></div>
+          <script type="text/javascript">
+              var disqus_shortname = 'harrifeng';
+
+              (function() {
+                  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+              })();
+          </script>
+          <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+         <!-- Disqus Comment END -->
+</div>
+</body>
+</html>
