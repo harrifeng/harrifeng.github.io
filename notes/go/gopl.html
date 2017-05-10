@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>gopl</title>
-<!-- 2017-05-02 Tue 10:51 -->
+<!-- 2017-05-10 Wed 15:35 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="your name" />
@@ -18244,6 +18244,177 @@ goroutine, functions that modify them must enforce mutual exclusion
 </li>
 <li>正常的发布的go library应该不会暴露可以更改的package-level变量,暴露的肯定也是
 const的
+</li>
+<li>一个在普通模式下正常,但是在多线程下工作不正常的function变得不正常的原因常见
+的有以下几个:
+<ul class="org-ul">
+<li>deadlock: 用英语简单描述就是"Me first, Me first"
+</li>
+<li>livelock: 用英语简单描述就是"You first, You first"
+</li>
+<li>starvation: 用英语简单描述就是"Some first, Otehr never"
+</li>
+<li>race condition: 用英语的简单描述就是"race to write the global variable"
+</li>
+</ul>
+</li>
+<li>对于deadlock(死锁)和livelock(活锁)问题可以用哲学家吃面条(两个叉子)问题来解释:
+<pre class="example">
+       五位哲学家在一个圆桌吃面条,每次吃面条的时候,都要拿起两个叉子
+       死锁:每个哲学家都拿起左手的叉子,永远等待右手的叉子(系统永远
+       不会进行到下一个状态)
+       活锁:每个哲学家同时拿起左手的叉子,等待五分钟后又同时放下左手
+       的叉子,并且再过五分钟同时再尝试.这种方法消除了死锁(系统总会
+       进入到下一个状态),但是这种状态也只是空空浪费资源,所以叫活锁
+</pre>
+</li>
+<li>我们可以看到,活锁很多时候是为了解决死锁而产生的问题
+</li>
+<li>至于starvation就比较好理解了,是某些个运行的process被调度器(scheduler)完全忽
+略的情形.虽然某些process完全可以运行,但是它永远不会被调度器选中.某些情况下
+共同运行的thread里面,有些个greedy thread从来不给其他thread运行的机会,就会造
+成其他thread的starvation
+</li>
+<li>我们这一节主要介绍的就是race condition,race condition的发生原因在于两个thread
+(在go里面就是goroutine啦)不加保护的共同访问全局变量.race condition不仅危害巨
+大而且由于其是在特定的情况下才发生,所以非常不容易被察觉,下面就是一个go的race
+conditon的例子
+<div class="org-src-container">
+
+<pre class="src src-go"><span style="color: #859900; font-weight: bold;">package</span> main
+
+<span style="color: #859900; font-weight: bold;">import</span> <span style="color: #2aa198;">(</span>
+        <span style="color: #2aa198;">"fmt"</span>
+        <span style="color: #2aa198;">"os"</span>
+<span style="color: #2aa198;">)</span>
+
+<span style="color: #859900; font-weight: bold;">var</span> balance int
+
+<span style="color: #859900; font-weight: bold;">func</span> <span style="color: #268bd2;">Deposit</span><span style="color: #2aa198;">(</span>amount <span style="color: #b58900;">int</span><span style="color: #2aa198;">)</span> <span style="color: #2aa198;">{</span>
+        balance = balance + amount
+<span style="color: #2aa198;">}</span>
+<span style="color: #859900; font-weight: bold;">func</span> <span style="color: #268bd2;">Balance</span><span style="color: #2aa198;">()</span> <span style="color: #b58900;">int</span> <span style="color: #2aa198;">{</span> <span style="color: #859900; font-weight: bold;">return</span> balance <span style="color: #2aa198;">}</span>
+
+<span style="color: #859900; font-weight: bold;">func</span> <span style="color: #268bd2;">main</span><span style="color: #2aa198;">()</span> <span style="color: #2aa198;">{</span>
+
+        ch := <span style="color: #657b83; font-weight: bold;">make</span><span style="color: #b58900;">(</span><span style="color: #859900; font-weight: bold;">chan</span> <span style="color: #b58900;">int</span>, 2<span style="color: #b58900;">)</span>
+        <span style="color: #859900; font-weight: bold;">go</span> <span style="color: #859900; font-weight: bold;">func</span><span style="color: #b58900;">()</span> <span style="color: #b58900;">{</span>
+                <span style="color: #268bd2;">Deposit</span><span style="color: #268bd2;">(</span>200<span style="color: #268bd2;">)</span>
+                fmt.<span style="color: #268bd2;">Println</span><span style="color: #268bd2;">(</span><span style="color: #2aa198;">"A="</span>, <span style="color: #268bd2;">Balance</span><span style="color: #6c71c4;">()</span><span style="color: #268bd2;">)</span>
+                ch &lt;- 0
+        <span style="color: #b58900;">}()</span>
+
+        <span style="color: #859900; font-weight: bold;">go</span> <span style="color: #859900; font-weight: bold;">func</span><span style="color: #b58900;">()</span> <span style="color: #b58900;">{</span>
+                <span style="color: #268bd2;">Deposit</span><span style="color: #268bd2;">(</span>100<span style="color: #268bd2;">)</span>
+                fmt.<span style="color: #268bd2;">Println</span><span style="color: #268bd2;">(</span><span style="color: #2aa198;">"B="</span>, <span style="color: #268bd2;">Balance</span><span style="color: #6c71c4;">()</span><span style="color: #268bd2;">)</span>
+                ch &lt;- 0
+        <span style="color: #b58900;">}()</span>
+
+        &lt;-ch
+        &lt;-ch
+
+        fmt.<span style="color: #268bd2;">Println</span><span style="color: #b58900;">(</span><span style="color: #2aa198;">"R="</span>, <span style="color: #268bd2;">Balance</span><span style="color: #268bd2;">()</span><span style="color: #b58900;">)</span>
+        os.<span style="color: #268bd2;">Exit</span><span style="color: #b58900;">(</span>0<span style="color: #b58900;">)</span>
+<span style="color: #2aa198;">}</span>
+
+
+<span style="color: #93a1a1;">// </span><span style="color: #93a1a1;">&lt;===================OUTPUT===================&gt;</span>
+<span style="color: #93a1a1;">// </span><span style="color: #93a1a1;">A= 200</span>
+<span style="color: #93a1a1;">// </span><span style="color: #93a1a1;">B= 300</span>
+<span style="color: #93a1a1;">// </span><span style="color: #93a1a1;">R= 300</span>
+
+<span style="color: #93a1a1;">// </span><span style="color: #93a1a1;">&lt;===================OUTPUT===================&gt;</span>
+<span style="color: #93a1a1;">// </span><span style="color: #93a1a1;">A= 300</span>
+<span style="color: #93a1a1;">// </span><span style="color: #93a1a1;">B= 100</span>
+<span style="color: #93a1a1;">// </span><span style="color: #93a1a1;">R= 300</span>
+
+<span style="color: #93a1a1;">// </span><span style="color: #93a1a1;">&lt;===================OUTPUT===================&gt;</span>
+<span style="color: #93a1a1;">// </span><span style="color: #93a1a1;">B= 100</span>
+<span style="color: #93a1a1;">// </span><span style="color: #93a1a1;">A= 300</span>
+<span style="color: #93a1a1;">// </span><span style="color: #93a1a1;">R= 300</span>
+
+<span style="color: #93a1a1;">// </span><span style="color: #93a1a1;">&lt;===================OUTPUT===================&gt;</span>
+<span style="color: #93a1a1;">// </span><span style="color: #93a1a1;">B= 300</span>
+<span style="color: #93a1a1;">// </span><span style="color: #93a1a1;">A= 200</span>
+<span style="color: #93a1a1;">// </span><span style="color: #93a1a1;">R= 300</span>
+</pre>
+</div>
+</li>
+<li>从结果的多变性来看,多线程环境下的变数就很多了.但是看起来却真的没有什么错,因
+为首先结果都是300,只不过先运行A还是先运行B会导致中间的结果不一样.但是前面说
+了,race condition的问题在于非常多次的运行才会有一次的发生.我们做了个实验在
+运行了上面的程序1000次以后,终于有一次错误的输出
+<div class="org-src-container">
+
+<pre class="src src-go"><span style="color: #93a1a1;">// </span><span style="color: #93a1a1;">&lt;===================OUTPUT===================&gt;</span>
+<span style="color: #93a1a1;">// </span><span style="color: #93a1a1;">A= 200</span>
+<span style="color: #93a1a1;">// </span><span style="color: #93a1a1;">B= 100</span>
+<span style="color: #93a1a1;">// </span><span style="color: #93a1a1;">R= 200</span>
+</pre>
+</div>
+</li>
+<li>这种错误的来源在于什么呢,在于A读取数据之后,和A写入数据之前,如果B写入了数据,
+那么B的写入就会被A的写入所覆盖.换句话说,B在race中,输给了A,它的写入没有算数
+<pre class="example">
+B's deposit occurs in the middle of A's deposit, after the blance
+has been read but before it has been updated, causing B's transaction
+to disappear. A's deposit operation is really a sequence of two operation,
+a read and a write. We should keep the whole transaction run without
+being interrupted
+</pre>
+</li>
+<li>我们使用下面的图标来表示下
+<table border="2" cellspacing="0" cellpadding="6" rules="all" frame="border">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="right" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Action</th>
+<th scope="col" class="right">Balance</th>
+<th scope="col" class="left">Code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">A read</td>
+<td class="right">0</td>
+<td class="left">&#x2026; = balance + amount</td>
+</tr>
+
+<tr>
+<td class="left">B read&amp;write</td>
+<td class="right">100</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">A write</td>
+<td class="right">200</td>
+<td class="left">balance = &#x2026;</td>
+</tr>
+
+<tr>
+<td class="left">Final</td>
+<td class="right">200</td>
+<td class="left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>这种由于多个线程访问内存引起的race condition有一个特别的名字,叫做data race,
+而且data race有其严格的定义: data race 发生在两个goroutine并发的访问同一个
+变量,并且其中一个访问是write
+<pre class="example">
+A data race occurs whenever two goroutines access the same
+variable concurrently and at least one of the access is a write
+</pre>
 </li>
 </ul>
 </div>

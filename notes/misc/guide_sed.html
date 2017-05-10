@@ -1,0 +1,2638 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>guide_sed</title>
+<!-- 2017-05-10 Wed 15:34 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="your name" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+
+         <link href="http://fonts.googleapis.com/css?family=Droid+Sans+Mono|Galdeano|Open+Sans:600italic,400,600|Roboto+Condensed:400,700" rel="stylesheet" type="text/css">
+         <link rel="stylesheet" type="text/css" href="/static/css/main.css"/>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/javascript" src="http://orgmode.org/mathjax/MathJax.js"></script>
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+    MathJax.Hub.Config({
+        // Only one of the two following lines, depending on user settings
+        // First allows browser-native MathML display, second forces HTML/CSS
+        //  config: ["MMLorHTML.js"], jax: ["input/TeX"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+        extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js",
+                     "TeX/noUndefined.js"],
+        tex2jax: {
+            inlineMath: [ ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"], ["\\begin{displaymath}","\\end{displaymath}"] ],
+            skipTags: ["script","noscript","style","textarea","pre","code"],
+            ignoreClass: "tex2jax_ignore",
+            processEscapes: false,
+            processEnvironments: true,
+            preview: "TeX"
+        },
+        showProcessingMessages: true,
+        displayAlign: "center",
+        displayIndent: "2em",
+
+        "HTML-CSS": {
+             scale: 100,
+             availableFonts: ["STIX","TeX"],
+             preferredFont: "TeX",
+             webFont: "TeX",
+             imageFont: "TeX",
+             showMathMenu: true,
+        },
+        MMLorHTML: {
+             prefer: {
+                 MSIE:    "MML",
+                 Firefox: "MML",
+                 Opera:   "HTML",
+                 other:   "HTML"
+             }
+        }
+    });
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="org-div-home-and-up">
+ <a accesskey="h" href="http://harrifeng.github.io/sitemap.html"> UP </a>
+ |
+ <a accesskey="H" href="http://harrifeng.github.io/index.html"> HOME </a>
+</div><div id="preamble" class="status">
+
+         <div id="header">
+            <div id="header-top">
+                <div id="blog-title">Harrifeng's Path</div>
+                <div id="blog-sub-title">纸上得来终觉浅,绝知此事要Coding</div>
+            </div>
+            <div id="nav">
+                <ul>
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/about.html">About Me</a></li>
+                    <li>
+                    </li>
+                </ul>
+            </div>
+         </div>
+</div>
+<div id="content">
+<h1 class="title">guide_sed</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">Chapter 01: Introduction to sed</a>
+<ul>
+<li><a href="#sec-1-1">sed is a 'Stream Editor'</a></li>
+<li><a href="#sec-1-2">PatSpace and HoldSpace</a></li>
+<li><a href="#sec-1-3">Introducing the s Command</a></li>
+<li><a href="#sec-1-4">Quoting Command-Line Scripts</a></li>
+</ul>
+</li>
+<li><a href="#sec-2">Chapter 02: sed s Command(substitue)</a>
+<ul>
+<li><a href="#sec-2-1">Delimiter for s Command</a></li>
+<li><a href="#sec-2-2">sed Input from File or stdin</a></li>
+<li><a href="#sec-2-3">sed Command Line Options</a></li>
+<li><a href="#sec-2-4">-e sed Command Line Option</a></li>
+<li><a href="#sec-2-5">-f sed Command Line Option</a></li>
+<li><a href="#sec-2-6">sed Output to File or stdout</a></li>
+<li><a href="#sec-2-7">-i sed Command Line Option</a></li>
+</ul>
+</li>
+<li><a href="#sec-3">Chapter 03: Flags for s(substitute) Command</a>
+<ul>
+<li><a href="#sec-3-1">i(ignore case) Flag</a></li>
+<li><a href="#sec-3-2">g(global) and n(number) Flags</a></li>
+<li><a href="#sec-3-3">p(print) and w(write) Flags</a></li>
+<li><a href="#sec-3-4">e(execute) and m(multi) Flags</a></li>
+<li><a href="#sec-3-5">Combining s Command Flags</a></li>
+</ul>
+</li>
+<li><a href="#sec-4">Chapter 04: Single Character MetaChars</a>
+<ul>
+<li><a href="#sec-4-1">Literal Character in RegEx</a></li>
+<li><a href="#sec-4-2">.(Wildcard Character)</a></li>
+<li><a href="#sec-4-3">\ (Specify Literal Character)</a></li>
+<li><a href="#sec-4-4">[] (Character Set)</a></li>
+<li><a href="#sec-4-5">\w \W (Word and Non-Word)</a></li>
+<li><a href="#sec-4-6">[::] (Posix Character Class)</a></li>
+</ul>
+</li>
+<li><a href="#sec-5">Chapter 05: Anchor MetaChars</a>
+<ul>
+<li><a href="#sec-5-1">^(Start of PatSpace)</a></li>
+<li><a href="#sec-5-2">$(End of PatSpace)</a></li>
+<li><a href="#sec-5-3">\&lt; \&gt; \b (Word Boundaries)</a></li>
+<li><a href="#sec-5-4">\B (Not a Word Boundary)</a></li>
+</ul>
+</li>
+<li><a href="#sec-6">Chapter 06: Simple Repetition MetaChars</a>
+<ul>
+<li><a href="#sec-6-1">(0 or More of Previouse)</a></li>
+<li><a href="#sec-6-2">\+ (1 or More of Previous)</a></li>
+<li><a href="#sec-6-3">-r sed Command Line Option</a></li>
+<li><a href="#sec-6-4">\? (0 or 1 Previous)</a></li>
+<li><a href="#sec-6-5">Compare * \+ \?</a></li>
+</ul>
+</li>
+<li><a href="#sec-7">Chapter 07: General Repetion MetaChars</a>
+<ul>
+<li><a href="#sec-7-1">\{N\} (Exact N of Previous)</a></li>
+<li><a href="#sec-7-2">\{L,\} (Low, Higher of Previous)</a></li>
+<li><a href="#sec-7-3">\{L, H\} (Low, High of Previous)</a></li>
+</ul>
+</li>
+<li><a href="#sec-8">Chapter 08: Other RegEx MetaChars</a>
+<ul>
+<li><a href="#sec-8-1">\| (Alternative Patterns)</a></li>
+<li><a href="#sec-8-2">\( \) (Grouping and Saving)</a></li>
+<li><a href="#sec-8-3">\`(Always Start of PatSpace)</a></li>
+<li><a href="#sec-8-4">\'(Always End of PatSpace)</a></li>
+</ul>
+</li>
+<li><a href="#sec-9">Chapter 09: SubEx MetaChars</a>
+<ul>
+<li><a href="#sec-9-1">&amp; (Entire Matched Portion)</a></li>
+<li><a href="#sec-9-2">\N BackRef(Play Saved Group)</a></li>
+<li><a href="#sec-9-3">\l \u (Case for Next Character)</a></li>
+<li><a href="#sec-9-4">\L \U \E (Case for Next Span)</a></li>
+</ul>
+</li>
+<li><a href="#sec-10">Chapter 10: Command Addresses</a>
+<ul>
+<li><a href="#sec-10-1">Address Omitted</a></li>
+<li><a href="#sec-10-2">N Format Address</a></li>
+<li><a href="#sec-10-3">L,H Format Address</a></li>
+<li><a href="#sec-10-4">/RegEx/ Format Address</a></li>
+<li><a href="#sec-10-5">/RegEx/,/RegEx/ Address</a></li>
+<li><a href="#sec-10-6">L,/RegEx/ Format Address</a></li>
+<li><a href="#sec-10-7">/RegEx/,+N Format Address</a></li>
+<li><a href="#sec-10-8">/RegEx/,~N Format Address</a></li>
+<li><a href="#sec-10-9">First~Step Address</a></li>
+<li><a href="#sec-10-10">! (Inverts Address Match)</a></li>
+</ul>
+</li>
+<li><a href="#sec-11">Chapter 11: Delete PatSpace Cntent - dD</a>
+<ul>
+<li><a href="#sec-11-1">sed d Command(delete)</a></li>
+<li><a href="#sec-11-2">sed D Command</a></li>
+</ul>
+</li>
+<li><a href="#sec-12">Chapter 12: Append, Insert, Change - aic</a>
+<ul>
+<li><a href="#sec-12-1">sed a Command(append)</a></li>
+<li><a href="#sec-12-2">sed i Command(insert)</a></li>
+<li><a href="#sec-12-3">sed c Command(change)</a></li>
+</ul>
+</li>
+<li><a href="#sec-13">Chapter 13: Print PatSpace -pPl</a>
+<ul>
+<li><a href="#sec-13-1">sed p Command(print)</a></li>
+<li><a href="#sec-13-2">sed P Command(Print)</a></li>
+<li><a href="#sec-13-3">sed l Command(display line)</a></li>
+</ul>
+</li>
+<li><a href="#sec-14">Chapter 14: Read/Write File - rR wW</a>
+<ul>
+<li><a href="#sec-14-1">sed r Command(read RFile)</a></li>
+<li><a href="#sec-14-2">sed R Command (Read Rfile)</a></li>
+<li><a href="#sec-14-3">sed w Command (write Wfile)</a></li>
+<li><a href="#sec-14-4">sed W Command(Write Wfile)</a></li>
+</ul>
+</li>
+<li><a href="#sec-15">Chapter 15: Read Line into PatSpace -nN</a>
+<ul>
+<li><a href="#sec-15-1">sed n Command (next line)</a></li>
+<li><a href="#sec-15-2">sed N Command (Next Line)</a></li>
+</ul>
+</li>
+<li><a href="#sec-16">Chapter 16: Access HoldSpace -hH gG x</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">Chapter 01: Introduction to sed</h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1">sed is a 'Stream Editor'</h3>
+<div class="outline-text-3" id="text-1-1">
+<ul class="org-ul">
+<li>sed 是一种stream editor,用来编辑多行text file. sed会从input 读取文件,一行一
+行的分析,然后输出结果到output
+</li>
+<li>相比于享有盛名的vi和emacs, sed是另外一种维度的编辑器,他只在命令行起作用,并没
+有自己的界面,但是这也是一个优点:
+<ul class="org-ul">
+<li>它可以作为bash pipe的一个部分
+</li>
+<li>处理大文件的时候速度超快
+</li>
+</ul>
+</li>
+<li>sed和vi,Emacs各有各的生存哲学,来源于两者实现的不同:
+<ul class="org-ul">
+<li>vi,emacs是在disk上面编辑文件,而sed是在'stream'上面编辑
+</li>
+<li>vi,emacs是从keyboard上面获取指令,而sed自动运行,运行的规则写在了'sed script'
+里面
+</li>
+<li>vi,emacs可以看做是"random read"的例子,可以到文章的任何位置,但是sed不可以,
+sed只能从第一行开始,运行到最后一行
+</li>
+</ul>
+</li>
+<li>sed非常适合Unix philosphy:也就是使用shell和小的Unix utilities,通过pipe和中间
+文件结合起来完成工作,而不是使用一整个大的文件
+<pre class="example">
+Unix philosophy: uses the shell and small Unix utilities, connected
+with pipes or intermediate files, as opposed to using large
+monolithic programs.
+</pre>
+</li>
+<li>sed处理的是stream,所以可以从pipe上面接受到stream,处理完之后,抛给后面的pipe成员
+<div class="org-src-container">
+
+<pre class="src src-python">hfeng@ sed $ cut -c 9 <span style="color: #657b83; font-weight: bold;">file</span>.txt
+s
+s
+u
+c
+o
+o
+s
+u
+hfeng@ sed $ cut -c 9 <span style="color: #657b83; font-weight: bold;">file</span>.txt | sed s/o/0/g | sort
+0
+0
+c
+s
+s
+s
+u
+u
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2">PatSpace and HoldSpace</h3>
+<div class="outline-text-3" id="text-1-2">
+<ul class="org-ul">
+<li>awk和perl,也能做'stream editing'的事情,也能起到和sed一样的作用.但是各有特点:
+<ul class="org-ul">
+<li>awk在输出方面更有研究,而sed在输入输出方面都不错,也会有把sed的输入给awk让awk
+更加优美的输出的事情
+</li>
+<li>perl其实是一门语言了,而且特别的难以理解,和sed这种小工具就不是一个维度的了.
+</li>
+</ul>
+</li>
+<li>sed是有Lee McMahon在bell实验室发明的,其名字的来历是ed编辑器(Ken Thompson发明),
+可能你会惊讶,ed这种编辑器每次只能编辑一行,是上古时代计算机计算性能低下导致的,
+但是ed还是引入了很多新的强大的command,以及正则表达式,从而影响了如下振聋发聩
+的名字:awk,ex,grep,sed, perl,vi
+</li>
+<li>sed拥有自己的scripting语言,但是这门语言不是我们通常理解的那种,它没有那么复杂,
+比如它就没有变量和数组的概念
+</li>
+<li>但是sed是拥有其两个特殊的概念:
+<ul class="org-ul">
+<li>buffer: 我们叫做PatSpace
+</li>
+<li>workspace: 我们叫做HoldSpace
+</li>
+</ul>
+</li>
+<li>PatSpace(pattern space)是sed主要的工作区域,大部分的sed其实就是读取并且更改
+PatSpace: sed把input text一行接一行(line by line)的读取到patspace,每当读取完
+一行以后,它就开始一次'Cycle',来处理读取到的这一行,这个Cycle通常是:
+<ul class="org-ul">
+<li>sed保存着一个line counter从1开始,每当一行读取完毕,Cycle开始之前,都会增加这个
+counter
+</li>
+<li>对每一行,sed都会执行sed script给予的命令(这个script命令一般都很短,但是其实
+很长也可以的,只不过很长的话,我们可能会单独写一段python或者perl了)
+</li>
+<li>当sed script都指向完了以后,sed从通常会自动打印PatSpace里面的内容,清空
+PatSpace,然后读取下一行到PatSpace,开始新的一轮Cycle
+</li>
+</ul>
+</li>
+<li>我们看到PatSpace就是为一次的Cycle准备的,下一次Cycle开始的时候,上一次的内容就
+已经从PatSpace里面清空了,为了能够有更好的扩展性,sed引入了另外一个概念HoldSpace
+这个space在Cycle之间是不clear的.
+</li>
+<li>普通用户是用不到HotSpace的,高端用户可以用到HotSpace,但是HotSpace确实是有很多
+令人费解的地方,需要小心.本书会介绍HotSpace的使用,即便你用不到,至少可以理解概念
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-1-3" class="outline-3">
+<h3 id="sec-1-3">Introducing the s Command</h3>
+<div class="outline-text-3" id="text-1-3">
+<ul class="org-ul">
+<li>s(substitute)是sed里面最最常用的命令,如果你只需要理解一个sed命令,那么这个命令
+肯定是s
+</li>
+<li>s命令其实就是find and replace.假设我们的old.txt里面只有一个文字old,运行下面
+的命令就可以把old转换成new,并打印到standard output(注意old.txt文件不变)
+<div class="org-src-container">
+
+<pre class="src src-sh">hfeng@ sed $ cat old.txt
+old
+hfeng@ sed $ sed <span style="color: #2aa198;">'s/old/new/'</span> old.txt
+new
+hfeng@ sed $ cat old.txt
+old
+</pre>
+</div>
+</li>
+<li>从PatSpace的角度我们来分析一下这个过程:
+<ul class="org-ul">
+<li>sed把'old'读取到PatSpace
+</li>
+<li>Trailing newline被移走
+</li>
+<li>s命令运行,把'old'转化成'new'
+</li>
+<li>sed把trailing newline加回来
+</li>
+<li>sed 'AutoPrints(print and clear)' PatSpace('new')
+</li>
+<li>没有更多的input了, sed退出
+</li>
+</ul>
+</li>
+<li>s命令真正的script syntax如下
+<pre class="example">
+'s/RegEx/SubEx/'
+</pre>
+</li>
+<li>我们很自然的注意到s命令find的肯定不仅仅是exact match的字符串,同样要包括正则
+表达式,这个范围就广泛的多了
+</li>
+<li>s命令replace的也可以不仅仅是exact match的字符,SubEx代表的是'substitution
+expression',这是一种比较灵活的字符串,后面会介绍
+</li>
+<li>如果我们的RegEx没有被sed匹配到,那么s命令什么也不会做,输入到PatSpace里面的字符
+会原封不到的打印出去
+<div class="org-src-container">
+
+<pre class="src src-sh">hfeng@ sed $ cat old.txt
+old
+hfeng@ sed $ sed <span style="color: #2aa198;">'s/red/blue/'</span> old.txt
+old
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-1-4" class="outline-3">
+<h3 id="sec-1-4">Quoting Command-Line Scripts</h3>
+<div class="outline-text-3" id="text-1-4">
+<ul class="org-ul">
+<li>在上面的例子中's/old/new'就是我们的sed script,这个script有多重的quote方法:
+<ul class="org-ul">
+<li>使用单引号:
+<div class="org-src-container">
+
+<pre class="src src-sh">sed <span style="color: #2aa198;">'s/old/new'</span> old.txt
+</pre>
+</div>
+</li>
+<li>使用双引号
+<div class="org-src-container">
+
+<pre class="src src-sh">sed <span style="color: #2aa198;">"s/old/new"</span> old.txt
+</pre>
+</div>
+</li>
+<li>不要各种引号
+<div class="org-src-container">
+
+<pre class="src src-sh">sed s/old/new old.txt
+</pre>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">Chapter 02: sed s Command(substitue)</h2>
+<div class="outline-text-2" id="text-2">
+</div><div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1">Delimiter for s Command</h3>
+<div class="outline-text-3" id="text-2-1">
+<ul class="org-ul">
+<li>前面说到过这段script 's/RegEx/SubEx/', 这里面的'/'就是分隔符(delimiter),对于
+分隔符有一个偏见就是一定要使用'/',其实不是这样子的,任何可见的char都可以作为分
+隔符,只不过'/'是常用手段罢了
+<div class="org-src-container">
+
+<pre class="src src-sh">hfeng@ sed $ echo old | sed <span style="color: #2aa198;">'s/old/new/'</span>
+new
+hfeng@ sed $ echo old | sed <span style="color: #2aa198;">'s:old:new:'</span>
+new
+hfeng@ sed $ echo old | sed <span style="color: #2aa198;">'s|old|new|'</span>
+new
+hfeng@ sed $ echo old | sed <span style="color: #2aa198;">'s_old_new_'</span>
+new
+</pre>
+</div>
+</li>
+<li>既然什么char都可以作为分隔符,那万一我们的input stream里面就包含了分隔符怎么办
+呢?办法自然是使用escape字符串
+<div class="org-src-container">
+
+<pre class="src src-sh">hfeng@ sed $ echo /A/ | sed <span style="color: #2aa198;">'s/\/A\//\/B\//'</span>
+/B/
+</pre>
+</div>
+</li>
+<li>这个代码看着就晕,所以我们可以使用另外的字符作为分隔符
+<div class="org-src-container">
+
+<pre class="src src-sh">hfeng@ sed $ echo /A/ | sed <span style="color: #2aa198;">'s:/A/:/B/:'</span>
+/B/
+</pre>
+</div>
+</li>
+<li>最后,需要记住的是分隔符永远是三个,缺少最后一个是常见错误
+<div class="org-src-container">
+
+<pre class="src src-sh">hfeng@ sed $ echo /A/ | sed <span style="color: #2aa198;">'s:/A/:/B/'</span>
+sed: 1: <span style="color: #2aa198;">"s:/A/:/B/"</span>: unterminated substitute<span style="color: #859900; font-weight: bold;"> in</span> regular expression
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2">sed Input from File or stdin</h3>
+<div class="outline-text-3" id="text-2-2">
+<ul class="org-ul">
+<li>sed经常和file来配合,一个配合的例子如下,文件名是放在最后面的.
+<div class="org-src-container">
+
+<pre class="src src-sh">hfeng@ sed <span style="color: #2aa198;">(</span>master<span style="color: #2aa198;">)</span> $ cat rgb
+<span style="color: #268bd2;">low</span><span style="color: #2aa198;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">1): "red green blue"</span>
+<span style="color: #268bd2;">UPPER</span><span style="color: #b58900;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">2): "RED GREEN BLUE"</span>
+hfeng@ sed <span style="color: #268bd2;">(</span>master<span style="color: #268bd2;">)</span> $ sed <span style="color: #2aa198;">'s/RED/xxx/'</span> rgb
+<span style="color: #268bd2;">low</span><span style="color: #268bd2;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">1): "red green blue"</span>
+<span style="color: #268bd2;">UPPER</span><span style="color: #6c71c4;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">2): "xxx GREEN BLUE"</span>
+</pre>
+</div>
+</li>
+<li>sed当然也可以从stdin里面读取,stdin的来源很多:
+<ul class="org-ul">
+<li>从keyboard:竟然可以从keyboard!
+<div class="org-src-container">
+
+<pre class="src src-sh">sed s/old/new/
+old2                            <span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">input by hand</span>
+new2
+<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">ctrl + D return</span>
+</pre>
+</div>
+</li>
+<li>通过"|"从另外的程序获取stdin
+<div class="org-src-container">
+
+<pre class="src src-sh">$ echo old | sed <span style="color: #2aa198;">'s/old/new/'</span>
+new
+</pre>
+</div>
+</li>
+</ul>
+</li>
+<li>我们还可以使用'&lt;'来强制从某个文件获取stdin,但是对于sed意义不大
+<div class="org-src-container">
+
+<pre class="src src-sh">$ sed <span style="color: #2aa198;">'s/RED/xxx/'</span> &lt; rgb
+<span style="color: #268bd2;">low</span><span style="color: #2aa198;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">1): "red green blue"</span>
+<span style="color: #268bd2;">UPPER</span><span style="color: #b58900;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">2): "xxx GREEN BLUE"</span>
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-2-3" class="outline-3">
+<h3 id="sec-2-3">sed Command Line Options</h3>
+<div class="outline-text-3" id="text-2-3">
+<ul class="org-ul">
+<li>Unix命令都需要command line options,sed也不例外,sed有12个option,其中5个非常常
+用.后面会一一介绍:
+<ol class="org-ol">
+<li>-e: add scrip tot end of over sed script
+</li>
+<li>-f: add lines in script-file to end of overall script)
+</li>
+<li>-i: edit input file in place
+</li>
+<li>-n: suppress AutoPrint of PatSpace
+</li>
+<li>-r: use extended regular expression
+</li>
+</ol>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-2-4" class="outline-3">
+<h3 id="sec-2-4">-e sed Command Line Option</h3>
+<div class="outline-text-3" id="text-2-4">
+<ul class="org-ul">
+<li>sed script是sed用来"对付"input lines的,我们可以使用-e来指定sed script:
+<ul class="org-ul">
+<li>指定一次的情况下,和不使用-e区别不大
+<div class="org-src-container">
+
+<pre class="src src-sh">hfeng@ sed <span style="color: #2aa198;">(</span>master<span style="color: #2aa198;">)</span> $ echo old | sed <span style="color: #2aa198;">'s/old/new/'</span>
+new
+hfeng@ sed <span style="color: #2aa198;">(</span>master<span style="color: #2aa198;">)</span> $ echo old | sed -e <span style="color: #2aa198;">'s/old/new/'</span>
+new
+</pre>
+</div>
+</li>
+<li>指定多于一次的情况下,-e用处就大了.比如你想把'o'换成'=', 把'U'换成'-',那么你
+可以两次使用-e,append两段sed script
+<div class="org-src-container">
+
+<pre class="src src-sh">hfeng@ sed <span style="color: #2aa198;">(</span>master<span style="color: #2aa198;">)</span> $ cat rgb
+<span style="color: #268bd2;">low</span><span style="color: #2aa198;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">1): "red green blue"</span>
+<span style="color: #268bd2;">UPPER</span><span style="color: #b58900;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">2): "RED GREEN BLUE"</span>
+hfeng@ sed <span style="color: #268bd2;">(</span>master<span style="color: #268bd2;">)</span> $ sed -e s/o/=/ -e s/U/-/ rgb
+<span style="color: #268bd2;">l</span>=w<span style="color: #268bd2;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">1): "red green blue"</span>
+<span style="color: #268bd2;">-PPER</span><span style="color: #6c71c4;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">2): "RED GREEN BLUE"</span>
+</pre>
+</div>
+</li>
+<li>现代的sed可以使用';'来append sed script,但是一般只能用在s命令上面,其他命令
+会发生误会
+<div class="org-src-container">
+
+<pre class="src src-sh">$ sed <span style="color: #2aa198;">'s/o/=/; s/U/-/'</span> rgb
+<span style="color: #268bd2;">l</span>=w<span style="color: #2aa198;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">1): "red green blue"</span>
+<span style="color: #268bd2;">-PPER</span><span style="color: #b58900;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">2): "RED GREEN BLUE"</span>
+</pre>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-2-5" class="outline-3">
+<h3 id="sec-2-5">-f sed Command Line Option</h3>
+<div class="outline-text-3" id="text-2-5">
+<ul class="org-ul">
+<li>sed script当然可以放到另外一个文件里面,这个时候使用-f来指定script file文件的
+位置,这样script file里面可以使用回车分割多种的规则
+<div class="org-src-container">
+
+<pre class="src src-sh">hfeng@ sed <span style="color: #2aa198;">(</span>master<span style="color: #2aa198;">)</span> $ cat s1.sed
+s/red/333/
+s/GREEN/55555/
+hfeng@ sed <span style="color: #2aa198;">(</span>master<span style="color: #2aa198;">)</span> $ cat rgb
+<span style="color: #268bd2;">low</span><span style="color: #2aa198;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">1): "red green blue"</span>
+<span style="color: #268bd2;">UPPER</span><span style="color: #b58900;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">2): "RED GREEN BLUE"</span>
+hfeng@ sed <span style="color: #268bd2;">(</span>master<span style="color: #268bd2;">)</span> $ sed -f s1.sed rgb
+<span style="color: #268bd2;">low</span><span style="color: #268bd2;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">1): "333 green blue"</span>
+<span style="color: #268bd2;">UPPER</span><span style="color: #6c71c4;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">2): "RED 55555 BLUE"</span>
+</pre>
+</div>
+</li>
+<li>script file里面不要谁用任何的引号,否则会出错
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-2-6" class="outline-3">
+<h3 id="sec-2-6">sed Output to File or stdout</h3>
+<div class="outline-text-3" id="text-2-6">
+<ul class="org-ul">
+<li>如果想把sed的结果写入到其他文件,使用'&gt;'就好了
+<div class="org-src-container">
+
+<pre class="src src-sh">hfeng@ sed <span style="color: #2aa198;">(</span>master<span style="color: #2aa198;">)</span> $ sed <span style="color: #2aa198;">'s/old/new/'</span> old.txt  &gt; temp
+hfeng@ sed <span style="color: #2aa198;">(</span>master<span style="color: #2aa198;">)</span> $ cat temp
+new
+</pre>
+</div>
+</li>
+<li>我们的sed可以和for循环配合,更改一系列文件里面的内容,复杂的sed script还可以写
+在另外的文件里面
+<div class="org-src-container">
+
+<pre class="src src-sh"><span style="color: #268bd2;">list</span>=<span style="color: #2aa198;">'one.txt two.txt'</span>
+<span style="color: #859900; font-weight: bold;">for</span> file<span style="color: #859900; font-weight: bold;"> in</span> $<span style="color: #268bd2;">list</span>; <span style="color: #859900; font-weight: bold;">do</span>
+    sed -f rename.sed $<span style="color: #268bd2;">file</span> &gt; temp.x
+    mv temp.x $<span style="color: #268bd2;">file</span>
+<span style="color: #859900; font-weight: bold;">done</span>
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-2-7" class="outline-3">
+<h3 id="sec-2-7">-i sed Command Line Option</h3>
+<div class="outline-text-3" id="text-2-7">
+<ul class="org-ul">
+<li>前面我们说过,sed的最后跟的是一个文件,这个文件再sed过后不会改变.如果我们想改变
+这个文件的内容,需要重定向,和另外一个中间文件
+<div class="org-src-container">
+
+<pre class="src src-sh">$ sed <span style="color: #2aa198;">'s/A/B/'</span> in.txt &gt; temp
+$ mv temp in.txt
+</pre>
+</div>
+</li>
+<li>这样做一来是比较麻烦,二来呢容易受到权限问题的困扰,所以我们使用一个option -i
+来做到"最终把结果写回到文件"的作用.注意,在mac上,这个参数可能使用范围有限
+<div class="org-src-container">
+
+<pre class="src src-sh"><span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/tmp$ cat demo.txt
+old
+<span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/tmp$ sed -i <span style="color: #2aa198;">'s/old/new/'</span> demo.txt
+<span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/tmp$ cat demo.txt
+new
+</pre>
+</div>
+</li>
+<li>我们前面使用了一段script来把一系列文件里面的内容更改(还使用了for循环),如果使
+用-i参数的话,就可以一行解决问题了
+<div class="org-src-container">
+
+<pre class="src src-sh"><span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/tmp/sed-playground$ cat one.txt
+HELLO world
+<span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/tmp/sed-playground$ cat two.txt
+world HELLO
+<span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/tmp/sed-playground$ sed -i <span style="color: #2aa198;">'s/world/WORLD/'</span> one.txt two.txt
+<span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/tmp/sed-playground$ cat one.txt
+HELLO WORLD
+<span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/tmp/sed-playground$ cat two.txt
+WORLD HELLO
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">Chapter 03: Flags for s(substitute) Command</h2>
+<div class="outline-text-2" id="text-3">
+<ul class="org-ul">
+<li>我们来看一个简单的例子,更改old为new
+<div class="org-src-container">
+
+<pre class="src src-sh"><span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ echo old old | sed s/old/new/
+new old
+</pre>
+</div>
+</li>
+<li>我们发现,只有第一个old被更改了,这是因为如果不加特殊说明,s只更改第一次出现的匹
+配,如果需要全部匹配,那么就需要给s命令增加g flag
+<div class="org-src-container">
+
+<pre class="src src-sh">$ echo old old | sed s/old/new/g
+new new
+</pre>
+</div>
+</li>
+<li>我们的s命令的syntax就更新为
+<pre class="example">
+s/RegEx/SubEx/[flags]
+</pre>
+</li>
+<li>我们下面来看看几个常见的flag
+</li>
+</ul>
+</div>
+<div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1">i(ignore case) Flag</h3>
+<div class="outline-text-3" id="text-3-1">
+<ul class="org-ul">
+<li>如果不加flag的话,我们的匹配是大小写区分的,old不能匹配Old,因为RegEx就是区分
+大小写的
+<div class="org-src-container">
+
+<pre class="src src-sh">~/github/sed-playground $ echo old | sed s/Old/xxx/
+old
+</pre>
+</div>
+</li>
+<li>我们可以在s命令的flag里面加上ignore大小写
+<div class="org-src-container">
+
+<pre class="src src-sh">~/github/sed-playground $ echo old | sed s/Old/xxx/i
+xxx
+</pre>
+</div>
+</li>
+<li>需要说明的是,除了i flag,我们还可以在正则表达式那里设置大小写不敏感
+<div class="org-src-container">
+
+<pre class="src src-sh">~/github/sed-playground $ echo ab | sed s/AB/=/i
+=
+~/github/sed-playground $ echo ab | sed s/<span style="color: #2aa198;">[</span>aA<span style="color: #2aa198;">][</span>bB<span style="color: #2aa198;">]</span>/=/i
+=
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2">g(global) and n(number) Flags</h3>
+<div class="outline-text-3" id="text-3-2">
+<ul class="org-ul">
+<li>g和n是两个关于替换的属性:
+<ul class="org-ul">
+<li>设置g表示全部替换
+<div class="org-src-container">
+
+<pre class="src src-sh">~/github/sed-playground $ echo oldold | sed s/old/new/
+newold
+~/github/sed-playground $ echo oldold | sed s/old/new/g
+newnew
+</pre>
+</div>
+</li>
+<li>设置n表示替换第几次匹配
+<div class="org-src-container">
+
+<pre class="src src-sh">~/github/sed-playground $ echo oldold | sed s/old/new/
+newold
+~/github/sed-playground $ echo oldold | sed s/old/new/2
+oldnew
+</pre>
+</div>
+</li>
+</ul>
+</li>
+<li>对于不设置n来说,就是默认为1,而且如果n很大的话(没匹配到),那么什么都不会发生
+<div class="org-src-container">
+
+<pre class="src src-sh">~/github/sed-playground $ echo oldold | sed s/old/new/9
+oldold
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-3-3" class="outline-3">
+<h3 id="sec-3-3">p(print) and w(write) Flags</h3>
+<div class="outline-text-3" id="text-3-3">
+<ul class="org-ul">
+<li>我们前面讲过sed的AutoPrint,在s命令的flag里面,我们还可以加上一个s命令的打印
+要求'p',这个打印和AutoPrint是两个完全不同的命令,它比AutoPrints要求要严格
+一点,它要求一定要匹配了,才打印.所以如果我们使用p,又恰巧匹配的话,会有双重效果
+<div class="org-src-container">
+
+<pre class="src src-sh">~/github/sed-playground $ echo ABC | sed s/ABC/xxx/p
+xxx
+xxx
+</pre>
+</div>
+</li>
+<li>为了让这个命令的语义更纯粹,我们通常把这个命令和sed的一个command line option
+一起使用(注意,是command line option,而不是flag),这个option就是n,它的作用是
+关掉AutoPrint,这样的话flag p的作用就会很明显:能够匹配的才打印,否则就不打印
+<div class="org-src-container">
+
+<pre class="src src-sh">~/github/sed-playground $ cat rgb
+<span style="color: #268bd2;">low</span><span style="color: #2aa198;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">1): "red green blue"</span>
+<span style="color: #268bd2;">UPPER</span><span style="color: #b58900;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">2): "RED GREEN BLUE"</span>
+~/github/sed-playground $ sed -n <span style="color: #2aa198;">'s/RED/xxx/p'</span> rgb
+<span style="color: #268bd2;">UPPER</span><span style="color: #268bd2;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">2): "xxx GREEN BLUE"</span>
+</pre>
+</div>
+</li>
+<li>和p相似的一个flag是w,它也是在replace发生的时候才起作用!起的作用是把结果写
+到一个文件里面
+<div class="org-src-container">
+
+<pre class="src src-sh">~/github/sed-playground $ cat rgb
+<span style="color: #268bd2;">low</span><span style="color: #2aa198;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">1): "red green blue"</span>
+<span style="color: #268bd2;">UPPER</span><span style="color: #b58900;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">2): "RED GREEN BLUE"</span>
+~/github/sed-playground $ cat a.txt
+=======had some <span style="color: #268bd2;">text</span>========
+~/github/sed-playground $ sed <span style="color: #2aa198;">'s/red/xxx/w a.txt'</span> rgb
+<span style="color: #268bd2;">low</span><span style="color: #268bd2;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">1): "xxx green blue"</span>
+<span style="color: #268bd2;">UPPER</span><span style="color: #6c71c4;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">2): "RED GREEN BLUE"</span>
+~/github/sed-playground $ cat a.txt
+<span style="color: #268bd2;">low</span><span style="color: #859900;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">1): "xxx green blue"</span>
+</pre>
+</div>
+</li>
+<li>上面的例子有以下几点需要说明:
+<ul class="org-ul">
+<li>只有真正replace的才会写入到文件
+</li>
+<li>文件原来存在的话,内容会被clear
+</li>
+<li>sed原来的内容不会影响到w写入,sed的结果会显示带stdout,真正replace的结果会
+写入到文件里面
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-3-4" class="outline-3">
+<h3 id="sec-3-4">e(execute) and m(multi) Flags</h3>
+<div class="outline-text-3" id="text-3-4">
+<ul class="org-ul">
+<li>这个flag很有bash特色,是把匹配成功的字符串作为一个命令来运行,注意,一定是匹配
+成功的字符串
+<div class="org-src-container">
+
+<pre class="src src-sh"><span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ expr 2 + 4
+6
+<span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ echo 2 | sed <span style="color: #2aa198;">'s/./expr &amp; + 4 /e'</span>
+6
+</pre>
+</div>
+</li>
+<li>multi-line command flag会更常用一点:这个flag通常会和'N;'一起起作用,所以我们
+要先看看'N;',这个命令会把多行通过'\n'联系起来
+<div class="org-src-container">
+
+<pre class="src src-sh">$ seq 2 | sed <span style="color: #2aa198;">'N;s/1\n2/=/'</span>
+=
+</pre>
+</div>
+</li>
+<li>这种情况下的最大问题,是我们原来用来'区别'不同行的Anchor MetaChars信息,在'N;'
+的处理下,全部消失了
+<div class="org-src-container">
+
+<pre class="src src-sh">$ seq 2 | sed <span style="color: #2aa198;">'N;s/^2/=/'</span>
+1
+2
+</pre>
+</div>
+</li>
+<li>我们使用multi-line mode+'N;'的话,等于在'1$'和'^2'之间加了'\n'
+<div class="org-src-container">
+
+<pre class="src src-sh">$ seq 2 | sed <span style="color: #2aa198;">'N;s/^2/=/m'</span>
+1
+=
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-3-5" class="outline-3">
+<h3 id="sec-3-5">Combining s Command Flags</h3>
+<div class="outline-text-3" id="text-3-5">
+<ul class="org-ul">
+<li>所有s命令的flag都可以结合起来使用,但是有一些规则需要规避:
+<ul class="org-ul">
+<li>w flag如果有,必须在最后,后面跟文件名(最好加一个空格)
+</li>
+<li>不要重复使用flag
+</li>
+<li>n和g两个flag结合起来就是从n开始替换n, n+1, n+2等等
+</li>
+</ul>
+</li>
+<li>例子如下:
+<ul class="org-ul">
+<li>大小写不敏感的全部替换
+<div class="org-src-container">
+
+<pre class="src src-sh">~/github/sed-playground $ sed <span style="color: #2aa198;">'s/r/+/ig'</span> rgb
+<span style="color: #268bd2;">low</span><span style="color: #2aa198;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">1): "+ed g+een blue"</span>
+UPPE+<span style="color: #b58900;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">2): "+ED G+EEN BLUE"</span>
+</pre>
+</div>
+</li>
+<li>全部替换,但成功的才打印
+<div class="org-src-container">
+
+<pre class="src src-sh">~/github/sed-playground $ cat rgb
+<span style="color: #268bd2;">low</span><span style="color: #2aa198;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">1): "red green blue"</span>
+<span style="color: #268bd2;">UPPER</span><span style="color: #b58900;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">2): "RED GREEN BLUE"</span>
+~/github/sed-playground $ sed -n <span style="color: #2aa198;">'s/e/+/gp'</span> rgb
+<span style="color: #268bd2;">low</span><span style="color: #268bd2;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">1): "r+d gr++n blu+"</span>
+</pre>
+</div>
+</li>
+<li>更改从第3次match开始的元音
+<div class="org-src-container">
+
+<pre class="src src-sh">~/github/sed-playground $ sed <span style="color: #2aa198;">'s/[aeiou]/+/3g'</span> rgb
+<span style="color: #268bd2;">low</span><span style="color: #2aa198;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">1): "red gr++n bl++"</span>
+<span style="color: #268bd2;">UPPER</span><span style="color: #b58900;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">2): "RED GREEN BLUE"</span>
+</pre>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">Chapter 04: Single Character MetaChars</h2>
+<div class="outline-text-2" id="text-4">
+<ul class="org-ul">
+<li>s命令的第一个参数是RegEx,也就是一个regular expression,正则表达式一个字母所能
+表示的范围非常的广,可能是一个char,也可能是一系列的char(比如[A-Z])
+</li>
+</ul>
+</div>
+<div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1">Literal Character in RegEx</h3>
+<div class="outline-text-3" id="text-4-1">
+<ul class="org-ul">
+<li>RegEx即便是最简单的Literal 字符比如'am',但是也是正则表达式,只不过能够匹配
+的有限罢了
+</li>
+<li>在escape字符串的帮助下,正则表达式能表示很多很多的literal字符,比如
+<pre class="example">
+\a Alert(ASCII 7)
+\n NewLine
+\f Form Feed
+\r Carriage Return
+\t Horizontal Tab
+\v Vertical Tab
+</pre>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-4-2" class="outline-3">
+<h3 id="sec-4-2">.(Wildcard Character)</h3>
+<div class="outline-text-3" id="text-4-2">
+<ul class="org-ul">
+<li>literal总体上来说,是比较守规矩的,一个对一个.另外一种正则的成员MetaChar
+(metacharacter)就没那么简单了
+</li>
+<li>最常见的MetaChar是'.',它能够对应任何单个字符(any single character)甚至是换
+行符.我们也可以理解为'.'可以对应任何的literal
+</li>
+<li>使用'.'要非常小心,因为它会极大的提高你要对应的字符串数量:
+<ul class="org-ul">
+<li>比如hat可以对应hat, hatch, shatter
+</li>
+<li>h.t就可以匹配hat,hit,hot,hatch等等更多的"合理的"字符串
+</li>
+<li>h.t还可以匹配h5t,h=t,hjt等可能你并不需要的字符串
+</li>
+</ul>
+</li>
+<li>一个使用'.'的例子
+<div class="org-src-container">
+
+<pre class="src src-sh">~/github/sed-playground $ cat rgb
+<span style="color: #268bd2;">low</span><span style="color: #2aa198;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">1): "red green blue"</span>
+<span style="color: #268bd2;">UPPER</span><span style="color: #b58900;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">2): "RED GREEN BLUE"</span>
+~/github/sed-playground $ sed <span style="color: #2aa198;">'s/.E/++/g'</span> rgb
+<span style="color: #268bd2;">low</span><span style="color: #268bd2;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">1): "red green blue"</span>
+UP++R<span style="color: #6c71c4;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">2): "++D G++EN BL++"</span>
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-4-3" class="outline-3">
+<h3 id="sec-4-3">\ (Specify Literal Character)</h3>
+<div class="outline-text-3" id="text-4-3">
+<ul class="org-ul">
+<li>'.'本身其实也是一个literal,但是如果不加任何修饰的话,就成了MetaChar,如果我们
+需要'.'的literal的话,需要使用escape char '\'
+<div class="org-src-container">
+
+<pre class="src src-sh">~/github/sed-playground $ echo 103 | sed <span style="color: #2aa198;">'s/1.3/1.4/'</span>
+1.4
+~/github/sed-playground $ echo 103 | sed <span style="color: #2aa198;">'s/1\.3/1.4/'</span>
+103
+</pre>
+</div>
+</li>
+<li>所有的MetaChar想使用自己的literal的时候都要用到escape char
+<table border="2" cellspacing="0" cellpadding="6" rules="all" frame="border">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">MetaChar</th>
+<th scope="col" class="left">Escaped literal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">*</td>
+<td class="left">\*</td>
+</tr>
+
+<tr>
+<td class="left">^</td>
+<td class="left">\^</td>
+</tr>
+
+<tr>
+<td class="left">$</td>
+<td class="left">\$</td>
+</tr>
+
+<tr>
+<td class="left">[</td>
+<td class="left">\[</td>
+</tr>
+
+<tr>
+<td class="left">.</td>
+<td class="left">\.</td>
+</tr>
+
+<tr>
+<td class="left">\</td>
+<td class="left">\\</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-4-4" class="outline-3">
+<h3 id="sec-4-4">[] (Character Set)</h3>
+<div class="outline-text-3" id="text-4-4">
+<ul class="org-ul">
+<li>单个的literal的能力太局限,MetaChar的能力又太广泛,能力在这两者之间的就是
+character set:不至于只能匹配一个,但是也不至于所有都匹配,可以在一个[]里面限
+定好自己需要的数量,比如[aeiou]就可以用来只匹配原因
+<div class="org-src-container">
+
+<pre class="src src-sh">~/github/sed-playground $ echo abet | sed s/<span style="color: #2aa198;">[</span>aeiou<span style="color: #2aa198;">]</span>/=/g
+=<span style="color: #268bd2;">b</span>=t
+</pre>
+</div>
+</li>
+<li>character set最朴素的写法当然是所有的罗列,比如[aeiou],,但是也
+可以使用'-'来作为through的意思:
+<ul class="org-ul">
+<li>[0-9]所有的数字
+</li>
+<li>[a-z]所有的小写字母
+</li>
+<li>[A-M], A到M之间所有的大写字母
+</li>
+</ul>
+</li>
+<li>'x-y'可以相互的join起来,变成更强大range的character set
+<ul class="org-ul">
+<li>[a-zA-Z] alphabetic
+</li>
+<li>[a-zA-Z_] alphabetic or _
+</li>
+<li>[a-zA-Z0-9] alphanumeric
+</li>
+<li>[a-zA-Z0-9_] alphanumeric or _
+</li>
+</ul>
+</li>
+<li>如果希望把']'也作为character set的一部分的话,它必须在最左边(不能再右边,以
+防被误判成右边的character set边界)
+<div class="org-src-container">
+
+<pre class="src src-sh">~/github/sed-playground $ echo <span style="color: #2aa198;">'()[]{}'</span> | sed <span style="color: #2aa198;">'s/[])}]/+/g'</span>
+<span style="color: #2aa198;">(</span>+<span style="color: #b58900;">[</span>+<span style="color: #268bd2;">{</span>+
+</pre>
+</div>
+</li>
+<li>如果希望'-'也作为character set的一部分的话,它必须在最左边或最右边(不能在中
+间,以防止被误判成range)
+</li>
+<li>'^'的用法很特别,总体上来说,'^'必须在character set的最前面,表示对它后面的
+character set进行取反,但是实际用处有两种:
+<ul class="org-ul">
+<li>整个正则表达式只有character set,那么就是'取反某些character set的作用'
+<div class="org-src-container">
+
+<pre class="src src-sh">~/github/sed-playground $ echo <span style="color: #2aa198;">'()[]{}'</span> | sed <span style="color: #2aa198;">'s/[^])}]/+/g'</span>
++<span style="color: #657b83; background-color: #fdf6e3;">)</span>+<span style="color: #657b83; background-color: #fdf6e3;">]</span>+<span style="color: #657b83; background-color: #fdf6e3;">}</span>
+</pre>
+</div>
+</li>
+<li>整个character set是其他的正则表示式的一部分的情况下,就是用来缩小匹配区间
+的(因为匹配是贪婪的),比如下面的例子,'e.*e'的匹配如果中间不加上[^e]的话,就
+会从"第一个e开始,匹配到最后一个e",而我们希望从"第一个e开始,匹配到第二个e"
+<div class="org-src-container">
+
+<pre class="src src-sh">~/github/sed-playground $ cat rgb
+<span style="color: #268bd2;">lower</span><span style="color: #2aa198;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">1): "red green blue"</span>
+<span style="color: #268bd2;">UPPER</span><span style="color: #b58900;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">2): "RED GREEN BLUE"</span>
+~/github/sed-playground $ sed <span style="color: #2aa198;">'s/e.*e/++++/'</span> rgb
+low++++<span style="color: #2aa198;">"</span>
+<span style="color: #2aa198;">UPPER(#2): "</span>RED GREEN BLUE<span style="color: #2aa198;">"</span>
+<span style="color: #2aa198;">~/github/sed-playground $ sed 's/e[^e]*e/++++/' rgb</span>
+<span style="color: #2aa198;">low++++d green blue"</span>
+<span style="color: #268bd2;">UPPER</span><span style="color: #268bd2;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">2): "RED GREEN BLUE"</span>
+</pre>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-4-5" class="outline-3">
+<h3 id="sec-4-5">\w \W (Word and Non-Word)</h3>
+<div class="outline-text-3" id="text-4-5">
+<ul class="org-ul">
+<li>\w和\W看起来像是literal,其实是character set:
+<ul class="org-ul">
+<li>\w代表所有的'Word',等于[a-zA-Z0-9_]
+</li>
+<li>\W代表所有的非'Word',等于[^a-zA-Z0-9_]
+</li>
+</ul>
+</li>
+<li>这里又有一个新的概念叫做sed word,如果一个空格分割的字符串,其每个成员都是
+[a-zA-Z0-9_],那么它就是sed word.否则不是
+<ul class="org-ul">
+<li>bit_flag就是sed word
+</li>
+<li>bit-flag就不是sed word
+</li>
+</ul>
+</li>
+<li>看两个例子:
+<ul class="org-ul">
+<li>'re'能够匹配'r\w',注意这里分隔符使用的是'!'
+<div class="org-src-container">
+
+<pre class="src src-sh">~/github/sed-playground $ cat rgb
+<span style="color: #268bd2;">lower</span><span style="color: #2aa198;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">1): "red green blue"</span>
+<span style="color: #268bd2;">UPPER</span><span style="color: #b58900;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">2): "RED GREEN BLUE"</span>
+~/github/sed-playground $ sed <span style="color: #2aa198;">'s!r\w!++!'</span> rgb
+<span style="color: #268bd2;">lower</span><span style="color: #268bd2;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">1): "++d green blue"</span>
+<span style="color: #268bd2;">UPPER</span><span style="color: #6c71c4;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">2): "RED GREEN BLUE"</span>
+</pre>
+</div>
+</li>
+<li>'ue"'能够匹配'u\w\W'
+<div class="org-src-container">
+
+<pre class="src src-sh">~/github/sed-playground $ cat rgb
+<span style="color: #268bd2;">lower</span><span style="color: #2aa198;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">1): "red green blue"</span>
+<span style="color: #268bd2;">UPPER</span><span style="color: #b58900;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">2): "RED GREEN BLUE"</span>
+~/github/sed-playground $ sed <span style="color: #2aa198;">'s!u\w\W!+++!'</span> rgb
+<span style="color: #268bd2;">lower</span><span style="color: #268bd2;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">1): "red green bl+++</span>
+<span style="color: #268bd2;">UPPER</span><span style="color: #6c71c4;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">2): "RED GREEN BLUE"</span>
+</pre>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-4-6" class="outline-3">
+<h3 id="sec-4-6">[::] (Posix Character Class)</h3>
+<div class="outline-text-3" id="text-4-6">
+<ul class="org-ul">
+<li>character set还有一种更加"语义化"的写法,就是使用一段英文来替代[:xxx:]里面
+的xxx,用来代表某一个character set.注意,posix character class需要两层的中括
+号,[:black:]等同于\t,所以<i>:black:</i>等同于[\t]
+</li>
+<li>这种做法更加的容易理解,并且有时候会在不同的locale里面引入其他字符串,比如在
+西班牙语的locale里面[:alpha:]就等于aeiou加上它们认为是元音的其他字符(比如v)
+</li>
+<li>下面是常见的posix character和character set的对应
+<table border="2" cellspacing="0" cellpadding="6" rules="all" frame="border">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Posix Character</th>
+<th scope="col" class="left">Character Set</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">[:alnum:]</td>
+<td class="left">a-zA-Z</td>
+</tr>
+
+<tr>
+<td class="left">[:blank:]</td>
+<td class="left">\t</td>
+</tr>
+
+<tr>
+<td class="left">[:digit:]</td>
+<td class="left">0-9</td>
+</tr>
+
+<tr>
+<td class="left">[:lower:]</td>
+<td class="left">a-z</td>
+</tr>
+
+<tr>
+<td class="left">[:space:]</td>
+<td class="left">\t\r\n\v\f</td>
+</tr>
+
+<tr>
+<td class="left">[:upper:]</td>
+<td class="left">A-Z</td>
+</tr>
+
+<tr>
+<td class="left">[:xdigit:]</td>
+<td class="left">A-Fa-f0-9</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>posix 也是可以和其他character set组合的:
+<ul class="org-ul">
+<li>[[:digit:]ab]等同于[0-9ab]
+</li>
+<li>[[:lower:]12]等同于[a-z12]
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5">Chapter 05: Anchor MetaChars</h2>
+<div class="outline-text-2" id="text-5">
+<ul class="org-ul">
+<li>所谓的'Anchor MetaChar'是这样一种char,它们既不占用空间,也不匹配任何字符串,
+它起到的是"边界"判断的作用,比如判断是不是在PatSpace的开头
+</li>
+</ul>
+</div>
+<div id="outline-container-sec-5-1" class="outline-3">
+<h3 id="sec-5-1">^(Start of PatSpace)</h3>
+<div class="outline-text-3" id="text-5-1">
+<ul class="org-ul">
+<li>在vi里面我们也见到了,^是表示一行的开头.
+</li>
+<li>首先^能够自己起作用,这个时候因为^不占用空间,所以sed的replace会转化为insert
+<div class="org-src-container">
+
+<pre class="src src-sh">~/github/org/notes/misc $ echo XYZ | sed <span style="color: #2aa198;">'s/^/=/g'</span>
+=XYZ
+</pre>
+</div>
+</li>
+<li>^和其他literal或者Metachar配合就能有更准确的匹配,insert也就会回归成replace
+了
+<div class="org-src-container">
+
+<pre class="src src-sh">~/github/org/notes/misc $ echo XYZ | sed <span style="color: #2aa198;">'s/^X/=/g'</span>
+=YZ
+</pre>
+</div>
+</li>
+<li>如果^不在最前面,那么它就是自己literal的作用
+<div class="org-src-container">
+
+<pre class="src src-sh">~/github/org/notes/misc $ echo 2^<span style="color: #268bd2;">3</span>=8 | sed <span style="color: #2aa198;">'s/2^3/8/'</span>
+<span style="color: #268bd2;">8</span>=8
+</pre>
+</div>
+</li>
+<li>如果第一个字符恰好是^,那么使用^^来匹配
+<div class="org-src-container">
+
+<pre class="src src-sh">~/github/org/notes/misc $ echo ^HDR | sed <span style="color: #2aa198;">'s/^^HDR/=/'</span>
+=
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-5-2" class="outline-3">
+<h3 id="sec-5-2">$(End of PatSpace)</h3>
+<div class="outline-text-3" id="text-5-2">
+<ul class="org-ul">
+<li>^的counterpart就是$,$表示PatSpace的最后,除了表示的位置相反,其所有的用法和^
+是一样的
+</li>
+<li>'^$'联合起来可以表示空行
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-5-3" class="outline-3">
+<h3 id="sec-5-3">\&lt; \&gt; \b (Word Boundaries)</h3>
+<div class="outline-text-3" id="text-5-3">
+<ul class="org-ul">
+<li>有时候你要匹配一个word,比如cow改成ox,如果如下书写,在大部分情况下是没问题的
+<div class="org-src-container">
+
+<pre class="src src-sh">~/github/org/notes/misc $ echo cow | sed s/cow/ox/
+ox
+</pre>
+</div>
+</li>
+<li>但是如果某些word里面包含cow,那么上面的字符串就会"错误匹配"某些字符串,比如
+scow明显不应该改成sox
+<div class="org-src-container">
+
+<pre class="src src-sh">~/github/org/notes/misc $ echo scow | sed s/cow/ox/
+sox
+</pre>
+</div>
+</li>
+<li>有些人还希望使用' cow '这种两边带空格的正则来匹配,但是这种情况下遇到如下的
+字符串就匹配不对了:有句号
+<pre class="example">
+Please yoke the cow.
+</pre>
+</li>
+<li>正确的处理办法是使用对word有效的标明其"边界"的Anchor MetaData:
+<ul class="org-ul">
+<li>'\&lt;':代表sed word的start
+</li>
+<li>'\&gt;':代表sed word的stop
+</li>
+</ul>
+</li>
+<li>前面已经讲过sed word的概念了,sed word就是:一系列[a-zA-Z0-9_]char组成的sequence
+<pre class="example">
+sed word is a sequence of [a-zA-Z0-9_] characters.
+</pre>
+</li>
+<li>'\&lt;'和'\&gt;'写起来太麻烦,还有一个便捷的用法就是'\b','\b'可以根据情景,自动匹配
+成word的start或者stop
+</li>
+<li>一下子问题就解决了
+<div class="org-src-container">
+
+<pre class="src src-sh">~/github/org/notes/misc $ echo <span style="color: #2aa198;">'cow scow'</span> | sed <span style="color: #2aa198;">'s/\bcow/ox/'</span>
+ox scow
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-5-4" class="outline-3">
+<h3 id="sec-5-4">\B (Not a Word Boundary)</h3>
+<div class="outline-text-3" id="text-5-4">
+<ul class="org-ul">
+<li>\B就是\b的反面,匹配任何不是word boundar的位置
+<div class="org-src-container">
+
+<pre class="src src-sh">~/github/org/notes/misc $ echo <span style="color: #2aa198;">'cow scow'</span> | sed <span style="color: #2aa198;">'s/\Bcow/++/'</span>
+cow s++
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6">Chapter 06: Simple Repetition MetaChars</h2>
+<div class="outline-text-2" id="text-6">
+<ul class="org-ul">
+<li>Repetition MetaChar顾名思义,就是能够确认其前面的char(或者 character set)能够
+重复多少次的字符
+</li>
+</ul>
+</div>
+<div id="outline-container-sec-6-1" class="outline-3">
+<h3 id="sec-6-1">(0 or More of Previouse)</h3>
+<div class="outline-text-3" id="text-6-1">
+<ul class="org-ul">
+<li>我们使用'*'来表示重复0次或多次重复,换句话说,就是任意次.比如'x*'就表示'0 or
+more x'
+</li>
+<li>这是一个非常强大的MetaChar,如果再结合'.'(任意char),那么就总能匹配PatSpace,
+也就是说'.*'能够匹配任何PatSpace
+</li>
+<li>看起来更有意义的肯定是其他字符加上*,比如'b*'.说到'b*',这种字符串是非常容易
+用错的RegExp,因为这个字符串能够匹配的是两种情况:
+<ul class="org-ul">
+<li>以b开头的"长度大于1"的字符串:这个是很明显的匹配,至于为什么会有"长度小于1"
+的字符串,那是因为我们有Anchor MetaChars,它们的长度其实是0
+</li>
+<li>任何Anchro MetaChar:因为'b*'也可以匹配任何长度为0的字符串, Anchor MetaChar
+真是长度为0的字符串.所以我们会看到非常奇怪的匹配,比如下面的'0123'字符串,
+每两个字符串之间都会有一个Anchor MetaChar,而且首尾也会有Anchor MetaChar
+所以会导致匹配到很多结果
+<div class="org-src-container">
+
+<pre class="src src-sh">$ echo 0123 | sed <span style="color: #2aa198;">'s/b*/=/g'</span>
+=<span style="color: #268bd2;">0</span>=<span style="color: #268bd2;">1</span>=<span style="color: #268bd2;">2</span>=<span style="color: #268bd2;">3</span>=
+</pre>
+</div>
+</li>
+</ul>
+</li>
+<li>所以'看起来有意义的b*'其实还是没啥意义,真正想匹配b开头的字符串,应该写'b.*'
+<div class="org-src-container">
+
+<pre class="src src-sh">$ echo abc | sed <span style="color: #2aa198;">'s/b.*/=/g'</span>
+<span style="color: #268bd2;">a</span>=
+</pre>
+</div>
+</li>
+<li>而去除所有的至少有一个b的字符串的行动,似乎更常见
+<div class="org-src-container">
+
+<pre class="src src-sh">$ echo abbbbcb | sed <span style="color: #2aa198;">'s/bb*/=/g'</span>
+<span style="color: #268bd2;">a</span>=<span style="color: #268bd2;">c</span>=
+</pre>
+</div>
+</li>
+<li>好了,这里出现了一个问题,当sed匹配bbbb的时候,它可以匹配一个,两个,三个,但为
+什么最后匹配了四个?原因是因为:所有的repetition MetaChar都是贪婪的
+<pre class="example">
+All repetition MetaChars are greedy.
+</pre>
+</li>
+<li>这种贪婪,导致'.*'通常都不是一个好的RegExp,因为它匹配了太长太长的字符串
+<div class="org-src-container">
+
+<pre class="src src-sh">$ echo <span style="color: #2aa198;">'a:b:c:d:e:f:g:h'</span> | sed <span style="color: #2aa198;">'s/:.*:/:=:/'</span>
+a:=:h
+</pre>
+</div>
+</li>
+<li>所以我们一般不使用'.*',而应该加一个比'.'能力低一点的char,哪怕低一点效果就
+准确很多,比如,我们这里吧'.'换成'[^:]',从'所有字符'变成了'非:字符',看似只减
+少了一个字符,但是效果达到了,因为遇到':'就会退出了
+<div class="org-src-container">
+
+<pre class="src src-sh">$ echo <span style="color: #2aa198;">'a:b:c:d:e:f:g:h'</span> | sed <span style="color: #2aa198;">'s/:[^:]*:/:=:/'</span>
+a:=:c:d:e:f:g:h
+</pre>
+</div>
+</li>
+<li>这种[^something]的办法非常的有效,比如我们想把rgb里面的被""包裹的字符串给替
+换掉,那么""被包裹的是什么呢?只可能是非引号!
+<div class="org-src-container">
+
+<pre class="src src-sh"><span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ cat rgb
+<span style="color: #268bd2;">low</span><span style="color: #2aa198;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">1): "red green blue"</span>
+<span style="color: #268bd2;">UPPER</span><span style="color: #b58900;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">2): "RED GREEN BLUE"</span>
+<span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ sed <span style="color: #2aa198;">'s/"[^"]*"/"="/g'</span> rgb
+<span style="color: #268bd2;">low</span><span style="color: #268bd2;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">1): "="</span>
+<span style="color: #268bd2;">UPPER</span><span style="color: #6c71c4;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">2): "="</span>
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-6-2" class="outline-3">
+<h3 id="sec-6-2">\+ (1 or More of Previous)</h3>
+<div class="outline-text-3" id="text-6-2">
+<ul class="org-ul">
+<li>相比于*, '\+'会清晰的多,因为它会至少要求有一个,就避免了0,这个灰色地带,比如
+'b\+'就代表一个或者多个b
+<div class="org-src-container">
+
+<pre class="src src-sh"><span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ echo abc | sed <span style="color: #2aa198;">'s/b\+/=/'</span>
+<span style="color: #268bd2;">a</span>=c
+<span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ echo abbbc | sed <span style="color: #2aa198;">'s/b\+/=/'</span>
+<span style="color: #268bd2;">a</span>=c
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-6-3" class="outline-3">
+<h3 id="sec-6-3">-r sed Command Line Option</h3>
+<div class="outline-text-3" id="text-6-3">
+<ul class="org-ul">
+<li>'\+'的问题在于需要写一个'\',这是为了和真正的'+'进行区别.但是真实的情况下'+'
+出现的概率并不高,所以正则表达式发明了一种叫做regexp extend的情景,在这种情景
+下,你可以使用'+'来替代'\+'
+</li>
+<li>在sed里面,是使用-r(&#x2013;regexp-extended)来代表我们的正则表达式是"扩展的":
+<div class="org-src-container">
+
+<pre class="src src-sh"><span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ echo abbv | sed <span style="color: #2aa198;">'s/b\+/=/'</span>
+<span style="color: #268bd2;">a</span>=v
+<span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ echo abbv | sed <span style="color: #2aa198;">'s/b+/=/'</span>
+abbv
+<span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ echo abbv | sed -r <span style="color: #2aa198;">'s/b+/=/'</span>
+<span style="color: #268bd2;">a</span>=v
+</pre>
+</div>
+</li>
+<li>那么我们在"扩展的"正则表达式里面想匹配'+'怎么办呢?答案是使用'\+',是不是很有
+哲学感:"扩展的"正则表达式设计的初衷就是,'+'出现的概率非常低,而'一次或者多次'
+的使用概率高很多.我们让'一次或者多次'的使用更加便捷
+<div class="org-src-container">
+
+<pre class="src src-sh">$ echo abb+ | sed -r <span style="color: #2aa198;">'s/b\+/=/'</span>
+<span style="color: #268bd2;">ab</span>=
+</pre>
+</div>
+</li>
+<li>从上面的例子我可以看出,扩展的正则表达式其实完全等价于普通正则表达式,只是基
+于"概率"来做了一些改良,所以,如果可能的话,我们尽量要使用"扩展的"正则表达式
+</li>
+<li>需要注意的是,我们的"扩展的"正则表达式并不是要取消'\'的使用,而是要减少'\'的
+使用,有些情况下也是不可避免的要使用'\':
+<ul class="org-ul">
+<li>前面说了,匹配'+'的时候,就必须要要使用'\+'了
+</li>
+<li>boundary metachar的'\'不可省略:'\&lt;', '\&gt;', '\b', '\B'
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-6-4" class="outline-3">
+<h3 id="sec-6-4">\? (0 or 1 Previous)</h3>
+<div class="outline-text-3" id="text-6-4">
+<ul class="org-ul">
+<li>\? 是一种"存在与否"的判断,要么有一个,要么没有.所以它还是和'*'一样,涉及到了
+0这个灰色地带要非常小心(后面,我们都会使用扩展的正则)
+<div class="org-src-container">
+
+<pre class="src src-sh">$ echo abc | sed -r <span style="color: #2aa198;">'s/x?/=/g'</span>
+=<span style="color: #268bd2;">a</span>=<span style="color: #268bd2;">b</span>=<span style="color: #268bd2;">c</span>=
+</pre>
+</div>
+</li>
+<li>常见的用法是匹配'HA',但是前后可以有'T'
+<div class="org-src-container">
+
+<pre class="src src-sh"><span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ echo THAT | sed -r <span style="color: #2aa198;">'s/T?HAT?/++/'</span>
+++
+<span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ echo HA | sed -r <span style="color: #2aa198;">'s/T?HAT?/++/'</span>
+++
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-6-5" class="outline-3">
+<h3 id="sec-6-5">Compare * \+ \?</h3>
+<div class="outline-text-3" id="text-6-5">
+<ul class="org-ul">
+<li>我们再来总结下如下三个重要的repetition metachars
+<ul class="org-ul">
+<li>'*': 0 or more of previous
+</li>
+<li>'\+': 1 or more of previous
+</li>
+<li>'\?': 0 or 1 of previous
+</li>
+</ul>
+</li>
+<li>匹配'zero occurrence'看起来有些滑稽,有些人认为'\+'(1 or more)会比'*'(0 or more)
+更加的常用,但是其实是相反的,'*'的使用频率会多一点
+</li>
+<li>对于'*'和'\?',因为会涉及到nothing,所以要特别的小心,因为他们总会匹配到开头,
+在不设置g flag的时候,往往只会更改PatSpace的开头. '\+'就不会有这个烦恼
+<div class="org-src-container">
+
+<pre class="src src-sh"><span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ echo abbc | sed <span style="color: #2aa198;">'s/b*/=/'</span>
+=abbc
+<span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ echo abbc | sed <span style="color: #2aa198;">'s/b\?/=/'</span>
+=abbc
+<span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ echo abbc | sed <span style="color: #2aa198;">'s/b\+/=/'</span>
+<span style="color: #268bd2;">a</span>=c
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7">Chapter 07: General Repetion MetaChars</h2>
+<div class="outline-text-2" id="text-7">
+<ul class="org-ul">
+<li>前面介绍了一些简单的repetion metachar,我们这里介绍一下更general的设置,这种
+general的设置是可以完全覆盖前面的simple设置的
+</li>
+</ul>
+</div>
+<div id="outline-container-sec-7-1" class="outline-3">
+<h3 id="sec-7-1">\{N\} (Exact N of Previous)</h3>
+<div class="outline-text-3" id="text-7-1">
+<ul class="org-ul">
+<li>顾名思义,就是可以精确匹配多次出现,比如'x\{3\}'就是意味着'xxx'
+</li>
+<li>当然了,你其实是可以手动写数目的,麻烦一点而已.如果N是100的话,想你也不会不用这个设置
+<div class="org-src-container">
+
+<pre class="src src-sh"><span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ echo abbbbbbbbbbc | sed -r <span style="color: #2aa198;">'s/b{10}/=/'</span>
+<span style="color: #268bd2;">a</span>=c
+<span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ echo abbbbbbbbbbc | sed -r <span style="color: #2aa198;">'s/bbbbbbbbbb/=/'</span>
+<span style="color: #268bd2;">a</span>=c
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-7-2" class="outline-3">
+<h3 id="sec-7-2">\{L,\} (Low, Higher of Previous)</h3>
+<div class="outline-text-3" id="text-7-2">
+<ul class="org-ul">
+<li>'\{L, }'就是通常意义上的"至少有L个重复"
+<div class="org-src-container">
+
+<pre class="src src-sh"><span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ echo abc | sed -r <span style="color: #2aa198;">'s/b{2,}/#/'</span>
+abc
+<span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ echo abbc | sed -r <span style="color: #2aa198;">'s/b{2,}/#/'</span>
+a#c
+<span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ echo abbbc | sed -r <span style="color: #2aa198;">'s/b{2,}/#/'</span>
+a#c
+</pre>
+</div>
+</li>
+<li>所以'*'其实就是'\{0, \}'的simple写法
+</li>
+<li>'\+'是'\{1,\}'的simple写法
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-7-3" class="outline-3">
+<h3 id="sec-7-3">\{L, H\} (Low, High of Previous)</h3>
+<div class="outline-text-3" id="text-7-3">
+<ul class="org-ul">
+<li>这个也很"顾名思义"了,看一个例子'b\{2,3\}'匹配bb或者bbb
+<div class="org-src-container">
+
+<pre class="src src-sh"><span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ echo abc | sed <span style="color: #2aa198;">'s!b\{2,3\}!=!'</span>
+abc
+<span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ echo abbc | sed <span style="color: #2aa198;">'s!b\{2,3\}!=!'</span>
+<span style="color: #268bd2;">a</span>=c
+<span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ echo abbbc | sed <span style="color: #2aa198;">'s!b\{2,3\}!=!'</span>
+<span style="color: #268bd2;">a</span>=c
+<span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ echo abbbbc | sed <span style="color: #2aa198;">'s!b\{2,3\}!=!'</span>
+<span style="color: #268bd2;">a</span>=bc
+</pre>
+</div>
+</li>
+<li>'\?'其实也就是'\{0, 1\}'
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-8" class="outline-2">
+<h2 id="sec-8">Chapter 08: Other RegEx MetaChars</h2>
+<div class="outline-text-2" id="text-8">
+</div><div id="outline-container-sec-8-1" class="outline-3">
+<h3 id="sec-8-1">\| (Alternative Patterns)</h3>
+<div class="outline-text-3" id="text-8-1">
+<ul class="org-ul">
+<li>'\|' 允许我们的regexp有多个候选人,比如我们想把red或者BLUE都替换成xxx,那么就
+可以如下
+<div class="org-src-container">
+
+<pre class="src src-sh"><span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ sed <span style="color: #2aa198;">"s/red\|BLUE/xxx/g"</span> rgb
+<span style="color: #268bd2;">low</span><span style="color: #2aa198;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">1): "xxx green blue"</span>
+<span style="color: #268bd2;">UPPER</span><span style="color: #b58900;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">2): "RED GREEN xxx"</span>
+<span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ sed -r <span style="color: #2aa198;">"s/red|BLUE/xxx/g"</span> rgb
+<span style="color: #268bd2;">low</span><span style="color: #268bd2;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">1): "xxx green blue"</span>
+<span style="color: #268bd2;">UPPER</span><span style="color: #6c71c4;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">2): "RED GREEN xxx"</span>
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-8-2" class="outline-3">
+<h3 id="sec-8-2">\( \) (Grouping and Saving)</h3>
+<div class="outline-text-3" id="text-8-2">
+<ul class="org-ul">
+<li>\(\)可以定义一个'group',定义的这个group可以在后面被重复使用(通过\1 \2),因为
+涉及到了position,这个的使用有一些巧妙效果,比如reverse两个char的字符串
+<div class="org-src-container">
+
+<pre class="src src-sh">$ echo xy | sed -r <span style="color: #2aa198;">'s/(.)(.)/\2\1/'</span>
+yx
+</pre>
+</div>
+</li>
+<li>\(\)还可以跟repetition metachar一起使用,比如去除偶数个的'A'
+<div class="org-src-container">
+
+<pre class="src src-sh"><span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ echo AA | sed -r <span style="color: #2aa198;">'s/(AA)+/=/'</span>
+=
+<span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ echo AAA | sed -r <span style="color: #2aa198;">'s/(AA)+/=/'</span>
+=A
+<span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ echo AAAA | sed -r <span style="color: #2aa198;">'s/(AA)+/=/'</span>
+=
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-8-3" class="outline-3">
+<h3 id="sec-8-3">\`(Always Start of PatSpace)</h3>
+<div class="outline-text-3" id="text-8-3">
+<ul class="org-ul">
+<li>高端特性,强制版本的'^'.
+</li>
+<li>为什么说是强制版本的'^'呢,因为'^'的意义是会改变的:
+<ul class="org-ul">
+<li>在普通模式下,'^'会去匹配PatSpace里面最开始的empty string
+<div class="org-src-container">
+
+<pre class="src src-sh"><span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">&#22312;&#26222;&#36890;&#27169;&#24335;&#19979;, ^&#21151;&#33021;&#21333;&#19968;</span>
+<span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ seq 2 | sed <span style="color: #2aa198;">'s/^2/=/'</span>
+1
+=
+<span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ seq 2 | sed <span style="color: #2aa198;">'N;s/^2/=/'</span>
+1
+2
+</pre>
+</div>
+</li>
+<li>在multi-line模式下面, '^'变成了匹配newline+empty string
+<div class="org-src-container">
+
+<pre class="src src-sh"><span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ seq 2 | sed <span style="color: #2aa198;">'N;s/^2/=/'</span>
+1
+2
+<span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ seq 2 | sed <span style="color: #2aa198;">'N;s/^2/=/m'</span>
+1
+=
+</pre>
+</div>
+</li>
+</ul>
+</li>
+<li>'\`'就永远不改变自己的节操,永远匹配最开始的empty string
+<div class="org-src-container">
+
+<pre class="src src-sh"><span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ seq 2 | sed <span style="color: #2aa198;">'N;s/\`2/=/'</span>
+1
+2
+<span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ seq 2 | sed <span style="color: #2aa198;">'N;s/\`2/=/m'</span>
+1
+2
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-8-4" class="outline-3">
+<h3 id="sec-8-4">\'(Always End of PatSpace)</h3>
+<div class="outline-text-3" id="text-8-4">
+<ul class="org-ul">
+<li>高端特性,强制版本的'$',非常不常用,主要配合multi-line mode
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-9" class="outline-2">
+<h2 id="sec-9">Chapter 09: SubEx MetaChars</h2>
+<div class="outline-text-2" id="text-9">
+<ul class="org-ul">
+<li>SubEx = 'Substitution Expression'. SubEx指的是被替代的部分,也就是s命令的第二
+个'//'里面的内容
+</li>
+</ul>
+</div>
+<div id="outline-container-sec-9-1" class="outline-3">
+<h3 id="sec-9-1">&amp; (Entire Matched Portion)</h3>
+<div class="outline-text-3" id="text-9-1">
+<ul class="org-ul">
+<li>在第一个'//'里面成功匹配的部分,会被保存在'&amp;'里面,如果在第二个'//'里面有&amp;的
+话,就等于我们要把匹配结果都再显示出来
+<div class="org-src-container">
+
+<pre class="src src-sh">$ seq 3 | sed <span style="color: #2aa198;">'s/./Line &amp;/'</span>
+Line 1
+Line 2
+Line 3
+</pre>
+</div>
+</li>
+<li>当然了,如果你像使用literal &amp;的话,需要在前面加一个'\'
+<div class="org-src-container">
+
+<pre class="src src-sh"><span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ sed <span style="color: #2aa198;">'s/...../[&amp;]/'</span> rgb
+<span style="color: #2aa198;">[</span>lower<span style="color: #2aa198;">](</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">1): "red green blue"</span>
+<span style="color: #b58900;">[</span>UPPER<span style="color: #b58900;">](</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">2): "RED GREEN BLUE"</span>
+<span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ sed <span style="color: #2aa198;">'s/...../[\&amp;]/'</span> rgb
+<span style="color: #268bd2;">[</span>&amp;<span style="color: #268bd2;">](</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">1): "red green blue"</span>
+<span style="color: #6c71c4;">[</span>&amp;<span style="color: #6c71c4;">](</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">2): "RED GREEN BLUE"</span>
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-9-2" class="outline-3">
+<h3 id="sec-9-2">\N BackRef(Play Saved Group)</h3>
+<div class="outline-text-3" id="text-9-2">
+<ul class="org-ul">
+<li>每次把整个匹配的结果都打印出来,在很多时候并没有意义,很多时候,我们只希望使用
+匹配结果的一部分.sed为了能够实现这个需求,从匹配的部分入手,让我们的匹配成功
+的部分分成了好几个group:使用()来区分
+</li>
+<li>然后我们在SubEx里面,就是使用'\N'来打印第N次匹配成功的结果啦,最经典的例子就是
+reverse xy
+<div class="org-src-container">
+
+<pre class="src src-sh">$ echo xy | sed -r <span style="color: #2aa198;">'s/(.)(.)/\2\1/'</span>
+yx
+</pre>
+</div>
+</li>
+<li>当然不仅仅是reverse,很多时候,我们只需要一部分的匹配结果,比如第一部分
+<div class="org-src-container">
+
+<pre class="src src-sh">$ echo xy | sed -r <span style="color: #2aa198;">'s/(.)(.)/a\1/'</span>
+ax
+</pre>
+</div>
+</li>
+<li>需要注意的是BackRef也可以是RegEx的一部分!
+<div class="org-src-container">
+
+<pre class="src src-sh">$ echo xx | sed -r <span style="color: #2aa198;">'s/(.)\1/\1/'</span>
+x
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-9-3" class="outline-3">
+<h3 id="sec-9-3">\l \u (Case for Next Character)</h3>
+<div class="outline-text-3" id="text-9-3">
+<ul class="org-ul">
+<li>'\l'把下一个char变成小写,'\u'char变成大写,看例子
+<div class="org-src-container">
+
+<pre class="src src-sh"><span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ sed <span style="color: #2aa198;">'s/./\u&amp;/g'</span> rgb
+<span style="color: #268bd2;">LOWER</span><span style="color: #2aa198;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">1): "RED GREEN BLUE"</span>
+<span style="color: #268bd2;">UPPER</span><span style="color: #b58900;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">2): "RED GREEN BLUE"</span>
+<span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ sed <span style="color: #2aa198;">'s/./\l&amp;/g'</span> rgb
+<span style="color: #268bd2;">lower</span><span style="color: #268bd2;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">1): "red green blue"</span>
+<span style="color: #268bd2;">upper</span><span style="color: #6c71c4;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">2): "red green blue"</span>
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-9-4" class="outline-3">
+<h3 id="sec-9-4">\L \U \E (Case for Next Span)</h3>
+<div class="outline-text-3" id="text-9-4">
+<ul class="org-ul">
+<li>'\L' 把剩余的SubEx变成lowercase,知道遇到'\E'(或者'\U')
+</li>
+<li>'\U' 把剩余的SubEx变成uppercase,知道遇到'\E'(或者'\L')
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-10" class="outline-2">
+<h2 id="sec-10">Chapter 10: Command Addresses</h2>
+<div class="outline-text-2" id="text-10">
+<ul class="org-ul">
+<li>每个sed comamand在其前面有个可选的参数,叫做Address.Address要紧贴着在command
+之前
+</li>
+<li>如果你不设置Address,那么command"一直"会运行,但是你设置了Address,那么command
+就会有选择的运行啦.
+</li>
+<li>为了让我们的例子更加生动,我们先采取下11章才会介绍的delete命令,如下删除能够匹
+配的那一整行(PatSpace)
+<div class="org-src-container">
+
+<pre class="src src-sh"><span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ cat rgb
+<span style="color: #268bd2;">lower</span><span style="color: #2aa198;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">1): "red green blue"</span>
+<span style="color: #268bd2;">UPPER</span><span style="color: #b58900;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">2): "RED GREEN BLUE"</span>
+<span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ sed <span style="color: #2aa198;">'/\&lt;GREEN\&gt;/d'</span> rgb
+<span style="color: #268bd2;">lower</span><span style="color: #268bd2;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">1): "red green blue"</span>
+</pre>
+</div>
+</li>
+</ul>
+</div>
+<div id="outline-container-sec-10-1" class="outline-3">
+<h3 id="sec-10-1">Address Omitted</h3>
+<div class="outline-text-3" id="text-10-1">
+<ul class="org-ul">
+<li>先看一个没有address的例子,command总是运行
+<div class="org-src-container">
+
+<pre class="src src-sh">$ seq 4 | sed <span style="color: #2aa198;">'d'</span>
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-10-2" class="outline-3">
+<h3 id="sec-10-2">N Format Address</h3>
+<div class="outline-text-3" id="text-10-2">
+<ul class="org-ul">
+<li>在看一个只有一个integer作为Address的例子:只删除第一个
+<div class="org-src-container">
+
+<pre class="src src-sh">$ seq 4 | sed <span style="color: #2aa198;">'1d'</span>
+2
+3
+4
+</pre>
+</div>
+</li>
+<li>'$'是比较特殊的一个N,它可用来表示让command运行于最后一个input
+<div class="org-src-container">
+
+<pre class="src src-sh">$ seq 4 | sed <span style="color: #2aa198;">'$d'</span>
+1
+2
+3
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-10-3" class="outline-3">
+<h3 id="sec-10-3">L,H Format Address</h3>
+<div class="outline-text-3" id="text-10-3">
+<ul class="org-ul">
+<li>这种address就是设置一个运行command的区间
+<div class="org-src-container">
+
+<pre class="src src-sh">$ seq 8 | sed <span style="color: #2aa198;">'1,6d'</span>
+7
+8
+</pre>
+</div>
+</li>
+<li>一般来说L要小于H,如果不是的话,只有L会执行
+<div class="org-src-container">
+
+<pre class="src src-sh">$ seq 4 | sed <span style="color: #2aa198;">'3,1d'</span>
+1
+2
+4
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-10-4" class="outline-3">
+<h3 id="sec-10-4">/RegEx/ Format Address</h3>
+<div class="outline-text-3" id="text-10-4">
+<ul class="org-ul">
+<li>A '/RegEx/'作为address就是说,如果能够match到这个reg,那么我们就指向command
+<div class="org-src-container">
+
+<pre class="src src-sh"><span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ cat rgb
+<span style="color: #268bd2;">lower</span><span style="color: #2aa198;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">1): "red green blue"</span>
+<span style="color: #268bd2;">UPPER</span><span style="color: #b58900;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">2): "RED GREEN BLUE"</span>
+<span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ sed <span style="color: #2aa198;">'/red/ d'</span> rgb
+<span style="color: #268bd2;">UPPER</span><span style="color: #268bd2;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">2): "RED GREEN BLUE"</span>
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-10-5" class="outline-3">
+<h3 id="sec-10-5">/RegEx/,/RegEx/ Address</h3>
+<div class="outline-text-3" id="text-10-5">
+<ul class="org-ul">
+<li>就是reg也可以做个range
+<div class="org-src-container">
+
+<pre class="src src-sh"><span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ cat a-i.txt
+a
+b
+c
+d
+e
+f
+g
+h
+i
+<span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ sed <span style="color: #2aa198;">'/a/,/g/ d'</span> a-i.txt
+h
+i
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-10-6" class="outline-3">
+<h3 id="sec-10-6">L,/RegEx/ Format Address</h3>
+<div class="outline-text-3" id="text-10-6">
+<ul class="org-ul">
+<li>就是从L行开始,遇到/RegEx/就结束
+<div class="org-src-container">
+
+<pre class="src src-sh"><span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ cat a-i.txt
+a
+b
+c
+d
+e
+f
+g
+h
+i
+<span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ sed <span style="color: #2aa198;">'1, /e/ d'</span> a-i.txt
+f
+g
+h
+i
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-10-7" class="outline-3">
+<h3 id="sec-10-7">/RegEx/,+N Format Address</h3>
+<div class="outline-text-3" id="text-10-7">
+<ul class="org-ul">
+<li>就是遇到/RegEx/开始,再运行N次结束(注意这个再)
+<div class="org-src-container">
+
+<pre class="src src-sh"><span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ cat a-i.txt
+a
+b
+c
+d
+e
+f
+g
+h
+i
+<span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ sed <span style="color: #2aa198;">'/b/, +2 d'</span> a-i.txt
+a
+e
+f
+g
+h
+i
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-10-8" class="outline-3">
+<h3 id="sec-10-8">/RegEx/,~N Format Address</h3>
+<div class="outline-text-3" id="text-10-8">
+<ul class="org-ul">
+<li>遇到RegEx开始,到第Nth行结束
+<div class="org-src-container">
+
+<pre class="src src-sh"><span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ cat a-i.txt
+a
+b
+c
+d
+e
+f
+g
+h
+i
+<span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ sed <span style="color: #2aa198;">'/b/,~3 d'</span> a-i.txt
+a
+d
+e
+f
+g
+h
+i
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-10-9" class="outline-3">
+<h3 id="sec-10-9">First~Step Address</h3>
+<div class="outline-text-3" id="text-10-9">
+<ul class="org-ul">
+<li>就是从第First行开始运行,然后First+Step运行,First+Step+Step运行等等
+<div class="org-src-container">
+
+<pre class="src src-sh">$ seq 5 | sed <span style="color: #2aa198;">'1~2d'</span>
+2
+4
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-10-10" class="outline-3">
+<h3 id="sec-10-10">! (Inverts Address Match)</h3>
+<div class="outline-text-3" id="text-10-10">
+<ul class="org-ul">
+<li>就是符合某个,就不运行
+<div class="org-src-container">
+
+<pre class="src src-sh">$ seq 4 | sed <span style="color: #2aa198;">'$! d'</span>
+4
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-11" class="outline-2">
+<h2 id="sec-11">Chapter 11: Delete PatSpace Cntent - dD</h2>
+<div class="outline-text-2" id="text-11">
+</div><div id="outline-container-sec-11-1" class="outline-3">
+<h3 id="sec-11-1">sed d Command(delete)</h3>
+<div class="outline-text-3" id="text-11-1">
+<ul class="org-ul">
+<li>delete是和substitute地位一样的删除命令,删除的是真个PatSpace
+</li>
+<li>一般来说,只使用d命令是没有意义的,只会全部删除
+<div class="org-src-container">
+
+<pre class="src src-sh">$ seq 2 | sed <span style="color: #2aa198;">'d'</span>
+$
+</pre>
+</div>
+</li>
+<li>所以d命令一般都是和其他前面的Address紧密联系,上一章我们已经看到了
+<div class="org-src-container">
+
+<pre class="src src-sh">$ seq 4 | sed <span style="color: #2aa198;">'$d'</span>
+1
+2
+3
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-11-2" class="outline-3">
+<h3 id="sec-11-2">sed D Command</h3>
+<div class="outline-text-3" id="text-11-2">
+<ul class="org-ul">
+<li>如果没有'\n'的话,那么D和d命令是一致的,但是因为引入了'\n'的话.就没有restart
+一说了,这个时候需要一个新的命令,那就是D
+</li>
+<li>D不是删除这个PatSpace,而删除第一行(#1)外加一个newline
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-12" class="outline-2">
+<h2 id="sec-12">Chapter 12: Append, Insert, Change - aic</h2>
+<div class="outline-text-2" id="text-12">
+</div><div id="outline-container-sec-12-1" class="outline-3">
+<h3 id="sec-12-1">sed a Command(append)</h3>
+<div class="outline-text-3" id="text-12-1">
+<ul class="org-ul">
+<li>a命令是往PatSpace的打印结果里面append,不是向PatSpace里面append
+</li>
+<li>往结果最后加字符串
+<div class="org-src-container">
+
+<pre class="src src-sh"><span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ cat rgb
+<span style="color: #268bd2;">lower</span><span style="color: #2aa198;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">1): "red green blue"</span>
+<span style="color: #268bd2;">UPPER</span><span style="color: #b58900;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">2): "RED GREEN BLUE"</span>
+<span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ sed <span style="color: #2aa198;">'$ a zzz'</span> rgb
+<span style="color: #268bd2;">lower</span><span style="color: #268bd2;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">1): "red green blue"</span>
+<span style="color: #268bd2;">UPPER</span><span style="color: #6c71c4;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">2): "RED GREEN BLUE"</span>
+zzz
+</pre>
+</div>
+</li>
+<li>匹配到red以后,在下一行加文字
+<div class="org-src-container">
+
+<pre class="src src-sh"><span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ cat rgb
+<span style="color: #268bd2;">lower</span><span style="color: #2aa198;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">1): "red green blue"</span>
+<span style="color: #268bd2;">UPPER</span><span style="color: #b58900;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">2): "RED GREEN BLUE"</span>
+<span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ sed <span style="color: #2aa198;">'/red/ a zzz'</span> rgb
+<span style="color: #268bd2;">lower</span><span style="color: #268bd2;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">1): "red green blue"</span>
+zzz
+<span style="color: #268bd2;">UPPER</span><span style="color: #6c71c4;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">2): "RED GREEN BLUE"</span>
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-12-2" class="outline-3">
+<h3 id="sec-12-2">sed i Command(insert)</h3>
+<div class="outline-text-3" id="text-12-2">
+<ul class="org-ul">
+<li>和a对应,a是匹配到了,"下一行"加文字,i命令是匹配到了"上一行"加文字
+<div class="org-src-container">
+
+<pre class="src src-sh"><span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ cat rgb
+<span style="color: #268bd2;">lower</span><span style="color: #2aa198;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">1): "red green blue"</span>
+<span style="color: #268bd2;">UPPER</span><span style="color: #b58900;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">2): "RED GREEN BLUE"</span>
+<span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ sed <span style="color: #2aa198;">'/red/ i zzz'</span> rgb
+zzz
+<span style="color: #268bd2;">lower</span><span style="color: #268bd2;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">1): "red green blue"</span>
+<span style="color: #268bd2;">UPPER</span><span style="color: #6c71c4;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">2): "RED GREEN BLUE"</span>
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-12-3" class="outline-3">
+<h3 id="sec-12-3">sed c Command(change)</h3>
+<div class="outline-text-3" id="text-12-3">
+<ul class="org-ul">
+<li>change顾名思义,就是更改啦
+<div class="org-src-container">
+
+<pre class="src src-sh"><span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ cat rgb
+<span style="color: #268bd2;">lower</span><span style="color: #2aa198;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">1): "red green blue"</span>
+<span style="color: #268bd2;">UPPER</span><span style="color: #b58900;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">2): "RED GREEN BLUE"</span>
+<span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ sed <span style="color: #2aa198;">'1 c xxx'</span> rgb
+xxx
+<span style="color: #268bd2;">UPPER</span><span style="color: #268bd2;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">2): "RED GREEN BLUE"</span>
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-13" class="outline-2">
+<h2 id="sec-13">Chapter 13: Print PatSpace -pPl</h2>
+<div class="outline-text-2" id="text-13">
+</div><div id="outline-container-sec-13-1" class="outline-3">
+<h3 id="sec-13-1">sed p Command(print)</h3>
+<div class="outline-text-3" id="text-13-1">
+<ul class="org-ul">
+<li>p命令是用来打印PatSpace的,我们知道PatSpace是有AutoPrint的,但是是在sed script
+完毕的时候才会调用.如果我们想在其他时间打印PatSpace的情况,那么p命令是不二之选
+</li>
+<li>比如我们在替换之前先看我们要替换的是sha
+<div class="org-src-container">
+
+<pre class="src src-sh">$ cat rgb | sed <span style="color: #2aa198;">'p; s/red/xxx/'</span>
+<span style="color: #268bd2;">lower</span><span style="color: #2aa198;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">1): "red green blue"</span>
+<span style="color: #268bd2;">lower</span><span style="color: #b58900;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">1): "xxx green blue"</span>
+<span style="color: #268bd2;">UPPER</span><span style="color: #268bd2;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">2): "RED GREEN BLUE"</span>
+<span style="color: #268bd2;">UPPER</span><span style="color: #6c71c4;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">2): "RED GREEN BLUE"</span>
+</pre>
+</div>
+</li>
+<li>p命令当然可以选择打印其中某一行,一般这种情况下都要调用sed command option的-n
+停止AutoPrint
+<div class="org-src-container">
+
+<pre class="src src-sh"><span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ sed <span style="color: #2aa198;">'/2/ p'</span> rgb
+<span style="color: #268bd2;">lower</span><span style="color: #2aa198;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">1): "red green blue"</span>
+<span style="color: #268bd2;">UPPER</span><span style="color: #b58900;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">2): "RED GREEN BLUE"</span>
+<span style="color: #268bd2;">UPPER</span><span style="color: #268bd2;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">2): "RED GREEN BLUE"</span>
+<span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ sed -n <span style="color: #2aa198;">'/2/ p'</span> rgb
+<span style="color: #268bd2;">UPPER</span><span style="color: #6c71c4;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">2): "RED GREEN BLUE"</span>
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-13-2" class="outline-3">
+<h3 id="sec-13-2">sed P Command(Print)</h3>
+<div class="outline-text-3" id="text-13-2">
+<ul class="org-ul">
+<li>在没有'\n'的情况下P和p命令完全相等
+</li>
+<li>在有'\n'的情况下,P命令会打印#1直到第一个'\n'
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-13-3" class="outline-3">
+<h3 id="sec-13-3">sed l Command(display line)</h3>
+<div class="outline-text-3" id="text-13-3">
+<ul class="org-ul">
+<li>对于'\n'困扰多时的人来说,多么希望能够明确的知道当前的PatSpace里面有没有'\n'
+这个时候l命令出现了,它能够打印出'\n',在debug的时候非常有用
+<div class="org-src-container">
+
+<pre class="src src-sh"><span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ seq 3 | sed -n <span style="color: #2aa198;">'l'</span>
+1$
+2$
+3$
+<span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ seq 3 | sed -n <span style="color: #2aa198;">'N;l'</span>
+1\n2$
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-14" class="outline-2">
+<h2 id="sec-14">Chapter 14: Read/Write File - rR wW</h2>
+<div class="outline-text-2" id="text-14">
+</div><div id="outline-container-sec-14-1" class="outline-3">
+<h3 id="sec-14-1">sed r Command(read RFile)</h3>
+<div class="outline-text-3" id="text-14-1">
+<ul class="org-ul">
+<li>就是在Address配置的位置,进行读取文件的操作
+<div class="org-src-container">
+
+<pre class="src src-sh"><span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ cat rgb
+<span style="color: #268bd2;">lower</span><span style="color: #2aa198;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">1): "red green blue"</span>
+<span style="color: #268bd2;">UPPER</span><span style="color: #b58900;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">2): "RED GREEN BLUE"</span>
+<span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ seq 2 | sed <span style="color: #2aa198;">'1 r rgb'</span>
+1
+<span style="color: #268bd2;">lower</span><span style="color: #268bd2;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">1): "red green blue"</span>
+<span style="color: #268bd2;">UPPER</span><span style="color: #6c71c4;">(</span><span style="color: #93a1a1;">#</span><span style="color: #93a1a1;">2): "RED GREEN BLUE"</span>
+2
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-14-2" class="outline-3">
+<h3 id="sec-14-2">sed R Command (Read Rfile)</h3>
+<div class="outline-text-3" id="text-14-2">
+<ul class="org-ul">
+<li>每次读取一行,首先读取#1,然后是#2,以此类推
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-14-3" class="outline-3">
+<h3 id="sec-14-3">sed w Command (write Wfile)</h3>
+<div class="outline-text-3" id="text-14-3">
+<ul class="org-ul">
+<li>把结果写入到文件,注意,只有Address部分会写入文件,AutoPrint只会打印到stdout
+<div class="org-src-container">
+
+<pre class="src src-sh"><span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ seq 2 | sed <span style="color: #2aa198;">'1 w a.txt'</span>
+1
+2
+<span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ cat a.txt
+1
+<span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ seq 2 | sed <span style="color: #2aa198;">'2 w a.txt'</span>
+1
+2
+<span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ cat a.txt
+2
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-14-4" class="outline-3">
+<h3 id="sec-14-4">sed W Command(Write Wfile)</h3>
+<div class="outline-text-3" id="text-14-4">
+<ul class="org-ul">
+<li>每次把一行(从#1开始)数据写入到Wfile
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-15" class="outline-2">
+<h2 id="sec-15">Chapter 15: Read Line into PatSpace -nN</h2>
+<div class="outline-text-2" id="text-15">
+</div><div id="outline-container-sec-15-1" class="outline-3">
+<h3 id="sec-15-1">sed n Command (next line)</h3>
+<div class="outline-text-3" id="text-15-1">
+<ul class="org-ul">
+<li>n命令就是把next line读取到PatSpace
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-15-2" class="outline-3">
+<h3 id="sec-15-2">sed N Command (Next Line)</h3>
+<div class="outline-text-3" id="text-15-2">
+<ul class="org-ul">
+<li>相比于n命令,N命令更加重要,它在next line读取到PatSpace之前,先加了一个newline
+不过这个newline得靠l读取出来
+<div class="org-src-container">
+
+<pre class="src src-sh"><span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ seq 3 | sed -n <span style="color: #2aa198;">'l'</span>
+1$
+2$
+3$
+<span style="color: #657b83; font-weight: bold;">test</span>@openstest:~/sed-playground$ seq 3 | sed -n <span style="color: #2aa198;">'N;l'</span>
+1\n2$
+</pre>
+</div>
+</li>
+<li>值得注意的是,我们的命令在N读取完2就结束了.如果想继续,可能需要重启script的命
+令,比如D
+<div class="org-src-container">
+
+<pre class="src src-sh">$ seq 3 | sed -n <span style="color: #2aa198;">'N;l;D'</span>
+1\n2$
+2\n3$
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-16" class="outline-2">
+<h2 id="sec-16">Chapter 16: Access HoldSpace -hH gG x</h2>
+</div>
+</div>
+<div id="postamble" class="status">
+
+         <!-- Disqus Comment BEGIN -->
+          <div id="disqus_thread"></div>
+          <script type="text/javascript">
+              var disqus_shortname = 'harrifeng';
+
+              (function() {
+                  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+              })();
+          </script>
+          <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+         <!-- Disqus Comment END -->
+</div>
+</body>
+</html>

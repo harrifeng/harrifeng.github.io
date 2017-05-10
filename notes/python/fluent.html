@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>fluent</title>
-<!-- 2017-05-02 Tue 10:44 -->
+<!-- 2017-05-10 Wed 15:34 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="your name" />
@@ -201,7 +201,20 @@ for the JavaScript code in this tag.
 <li><a href="#sec-2-3-5">Tuples as Immutable lists</a></li>
 </ul>
 </li>
-<li><a href="#sec-2-4">Slicing</a></li>
+<li><a href="#sec-2-4">Slicing</a>
+<ul>
+<li><a href="#sec-2-4-1">Why Slices and Range Exclude the Last Item</a></li>
+<li><a href="#sec-2-4-2">Slice Objects</a></li>
+<li><a href="#sec-2-4-3">Multidimensional Slicing and Ellipsis</a></li>
+<li><a href="#sec-2-4-4">Assigning to Slices</a></li>
+</ul>
+</li>
+<li><a href="#sec-2-5">Using + and * with Sequences</a>
+<ul>
+<li><a href="#sec-2-5-1">Building Lists of Lists</a></li>
+</ul>
+</li>
+<li><a href="#sec-2-6">Augmented Assignment with Sequences</a></li>
 </ul>
 </li>
 </ul>
@@ -1462,6 +1475,340 @@ a.reverse<span style="color: #2aa198;">()</span>
 </div>
 <div id="outline-container-sec-2-4" class="outline-3">
 <h3 id="sec-2-4">Slicing</h3>
+<div class="outline-text-3" id="text-2-4">
+<ul class="org-ul">
+<li>一个list,tuple,str乃至所有的sequence type都有的特性,就是slice操作.这个操作
+非常有用,甚至影响了其他语言的设计,比如golang
+</li>
+</ul>
+</div>
+<div id="outline-container-sec-2-4-1" class="outline-4">
+<h4 id="sec-2-4-1">Why Slices and Range Exclude the Last Item</h4>
+<div class="outline-text-4" id="text-2-4-1">
+<ul class="org-ul">
+<li>许多语言,比如c和python里面的数组和其他sequence,都使用zero-based的方式来处理.
+这样做有很多优点:
+<ul class="org-ul">
+<li>当只提供stop的时候,可以很容易的知道一个slice的长度,比如my_list[:3]就知道
+有三个成员.range(3)也是一样的道理
+</li>
+<li>当同时提供了stop和start的时候,通过stop-start就知道了成员的个数,比如
+my_list[1:3]就是两个成员
+</li>
+<li>把一个sequence分成两个的时候,不容易overlap
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #268bd2;">l</span> = <span style="color: #2aa198;">[</span>10, 20, 30, 40, 50, 60<span style="color: #2aa198;">]</span>
+<span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span>l<span style="color: #b58900;">[</span>:2<span style="color: #b58900;">]</span><span style="color: #2aa198;">)</span>
+<span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span>l<span style="color: #b58900;">[</span>2:<span style="color: #b58900;">]</span><span style="color: #2aa198;">)</span>
+<span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span>l<span style="color: #b58900;">[</span>:3<span style="color: #b58900;">]</span><span style="color: #2aa198;">)</span>
+<span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span>l<span style="color: #b58900;">[</span>3:<span style="color: #b58900;">]</span><span style="color: #2aa198;">)</span>
+
+<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">&lt;===================OUTPUT===================&gt;</span>
+<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">[10, 20]</span>
+<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">[30, 40, 50, 60]</span>
+<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">[10, 20, 30]</span>
+<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">[40, 50, 60]</span>
+</pre>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-2-4-2" class="outline-4">
+<h4 id="sec-2-4-2">Slice Objects</h4>
+<div class="outline-text-4" id="text-2-4-2">
+<ul class="org-ul">
+<li>slice容易被人忽视的还在于它可以在start,stop之后拥有一个step选项,用来确定skip
+的成员的书面,也就是s[start:stop:step]
+</li>
+<li>step的时候,总是会包含第一个成员,而且step的数目是包括当前的成员的,例子如下
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #268bd2;">s</span> = <span style="color: #2aa198;">'1234567'</span>
+<span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span>s<span style="color: #b58900;">[</span>::3<span style="color: #b58900;">]</span><span style="color: #2aa198;">)</span>
+
+<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">&lt;===================OUTPUT===================&gt;</span>
+<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">147</span>
+</pre>
+</div>
+</li>
+<li>step还可以是负数,那么就是总是包含最后一个成员,从后面开始.
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #268bd2;">s</span> = <span style="color: #2aa198;">'1234567'</span>
+<span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span>s<span style="color: #b58900;">[</span>::-2<span style="color: #b58900;">]</span><span style="color: #2aa198;">)</span>
+
+<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">&lt;===================OUTPUT===================&gt;</span>
+<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">7531</span>
+</pre>
+</div>
+</li>
+<li>step如果是-1的话,会有特殊效果,那就是"翻转"sequence
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #268bd2;">s</span> = <span style="color: #2aa198;">'1234567'</span>
+<span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span>s<span style="color: #b58900;">[</span>::-1<span style="color: #b58900;">]</span><span style="color: #2aa198;">)</span>
+
+<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">&lt;===================OUTPUT===================&gt;</span>
+<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">7654321</span>
+</pre>
+</div>
+</li>
+<li>[start:stop:step]这种方式只有在[]里面(并且这个[]是index或者subscript作用的
+时候),才起作用:这种情况下[start:stop:step]会生成一个slice(start, stop, step)
+object.
+</li>
+<li>而我们的seq[strt:stop:step]在evaluate的时候,会调用special method__getitem__
+像是这样
+<div class="org-src-container">
+
+<pre class="src src-python">seq.__getitem__<span style="color: #2aa198;">(</span><span style="color: #657b83; font-weight: bold;">slice</span><span style="color: #b58900;">(</span>start, stop, step<span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
+</pre>
+</div>
+</li>
+<li>这是我们第一次遇到slice object,其实slice object非常的有用,它能够有自己的名
+字,就像excel表格里面的行和列一样,下面来介绍一个slice的应用
+</li>
+<li>假设我们有如下的发票信息,我们只希望优美的打印发票信息中的某两列信息(比如最
+重要是产品说明个单价),怎么办呢?
+<pre class="example">
+0.....6.................................40........52...55........
+1909  Pimoroni PiBrella                     $17.50    3    $52.50
+1489  6mm Tactile Switch x20                 $4.95    2     $9.90
+1510  Panavise Jr. - PV-201                 $28.00    1    $28.00
+1601  PiTFT Mini Kit 320x240                $34.95    1    $34.95
+</pre>
+</li>
+<li>办法就是使用slice来命名这些行(也就是string),打印的时候,可以按照我们的需要
+打印对应的列就可以了
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #268bd2;">invoice</span> = <span style="color: #2aa198;">"""</span>
+<span style="color: #2aa198;">0.....6.................................40........52...55........</span>
+<span style="color: #2aa198;">1909  Pimoroni PiBrella                     $17.50    3    $52.50</span>
+<span style="color: #2aa198;">1489  6mm Tactile Switch x20                 $4.95    2     $9.90</span>
+<span style="color: #2aa198;">1510  Panavise Jr. - PV-201                 $28.00    1    $28.00</span>
+<span style="color: #2aa198;">1601  PiTFT Mini Kit 320x240                $34.95    1    $34.95</span>
+<span style="color: #2aa198;">"""</span>
+
+<span style="color: #268bd2;">SKU</span>         = <span style="color: #657b83; font-weight: bold;">slice</span><span style="color: #2aa198;">(</span>0,  6<span style="color: #2aa198;">)</span>
+<span style="color: #268bd2;">DESCRIPTION</span> = <span style="color: #657b83; font-weight: bold;">slice</span><span style="color: #2aa198;">(</span>6,  40<span style="color: #2aa198;">)</span>
+<span style="color: #268bd2;">UNIT_PRICE</span>  = <span style="color: #657b83; font-weight: bold;">slice</span><span style="color: #2aa198;">(</span>40, 52<span style="color: #2aa198;">)</span>
+<span style="color: #268bd2;">QUANTITY</span>    = <span style="color: #657b83; font-weight: bold;">slice</span><span style="color: #2aa198;">(</span>52, 55<span style="color: #2aa198;">)</span>
+<span style="color: #268bd2;">ITEM_TOTAL</span>  = <span style="color: #657b83; font-weight: bold;">slice</span><span style="color: #2aa198;">(</span>55, <span style="color: #268bd2; font-weight: bold;">None</span><span style="color: #2aa198;">)</span>
+
+<span style="color: #859900; font-weight: bold;">for</span> item <span style="color: #859900; font-weight: bold;">in</span> invoice.split<span style="color: #2aa198;">(</span><span style="color: #2aa198;">'\n'</span><span style="color: #2aa198;">)[</span>2:-1<span style="color: #2aa198;">]</span>:
+<span style="background-color: #eee8d5;"> </span>   <span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span>item<span style="color: #b58900;">[</span>UNIT_PRICE<span style="color: #b58900;">]</span>.strip<span style="color: #b58900;">()</span>, item<span style="color: #b58900;">[</span>DESCRIPTION<span style="color: #b58900;">]</span>.strip<span style="color: #b58900;">()</span><span style="color: #2aa198;">)</span>
+
+<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">&lt;===================OUTPUT===================&gt;</span>
+<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">('$17.50', 'Pimoroni PiBrella')</span>
+<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">('$4.95', '6mm Tactile Switch x20')</span>
+<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">('$28.00', 'Panavise Jr. - PV-201')</span>
+<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">('$34.95', 'PiTFT Mini Kit 320x240')</span>
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-2-4-3" class="outline-4">
+<h4 id="sec-2-4-3">Multidimensional Slicing and Ellipsis</h4>
+<div class="outline-text-4" id="text-2-4-3">
+<ul class="org-ul">
+<li>在numpy这个package里面,[]operator也是可以接受使用逗号分隔的index的,比如
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #859900; font-weight: bold;">import</span> numpy
+<span style="color: #268bd2;">a</span> = numpy.arange<span style="color: #2aa198;">(</span>12<span style="color: #2aa198;">)</span>
+<span style="color: #268bd2;">a.shape</span> = 3, 4
+<span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span>a<span style="color: #2aa198;">)</span>
+<span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span>a<span style="color: #b58900;">[</span>2, 1<span style="color: #b58900;">]</span><span style="color: #2aa198;">)</span>
+
+<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">&lt;===================OUTPUT===================&gt;</span>
+<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">[[ 0  1  2  3]</span>
+<span style="color: #93a1a1;">#  </span><span style="color: #93a1a1;">[ 4  5  6  7]</span>
+<span style="color: #93a1a1;">#  </span><span style="color: #93a1a1;">[ 8  9 10 11]]</span>
+<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">9</span>
+</pre>
+</div>
+</li>
+<li>但是built-in的sequence type在python里面确实是只有一维的(one-dimensional)
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-2-4-4" class="outline-4">
+<h4 id="sec-2-4-4">Assigning to Slices</h4>
+<div class="outline-text-4" id="text-2-4-4">
+<ul class="org-ul">
+<li>如果一个sequence是mutable的,那么这个sequence的slice用法可以放在赋值语句的
+左边,作为receiver.注意,这个receiver的区间的长度,甚至可能和右边值的长度不一
+样.但是右边必须也得是iterable object,即便只有一个item
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #268bd2;">l</span> = <span style="color: #657b83; font-weight: bold;">list</span><span style="color: #2aa198;">(</span><span style="color: #657b83; font-weight: bold;">range</span><span style="color: #b58900;">(</span>10<span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
+<span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span>l<span style="color: #2aa198;">)</span>
+<span style="color: #268bd2;">l</span><span style="color: #2aa198;">[</span>2:5<span style="color: #2aa198;">]</span> = <span style="color: #2aa198;">[</span>20, 30<span style="color: #2aa198;">]</span>
+<span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span>l<span style="color: #2aa198;">)</span>
+
+<span style="color: #93a1a1;">##########################################</span>
+<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">TypeError: can only assign an iterable #</span>
+<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">l[2:5] = 100                           #</span>
+<span style="color: #93a1a1;">##########################################</span>
+
+<span style="color: #268bd2;">l</span><span style="color: #2aa198;">[</span>2:5<span style="color: #2aa198;">]</span> = <span style="color: #2aa198;">[</span>100<span style="color: #2aa198;">]</span>
+<span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span>l<span style="color: #2aa198;">)</span>
+
+<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">&lt;===================OUTPUT===================&gt;</span>
+<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</span>
+<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">[0, 1, 20, 30, 5, 6, 7, 8, 9]</span>
+<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">[0, 1, 100, 6, 7, 8, 9]</span>
+</pre>
+</div>
+</li>
+<li>如果一个sequence是mutable的,那么这个sequence的slice用法也是可以放到del语句
+后面的
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #268bd2;">l</span> = <span style="color: #657b83; font-weight: bold;">list</span><span style="color: #2aa198;">(</span><span style="color: #657b83; font-weight: bold;">range</span><span style="color: #b58900;">(</span>10<span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
+<span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span>l<span style="color: #2aa198;">)</span>
+<span style="color: #859900; font-weight: bold;">del</span> l<span style="color: #2aa198;">[</span>2:5<span style="color: #2aa198;">]</span>
+<span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span>l<span style="color: #2aa198;">)</span>
+
+<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">&lt;===================OUTPUT===================&gt;</span>
+<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</span>
+<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">[0, 1, 5, 6, 7, 8, 9]</span>
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2-5" class="outline-3">
+<h3 id="sec-2-5">Using + and * with Sequences</h3>
+<div class="outline-text-3" id="text-2-5">
+<ul class="org-ul">
+<li>sequence支持+operator和*operator:
+<ul class="org-ul">
+<li>对于+operator来说,两个操作数要求是同一个类型,否则相加不成功,结果返回一个
+新的sequence,原来的两个操作数都不会被改动
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #268bd2;">l1</span> = <span style="color: #2aa198;">[</span>1, 2, 3<span style="color: #2aa198;">]</span>
+<span style="color: #268bd2;">l2</span> = <span style="color: #2aa198;">[</span>4, 5, 6<span style="color: #2aa198;">]</span>
+<span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span>l1 + l2<span style="color: #2aa198;">)</span>
+<span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span>l1<span style="color: #2aa198;">)</span>
+<span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span>l2<span style="color: #2aa198;">)</span>
+
+<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">&lt;===================OUTPUT===================&gt;</span>
+<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">[1, 2, 3, 4, 5, 6]</span>
+<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">[1, 2, 3]</span>
+<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">[4, 5, 6]</span>
+</pre>
+</div>
+</li>
+<li>对于乘法来说,操作数中一个为sequence,另外一个为整形,结果返回一个新的sequence
+原来的两个操作数也都不会被改动
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #268bd2;">l1</span> = <span style="color: #2aa198;">[</span>1, 2, 3<span style="color: #2aa198;">]</span>
+<span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span>l1 * 2<span style="color: #2aa198;">)</span>
+<span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span>2 * l1<span style="color: #2aa198;">)</span>
+<span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span>l1<span style="color: #2aa198;">)</span>
+
+<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">&lt;===================OUTPUT===================&gt;</span>
+<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">[1, 2, 3, 1, 2, 3]</span>
+<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">[1, 2, 3, 1, 2, 3]</span>
+<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">[1, 2, 3]</span>
+</pre>
+</div>
+</li>
+</ul>
+</li>
+<li>对于a * n这种格式(其中n为整数,a为sequence),如果a的成员里面还有sequence,并且
+a不是immutable的话,那么这种做法非常的危险,因为同一个list会有多个reference,
+很多问题都会随之出现.
+</li>
+<li>下面就是一个常见的错误做法,此种做法的问题在于,最外层的list其实是三个reference,
+而且这三个reference是指向的同一个list
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #268bd2;">a</span> = <span style="color: #2aa198;">[</span><span style="color: #b58900;">[</span><span style="color: #2aa198;">'_'</span><span style="color: #b58900;">]</span> * 3<span style="color: #2aa198;">]</span> * 3
+<span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span>a<span style="color: #2aa198;">)</span>
+a<span style="color: #2aa198;">[</span>1<span style="color: #2aa198;">][</span>2<span style="color: #2aa198;">]</span> = <span style="color: #2aa198;">'0'</span>
+<span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span>a<span style="color: #2aa198;">)</span>
+
+<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">&lt;===================OUTPUT===================&gt;</span>
+<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">[['_', '_', '_'], ['_', '_', '_'], ['_', '_', '_']]</span>
+<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">[['_', '_', '0'], ['_', '_', '0'], ['_', '_', '0']]</span>
+</pre>
+</div>
+</li>
+<li>上面的做法其实是相当于如下
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #268bd2;">row</span> = <span style="color: #2aa198;">[</span><span style="color: #2aa198;">'_'</span><span style="color: #2aa198;">]</span> * 3
+<span style="color: #268bd2;">board</span> = <span style="color: #2aa198;">[]</span>
+<span style="color: #859900; font-weight: bold;">for</span> i <span style="color: #859900; font-weight: bold;">in</span> <span style="color: #657b83; font-weight: bold;">range</span><span style="color: #2aa198;">(</span>3<span style="color: #2aa198;">)</span>:
+<span style="background-color: #eee8d5;"> </span>   board.append<span style="color: #2aa198;">(</span>row<span style="color: #2aa198;">)</span>
+<span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span>board<span style="color: #2aa198;">)</span>
+board<span style="color: #2aa198;">[</span>1<span style="color: #2aa198;">][</span>2<span style="color: #2aa198;">]</span> = <span style="color: #2aa198;">'0'</span>
+<span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span>board<span style="color: #2aa198;">)</span>
+
+<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">&lt;===================OUTPUT===================&gt;</span>
+<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">[['_', '_', '_'], ['_', '_', '_'], ['_', '_', '_']]</span>
+<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">[['_', '_', '0'], ['_', '_', '0'], ['_', '_', '0']]</span>
+</pre>
+</div>
+</li>
+</ul>
+</div>
+<div id="outline-container-sec-2-5-1" class="outline-4">
+<h4 id="sec-2-5-1">Building Lists of Lists</h4>
+<div class="outline-text-4" id="text-2-5-1">
+<ul class="org-ul">
+<li>上面提到的这种创建list of list(nested list)的情况也是很常见的.常见的错误做
+法我们也在上面做了举例了,正确的解法应该是使用list comprehension
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #268bd2;">a</span> = <span style="color: #2aa198;">[</span><span style="color: #b58900;">[</span><span style="color: #2aa198;">'_'</span><span style="color: #b58900;">]</span> * 3 <span style="color: #859900; font-weight: bold;">for</span> i <span style="color: #859900; font-weight: bold;">in</span> <span style="color: #657b83; font-weight: bold;">range</span><span style="color: #b58900;">(</span>3<span style="color: #b58900;">)</span><span style="color: #2aa198;">]</span>
+<span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span>a<span style="color: #2aa198;">)</span>
+a<span style="color: #2aa198;">[</span>1<span style="color: #2aa198;">][</span>2<span style="color: #2aa198;">]</span> = <span style="color: #2aa198;">'0'</span>
+<span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span>a<span style="color: #2aa198;">)</span>
+
+<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">&lt;===================OUTPUT===================&gt;</span>
+<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">[['_', '_', '_'], ['_', '_', '_'], ['_', '_', '_']]</span>
+<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">[['_', '_', '_'], ['_', '_', '0'], ['_', '_', '_']]</span>
+</pre>
+</div>
+</li>
+<li>上面正确的做法其实是相当于
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #268bd2;">board</span> = <span style="color: #2aa198;">[]</span>
+<span style="color: #859900; font-weight: bold;">for</span> i <span style="color: #859900; font-weight: bold;">in</span> <span style="color: #657b83; font-weight: bold;">range</span><span style="color: #2aa198;">(</span>3<span style="color: #2aa198;">)</span>:
+<span style="background-color: #eee8d5;"> </span>   <span style="color: #268bd2;">row</span> = <span style="color: #2aa198;">[</span><span style="color: #2aa198;">'_'</span><span style="color: #2aa198;">]</span> * 3
+<span style="background-color: #eee8d5;"> </span>   board.append<span style="color: #2aa198;">(</span>row<span style="color: #2aa198;">)</span>
+<span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span>board<span style="color: #2aa198;">)</span>
+board<span style="color: #2aa198;">[</span>1<span style="color: #2aa198;">][</span>2<span style="color: #2aa198;">]</span> = <span style="color: #2aa198;">'0'</span>
+<span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span>board<span style="color: #2aa198;">)</span>
+
+<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">&lt;===================OUTPUT===================&gt;</span>
+<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">[['_', '_', '_'], ['_', '_', '_'], ['_', '_', '_']]</span>
+<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">[['_', '_', '_'], ['_', '_', '0'], ['_', '_', '_']]</span>
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2-6" class="outline-3">
+<h3 id="sec-2-6">Augmented Assignment with Sequences</h3>
 </div>
 </div>
 </div>
