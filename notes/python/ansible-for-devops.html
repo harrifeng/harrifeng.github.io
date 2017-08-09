@@ -1,0 +1,3014 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>ansible-for-devops</title>
+<!-- 2017-08-09 Wed 13:27 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="your name" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+
+         <link href="http://fonts.googleapis.com/css?family=Droid+Sans+Mono|Galdeano|Open+Sans:600italic,400,600|Roboto+Condensed:400,700" rel="stylesheet" type="text/css">
+         <link rel="stylesheet" type="text/css" href="/static/css/main.css"/>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="org-div-home-and-up">
+ <a accesskey="h" href="http://harrifeng.github.io/sitemap.html"> UP </a>
+ |
+ <a accesskey="H" href="http://harrifeng.github.io/index.html"> HOME </a>
+</div><div id="preamble" class="status">
+
+         <div id="header">
+            <div id="header-top">
+                <div id="blog-title">Harrifeng's Path</div>
+                <div id="blog-sub-title">纸上得来终觉浅,绝知此事要Coding</div>
+            </div>
+            <div id="nav">
+                <ul>
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/about.html">About Me</a></li>
+                    <li>
+                    </li>
+                </ul>
+            </div>
+         </div>
+</div>
+<div id="content">
+<h1 class="title">ansible-for-devops</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">Chapter 1: Getting Started with Ansible</a>
+<ul>
+<li><a href="#sec-1-1">Ansible and Infrastructure Management</a>
+<ul>
+<li><a href="#sec-1-1-1">on snowflakes and shell scripts</a></li>
+<li><a href="#sec-1-1-2">Configuration management</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-2">Installing Ansible</a></li>
+<li><a href="#sec-1-3">Creating a basic inventory file</a></li>
+<li><a href="#sec-1-4">Running your first Ad-Hoc Ansible command</a></li>
+</ul>
+</li>
+<li><a href="#sec-2">Chapter 2: Local Infrastructure Development: Ansible and Vagrant</a>
+<ul>
+<li><a href="#sec-2-1">Prototyping and testing with local virtual machines</a></li>
+<li><a href="#sec-2-2">Your first local server: Setting up Vagrant</a></li>
+<li><a href="#sec-2-3">Using Ansible with Vagrant</a></li>
+<li><a href="#sec-2-4">Your first Ansible playbook</a></li>
+</ul>
+</li>
+<li><a href="#sec-3">Chapter 3: Ad-Hoc Commands</a>
+<ul>
+<li><a href="#sec-3-1">Conducting an orchestra</a></li>
+<li><a href="#sec-3-2">Build intrastructure with Vagrant for testing</a></li>
+<li><a href="#sec-3-3">Inventory file for multiple servers</a></li>
+<li><a href="#sec-3-4">Your first ad-hoc commands</a>
+<ul>
+<li><a href="#sec-3-4-1">Discover Ansible's parallel nature</a></li>
+<li><a href="#sec-3-4-2">Learning about your environment</a></li>
+<li><a href="#sec-3-4-3">Make changes using Ansible modules</a></li>
+</ul>
+</li>
+<li><a href="#sec-3-5">Configure groups of servers, or individual servers</a>
+<ul>
+<li><a href="#sec-3-5-1">Congigure the Application servers</a></li>
+<li><a href="#sec-3-5-2">Configure the Database servers</a></li>
+<li><a href="#sec-3-5-3">Make changes to just one server</a></li>
+</ul>
+</li>
+<li><a href="#sec-3-6">Manage users and groups</a></li>
+<li><a href="#sec-3-7">Manage files and directories</a>
+<ul>
+<li><a href="#sec-3-7-1">Get information about a file</a></li>
+<li><a href="#sec-3-7-2">Copy a file to the servers</a></li>
+<li><a href="#sec-3-7-3">Retrieve a file from the servers</a></li>
+<li><a href="#sec-3-7-4">Create directories and files</a></li>
+<li><a href="#sec-3-7-5">Delete directories and files</a></li>
+</ul>
+</li>
+<li><a href="#sec-3-8">Run operations in the background</a>
+<ul>
+<li><a href="#sec-3-8-1">Update servers asynchronously, monitoring progress</a></li>
+<li><a href="#sec-3-8-2">Fire-and-forget tasks</a></li>
+</ul>
+</li>
+<li><a href="#sec-3-9">Check log files</a></li>
+<li><a href="#sec-3-10">Manage cron jobs</a></li>
+<li><a href="#sec-3-11">Deploy a version-controlled application</a></li>
+<li><a href="#sec-3-12">Ansible's SSH connection history</a></li>
+</ul>
+</li>
+<li><a href="#sec-4">Chapter 4: Ansible Playbooks</a>
+<ul>
+<li><a href="#sec-4-1">Power plays</a></li>
+<li><a href="#sec-4-2">Running Playbook with ansible-playbook</a>
+<ul>
+<li><a href="#sec-4-2-1">Limiting playbooks to particular hosts and groups</a></li>
+<li><a href="#sec-4-2-2">Setting use rand sudo options with ansible-playbook</a></li>
+<li><a href="#sec-4-2-3">other options for ansible-playbook</a></li>
+</ul>
+</li>
+<li><a href="#sec-4-3">Real-wordk playbook: CentOS Node.js app server</a></li>
+<li><a href="#sec-4-4">Real-world playbook: Ubuntu LAMP server with Drupal</a>
+<ul>
+<li><a href="#sec-4-4-1">Include a variables file, and discover pre_tasks and handlers</a></li>
+<li><a href="#sec-4-4-2">Basic LAMP server setup</a></li>
+<li><a href="#sec-4-4-3">Configure Apache</a></li>
+<li><a href="#sec-4-4-4">Configure PHP with lineinfile</a></li>
+<li><a href="#sec-4-4-5">Configure Mysql</a></li>
+<li><a href="#sec-4-4-6">Install Composer and Drush</a></li>
+<li><a href="#sec-4-4-7">Install Drupal with Git and Drush</a></li>
+</ul>
+</li>
+<li><a href="#sec-4-5">Real-world playbook: Ubuntu Apache Tomcat server with Solr</a></li>
+</ul>
+</li>
+<li><a href="#sec-5">Chapter 5: Ansible Playbooks - Beyond this Basics</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">Chapter 1: Getting Started with Ansible</h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1">Ansible and Infrastructure Management</h3>
+<div class="outline-text-3" id="text-1-1">
+</div><div id="outline-container-sec-1-1-1" class="outline-4">
+<h4 id="sec-1-1-1">on snowflakes and shell scripts</h4>
+<div class="outline-text-4" id="text-1-1-1">
+<ul class="org-ul">
+<li>许多的管理员都是通过ssh登录到server上面来完成某些工作的,而如果某些操作是要
+在多台机器上面运行的,那么就要登录到多台机器上面,一个一个的设置,非常的没效率
+</li>
+<li>有些管理员试图使用shell脚本来完成这项工作.在我看来,没有一个这样的脚本能够
+应付这样复杂的工作
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-1-1-2" class="outline-4">
+<h4 id="sec-1-1-2">Configuration management</h4>
+<div class="outline-text-4" id="text-1-1-2">
+<ul class="org-ul">
+<li>幸运的是,从2005年开始,诞生了一批专门来配置server的tool:
+<ul class="org-ul">
+<li>CFEngine
+</li>
+<li>Puppet
+</li>
+<li>Chef
+</li>
+</ul>
+</li>
+<li>这些工具非常的强大,能够完全的替代shell script.但是,传统的力量比你想的要强
+大的多:很多人数以十年积累的shell script都非常好用,他们不愿意完全放弃脚本,
+把自己的配置使用ruby重新写一遍
+</li>
+<li>正是基于这样的考虑,Ansible诞生了,ansible使用python编写,本身就比ruby拥有更多
+的用户,再加上它完全兼容regular shell command,让ansible变得非常流行
+</li>
+<li>和其他的configuration management tool(比如Chef, Puppet)不一样的地方在于,它
+不需要在每个target server上面装任何的daemon,只需要ssh就可以了
+</li>
+<li>说到configuration management tool,虽然实现的语言和工具不同,但是所有的configuration
+management tool都遵守一个原则,那就是幂等性
+<pre class="example">
+Idempotence is the ability to run an operation which produces
+the same result whether run once or multiple times
+</pre>
+</li>
+<li>shell script设计的时候,没有考虑过幂等性,所以在这方面,天然的弱于各种configuration
+management tool
+</li>
+<li>正好,ansible可以使用shell script,同时,又考虑了幂等性,是移植老的shell脚本的
+不二选择
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2">Installing Ansible</h3>
+<div class="outline-text-3" id="text-1-2">
+<ul class="org-ul">
+<li>Ansible唯一的依赖就是Python,一旦安装了python,使用pip就可以安装ansible.为了和
+本书的例子兼容,我们按照1.9.2版本的ansible(2.0版本有较大更新,可能会包含不兼容)
+<pre class="example">
+$ pip install -v
+You must give at least one requirement to install (see "pip help install")
+$ pip install 'ansible==1.9.2'
+Collecting ansible==1.9.2
+  Downloading ansible-1.9.2.tar.gz (927kB)
+    100% |████████████████████████████████| 931kB 191kB/s
+Requirement already satisfied: paramiko in /usr/local/lib/python2.7/site-packages (from ansible==1.9.2)
+Requirement already satisfied: jinja2 in /usr/local/lib/python2.7/site-packages (from ansible==1.9.2)
+Requirement already satisfied: PyYAML in /usr/local/lib/python2.7/site-packages (from ansible==1.9.2)
+Requirement already satisfied: setuptools in /usr/local/lib/python2.7/site-packages (from ansible==1.9.2)
+Requirement already satisfied: pycrypto&gt;=2.6 in /usr/local/lib/python2.7/site-packages (from ansible==1.9.2)
+Requirement already satisfied: cryptography&gt;=1.1 in /usr/local/lib/python2.7/site-packages (from paramiko-&gt;ansible==1.9.2)
+Requirement already satisfied: pyasn1&gt;=0.1.7 in /usr/local/lib/python2.7/site-packages (from paramiko-&gt;ansible==1.9.2)
+Requirement already satisfied: MarkupSafe&gt;=0.23 in /usr/local/lib/python2.7/site-packages (from jinja2-&gt;ansible==1.9.2)
+Requirement already satisfied: six&gt;=1.4.1 in /usr/local/lib/python2.7/site-packages (from cryptography&gt;=1.1-&gt;paramiko-&gt;ansible==1.9.2)
+Requirement already satisfied: cffi&gt;=1.4.1 in /usr/local/lib/python2.7/site-packages (from cryptography&gt;=1.1-&gt;paramiko-&gt;ansible==1.9.2)
+Requirement already satisfied: idna&gt;=2.1 in /usr/local/lib/python2.7/site-packages (from cryptography&gt;=1.1-&gt;paramiko-&gt;ansible==1.9.2)
+Requirement already satisfied: enum34 in /usr/local/lib/python2.7/site-packages (from cryptography&gt;=1.1-&gt;paramiko-&gt;ansible==1.9.2)
+Requirement already satisfied: asn1crypto&gt;=0.21.0 in /usr/local/lib/python2.7/site-packages (from cryptography&gt;=1.1-&gt;paramiko-&gt;ansible==1.9.2)
+Requirement already satisfied: ipaddress in /usr/local/lib/python2.7/site-packages (from cryptography&gt;=1.1-&gt;paramiko-&gt;ansible==1.9.2)
+Requirement already satisfied: packaging in /usr/local/lib/python2.7/site-packages (from cryptography&gt;=1.1-&gt;paramiko-&gt;ansible==1.9.2)
+Requirement already satisfied: pycparser in /usr/local/lib/python2.7/site-packages (from cffi&gt;=1.4.1-&gt;cryptography&gt;=1.1-&gt;paramiko-&gt;ansible==1.9.2)
+Requirement already satisfied: pyparsing in /usr/local/lib/python2.7/site-packages (from packaging-&gt;cryptography&gt;=1.1-&gt;paramiko-&gt;ansible==1.9.2)
+Building wheels for collected packages: ansible
+  Running setup.py bdist_wheel for ansible ... done
+  Stored in directory: /Users/hfeng/Library/Caches/pip/wheels/0e/92/cd/df5e5828b449a77ab7030cfc3c3e7110ed71b9088ae48a2678
+Successfully built ansible
+Installing collected packages: ansible
+Successfully installed ansible-1.9.2
+hfeng@ ch03 (onebyone) $ ansible --version
+ansible 1.9.2
+  configured module search path = None
+</pre>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-1-3" class="outline-3">
+<h3 id="sec-1-3">Creating a basic inventory file</h3>
+<div class="outline-text-3" id="text-1-3">
+<ul class="org-ul">
+<li>ansible是通过inventory file来确认你要和哪些server进行交互的,inventory file
+的样式有点像/etc/hosts.但是更加复杂
+</li>
+<li>在这里我们先来看一个最简单的inventory file例子: /etc/ansible/hosts
+<div class="org-src-container">
+
+<pre class="src src-conf">[<span style="color: #b58900;">example</span>]
+www.example.com
+</pre>
+</div>
+</li>
+<li>上面的example是说这一组的server叫做example
+</li>
+<li>example这一组里面有很多host的列表www.example.com就是其中一个,也可以使用ip来
+访问.而如果你不使用默认的ssh端口22的话,可以在这里指定,比如
+<div class="org-src-container">
+
+<pre class="src src-conf">[<span style="color: #b58900;">example</span>]
+www.example.com:2222
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-1-4" class="outline-3">
+<h3 id="sec-1-4">Running your first Ad-Hoc Ansible command</h3>
+<div class="outline-text-3" id="text-1-4">
+<ul class="org-ul">
+<li>我们来看看第一个例子:
+<ul class="org-ul">
+<li>首先设置一个ip地址(vagrant 机器)为/etc/ansible/hosts的内容
+<div class="org-src-container">
+
+<pre class="src src-conf">[<span style="color: #b58900;">example</span>]
+192.168.55.101
+</pre>
+</div>
+</li>
+<li>然后运行如下命令,如果成功,得到的提示如下
+<pre class="example">
+$ ansible example -m ping -u vagrant
+192.168.55.101 | SUCCESS =&gt; {
+    "changed": false,
+    "ping": "pong"
+}
+</pre>
+</li>
+</ul>
+</li>
+<li>上面的命令能够成功的原因,是你的机器可以passwordless的登录target机器,通常是
+将本机的public key加入到target machine的.ssh/authorized_keys里面
+</li>
+<li>我们还可以使用ansible快速的查看某个group的系统情况,比如
+<pre class="example">
+$ ansible example -a "free -m" -u vagrant
+192.168.55.101 | SUCCESS | rc=0 &gt;&gt;
+              total        used        free      shared  buff/cache   available
+Mem:            992          55         527           3         409         785
+Swap:          1023           0        1023
+
+$ ansible example -a "df -h" -u vagrant
+192.168.55.101 | SUCCESS | rc=0 &gt;&gt;
+Filesystem                    Size  Used Avail Use% Mounted on
+udev                          477M     0  477M   0% /dev
+tmpfs                         100M  3.1M   97M   4% /run
+/dev/mapper/vagrant--vg-root   38G  1.4G   35G   4% /
+tmpfs                         497M     0  497M   0% /dev/shm
+tmpfs                         5.0M     0  5.0M   0% /run/lock
+tmpfs                         497M     0  497M   0% /sys/fs/cgroup
+/dev/sda1                     472M   57M  391M  13% /boot
+vagrant                       233G  158G   76G  68% /vagrant
+tmpfs                         100M     0  100M   0% /run/user/1000
+</pre>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">Chapter 2: Local Infrastructure Development: Ansible and Vagrant</h2>
+<div class="outline-text-2" id="text-2">
+</div><div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1">Prototyping and testing with local virtual machines</h3>
+<div class="outline-text-3" id="text-2-1">
+<ul class="org-ul">
+<li>本书为了能够更加安全而且快速的运行代码,推荐大家使用本地的server,也就是虚拟机
+</li>
+<li>我们这里使用vagrant和virtualbox的组合
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2">Your first local server: Setting up Vagrant</h3>
+<div class="outline-text-3" id="text-2-2">
+<ul class="org-ul">
+<li>首先安装virtualbox和vagrant
+</li>
+<li>然后使用下面这句话来创建Vagrantfile
+<pre class="example">
+$ vagrant init geerlingguy/centos7
+A `Vagrantfile` has been placed in this directory. You are now
+ready to `vagrant up` your first virtual environment! Please read
+the comments in the Vagrantfile as well as documentation on
+`vagrantup.com` for more information on using Vagrant.
+</pre>
+</li>
+<li>另外的有用命令为:
+<ul class="org-ul">
+<li>vagrant up: 启动虚拟机
+</li>
+<li>vagrant ssh:进入虚拟机
+</li>
+<li>vagrant ssh-config: 查看虚拟机ssh配置
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-2-3" class="outline-3">
+<h3 id="sec-2-3">Using Ansible with Vagrant</h3>
+<div class="outline-text-3" id="text-2-3">
+<ul class="org-ul">
+<li>Virtualbox本来就很强大,但是功能并不是特别的易用,而vagrant正是提供了这种灵活
+性,并且额外提供了如下的特性:
+<ul class="org-ul">
+<li>Network interface management: 可以forward port,共享公共的network,或者使用
+private的network
+</li>
+<li>Shared folder management: 在你的机器和VM之间使用NFS进行共享文件夹
+</li>
+<li>Multi-machine management: 在一个Vagrantfile里面管理多个虚拟机
+</li>
+<li>Provisioning: 当第一次运行vagrant up的时候,vagrant会自动的给新的虚拟机提供
+provision服务(安装固定软件,更改配置等等),其实也可以通过vagrant provision在
+非第一次启动的时候运行provision
+</li>
+</ul>
+</li>
+<li>而vagrant支持的provision脚本里面,支持的就有Ansible(当然还有Puppet,Chef, Salt
+等等)
+</li>
+<li>后面会介绍到,ansible的运行可以总结在一个叫做playbook的yml文件里面,vagrant就
+可以在自己的Vagrant里面运行这种playbook,比如我们上面创建的Vagrant文件里面,可
+以加入如下的代码来运行某个playbook
+<div class="org-src-container">
+
+<pre class="src src-ruby">config.vm.provision <span style="color: #2aa198;">"ansible"</span> <span style="color: #859900; font-weight: bold;">do</span> | ansible |
+  ansible.playbook = <span style="color: #2aa198;">"playbook.yml"</span>
+  <span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">Run commands as root</span>
+  ansible.sudo = <span style="color: #268bd2; font-weight: bold;">true</span>
+<span style="color: #859900; font-weight: bold;">end</span>
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-2-4" class="outline-3">
+<h3 id="sec-2-4">Your first Ansible playbook</h3>
+<div class="outline-text-3" id="text-2-4">
+<ul class="org-ul">
+<li>既然已经提到了playbook,那么我们就创建一个简单的playbook.yml,注意,要和Vagrantfile
+在同一个文件夹下
+<div class="org-src-container">
+
+<pre class="src src-yaml"><span style="color: #93a1a1;">---</span>
+- <span style="color: #268bd2;">hosts</span>: all
+  <span style="color: #268bd2;">tasks</span>:
+  - <span style="color: #268bd2;">name</span>: Ensure NTP (for time synchronization) is installed
+    <span style="color: #268bd2;">yum</span>: name=ntp state=installed
+  - <span style="color: #268bd2;">name</span>: Ensure NTP is running.
+    <span style="color: #268bd2;">service</span>: name=ntpd state=started enabled=yes
+</pre>
+</div>
+</li>
+<li>然后运行vagrant provision得到如下结果
+<pre class="example">
+$ vagrant provision
+==&gt; default: Running provisioner: ansible...
+    default: Running ansible-playbook...
+
+PLAY [all] *********************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [default]
+
+TASK [Ensure NTP (for time synchronization) is installed] **********************
+changed: [default]
+
+TASK [Ensure NTP is running.] **************************************************
+changed: [default]
+
+PLAY RECAP *********************************************************************
+default                    : ok=3    changed=2    unreachable=0    failed=0
+</pre>
+</li>
+<li>好了,我们下面来认真的分析下我们的playbook.yml的代码:
+<ol class="org-ol">
+<li>&#x2014;
+这个是为了告诉解释器,我们是一个YAML格式的代码
+</li>
+<li>- hosts:all
+这是为了告诉Ansible哪些hosts需要运行(也就是/etc/ansible/hosts里面定义的
+group),但是因为vagrant没有使用这个设置,我们就设置为all表示所有的host
+</li>
+<li>tasks:
+在这一行下面所有的任务都会在所有的host上面运行
+</li>
+<li>- name: Ensure NTP daemon ( for time synchronization) is installed
+这是对这个task的说明
+</li>
+<li>yum: name=ntp state=installed,这个和运行yum install ntp是一个效果,但是会
+更加智能,会首先看安装了没有,安装了的话,就不再费劲了
+</li>
+<li>service: name=ntpd state=started enabled=yes
+最后这个任务,是确保ntpd service启动并且运行,同时还设置它为system boot
+</li>
+</ol>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">Chapter 3: Ad-Hoc Commands</h2>
+<div class="outline-text-2" id="text-3">
+</div><div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1">Conducting an orchestra</h3>
+<div class="outline-text-3" id="text-3-1">
+<ul class="org-ul">
+<li>我们来看看一个系统管理员常见的工作:
+<ul class="org-ul">
+<li>打补丁
+</li>
+<li>查看系统资源使用情况(比如内存,cpu)
+</li>
+<li>检查log文件
+</li>
+<li>管理cron jobs
+</li>
+</ul>
+</li>
+<li>有些工作可以使用脚本来运行,但是有些需要"实时诊断(diagnosing in real time)"的
+工作,就不行了,比如查看系统资源使用情况
+</li>
+<li>在ansible里面,这种情况的解决办法是ad-hoc command.它的名字ad-hoc,就决定了它
+只能用来"应急",真正经常使用的,而且非real time的工作,最好还是落实到playbook
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2">Build intrastructure with Vagrant for testing</h3>
+<div class="outline-text-3" id="text-3-2">
+<ul class="org-ul">
+<li>为了余下章节的介绍,我们首先要使用vagrant来创建一个测试环境,这里用到了vagrant
+优秀的multi-machine管理特性
+</li>
+<li>我们会创建三个VM,其中两个是app server,另外一个是db server.两个app server公
+用一个db server
+</li>
+<li>整个配置过程使用ruby,非常的简洁易懂
+<div class="org-src-container">
+
+<pre class="src src-ruby"><span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">-*- mode: ruby -*-</span>
+<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">vi: set ft=ruby :</span>
+
+<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">All Vagrant configuration is done below. The "2" in Vagrant.configure</span>
+<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">configures the configuration version (we support older styles for</span>
+<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">backwards compatibility). Please don't change it unless you know what</span>
+<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">you're doing.</span>
+<span style="color: #b58900;">Vagrant</span>.configure<span style="color: #2aa198;">(</span><span style="color: #2aa198;">"2"</span><span style="color: #2aa198;">)</span> <span style="color: #859900; font-weight: bold;">do</span> |config|
+  config.ssh.insert_key = <span style="color: #268bd2; font-weight: bold;">false</span>
+  config.vm.provider <span style="color: #268bd2; font-weight: bold;">:virtualbox</span> <span style="color: #859900; font-weight: bold;">do</span> |vb|
+    vb.customize <span style="color: #2aa198;">[</span><span style="color: #2aa198;">"modifyvm"</span>, <span style="color: #268bd2; font-weight: bold;">:id</span>, <span style="color: #2aa198;">"--memory"</span>, <span style="color: #2aa198;">"256"</span><span style="color: #2aa198;">]</span>
+  <span style="color: #859900; font-weight: bold;">end</span>
+
+  <span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">Application server 1.</span>
+  config.vm.define <span style="color: #2aa198;">"app1"</span> <span style="color: #859900; font-weight: bold;">do</span> |app|
+    app.vm.hostname = <span style="color: #2aa198;">"orc-app1.dev"</span>
+    app.vm.box = <span style="color: #2aa198;">"geerlingguy/centos7"</span>
+    app.vm.network <span style="color: #268bd2; font-weight: bold;">:private_network</span>, <span style="color: #268bd2; font-weight: bold;">ip:</span> <span style="color: #2aa198;">"192.168.60.4"</span>
+  <span style="color: #859900; font-weight: bold;">end</span>
+
+  <span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">Application server 2.</span>
+  config.vm.define <span style="color: #2aa198;">"app2"</span> <span style="color: #859900; font-weight: bold;">do</span> |app|
+    app.vm.hostname = <span style="color: #2aa198;">"orc-app2.dev"</span>
+    app.vm.box = <span style="color: #2aa198;">"geerlingguy/centos7"</span>
+    app.vm.network <span style="color: #268bd2; font-weight: bold;">:private_network</span>, <span style="color: #268bd2; font-weight: bold;">ip:</span> <span style="color: #2aa198;">"192.168.60.5"</span>
+  <span style="color: #859900; font-weight: bold;">end</span>
+
+  <span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">Database server</span>
+  config.vm.define <span style="color: #2aa198;">"db"</span> <span style="color: #859900; font-weight: bold;">do</span> |app|
+    app.vm.hostname = <span style="color: #2aa198;">"orc-db.dev"</span>
+    app.vm.box = <span style="color: #2aa198;">"geerlingguy/centos7"</span>
+    app.vm.network <span style="color: #268bd2; font-weight: bold;">:private_network</span>, <span style="color: #268bd2; font-weight: bold;">ip:</span> <span style="color: #2aa198;">"192.168.60.6"</span>
+  <span style="color: #859900; font-weight: bold;">end</span>
+<span style="color: #859900; font-weight: bold;">end</span>
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-3-3" class="outline-3">
+<h3 id="sec-3-3">Inventory file for multiple servers</h3>
+<div class="outline-text-3" id="text-3-3">
+<ul class="org-ul">
+<li>前面的playbook.yml里面出现过all来指代所有的vm host的情况下,但是那是在provision
+的时候,那个时候,vagrant使用的是自己的inventory file,而不是/etc/ansible/hosts
+</li>
+<li>这里,我们要设置本机的inventory file,并且要把db host和app host区分开来,所以
+我们要在本机的inventory文件(注意/etc/ansible/hosts通常需要root权限)里面明确
+的标识它们
+</li>
+<li>我们的inventory文件如下
+<div class="org-src-container">
+
+<pre class="src src-conf"><span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">Application servers</span>
+[<span style="color: #b58900;">app</span>]
+192.168.60.4
+192.168.60.5
+
+<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">Database server</span>
+[<span style="color: #b58900;">db</span>]
+192.168.60.6
+
+<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">Group 'multi' with all servers</span>
+[<span style="color: #b58900;">multi:children</span>]
+app
+db
+
+<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">Variables that will be applied to all servers</span>
+[<span style="color: #b58900;">multi:vars</span>]
+<span style="color: #268bd2;">ansible_ssh_user</span>=vagrant
+<span style="color: #268bd2;">ansible_ssh_private_key_file</span>=~/.vagran.d/insecure_private_key
+</pre>
+</div>
+</li>
+<li>注意[multi:children]这一行,其意思是创建一个成员是(children)groupd的group
+</li>
+<li>而[multi:vars]的意思是后面定义的变量对multi group里面所有的成员都成立
+</li>
+<li>最后一部分的private_key配置,省却了我们打开每个虚拟机进去authorized_keys加key
+     的步骤啦
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-3-4" class="outline-3">
+<h3 id="sec-3-4">Your first ad-hoc commands</h3>
+<div class="outline-text-3" id="text-3-4">
+</div><div id="outline-container-sec-3-4-1" class="outline-4">
+<h4 id="sec-3-4-1">Discover Ansible's parallel nature</h4>
+<div class="outline-text-4" id="text-3-4-1">
+<ul class="org-ul">
+<li>好了我们来看看一个ad-hoc命令例子吧,使用-a就可以运行ad-hoc命令啦
+<pre class="example">
+$ ansible multi -a "hostname"
+192.168.60.4 | SUCCESS | rc=0 &gt;&gt;
+orc-app1.dev
+
+192.168.60.6 | SUCCESS | rc=0 &gt;&gt;
+orc-db.dev
+
+192.168.60.5 | SUCCESS | rc=0 &gt;&gt;
+orc-app2.dev
+</pre>
+</li>
+<li>如果ansible报告No host matched,那么可能是需要设置一下ANSIBLE_HOSTS到
+      /etc/ansible/hosts,虽然这是默认设置,但是有时候可能没有起效,需要手动设置
+</li>
+<li>如果你注意到上面的输出结果就会发现,其实输出并不是按照输入的顺序来的,这是因
+为为了提高运行效率,ansible会为每一个host fork一个进程来处理它的命令,这样一
+来命令是"并行"运行的,所以结果肯定也是顺序不固定的
+</li>
+<li>如果你需要你的命令必须one by one的执行,那么可以加上-f 1.当然了这个-f设计出
+来并不仅仅是为了让你单独运行,而是考虑到如果主机很多的话,我为每个主机开一个
+进程可能会受到资源限制,这个时候,你可以指定一个比较大的值来平衡速度和限制比如
+-f 10, -f 25
+<pre class="example">
+$ ansible multi -a "hostname" -f 1
+192.168.60.4 | SUCCESS | rc=0 &gt;&gt;
+orc-app1.dev
+
+192.168.60.5 | SUCCESS | rc=0 &gt;&gt;
+orc-app2.dev
+
+192.168.60.6 | SUCCESS | rc=0 &gt;&gt;
+orc-db.dev
+</pre>
+</li>
+<li>注意一点,大部分人会把"multi"放到最靠近ansible的位置,因为这个符合大部分人的
+逻辑"在x组机器上面运行y命令",但是其实multi是可以放到命令最后的,比如
+<pre class="example">
+$ ansible -a "hostname" -f 1 multi
+192.168.60.4 | SUCCESS | rc=0 &gt;&gt;
+orc-app1.dev
+
+192.168.60.5 | SUCCESS | rc=0 &gt;&gt;
+orc-app2.dev
+
+192.168.60.6 | SUCCESS | rc=0 &gt;&gt;
+orc-db.dev
+</pre>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-3-4-2" class="outline-4">
+<h4 id="sec-3-4-2">Learning about your environment</h4>
+<div class="outline-text-4" id="text-3-4-2">
+<ul class="org-ul">
+<li>接下来,我们来看看每个server是不是有足够的硬盘空间
+<pre class="example">
+$ ansible multi -a "df -h"
+192.168.60.4 | SUCCESS | rc=0 &gt;&gt;
+Filesystem           Size  Used Avail Use% Mounted on
+/dev/mapper/cl-root   50G  1.2G   49G   3% /
+devtmpfs             108M     0  108M   0% /dev
+tmpfs                119M     0  119M   0% /dev/shm
+tmpfs                119M  4.4M  114M   4% /run
+tmpfs                119M     0  119M   0% /sys/fs/cgroup
+/dev/sda1           1014M  166M  849M  17% /boot
+/dev/mapper/cl-home   28G   33M   28G   1% /home
+tmpfs                 24M     0   24M   0% /run/user/0
+tmpfs                 24M     0   24M   0% /run/user/1000
+
+192.168.60.5 | SUCCESS | rc=0 &gt;&gt;
+Filesystem           Size  Used Avail Use% Mounted on
+/dev/mapper/cl-root   50G  1.5G   49G   3% /
+devtmpfs             108M     0  108M   0% /dev
+tmpfs                119M     0  119M   0% /dev/shm
+tmpfs                119M  4.4M  114M   4% /run
+tmpfs                119M     0  119M   0% /sys/fs/cgroup
+/dev/sda1           1014M  166M  849M  17% /boot
+/dev/mapper/cl-home   28G   33M   28G   1% /home
+vagrant              233G  165G   68G  71% /vagrant
+tmpfs                 24M     0   24M   0% /run/user/0
+tmpfs                 24M     0   24M   0% /run/user/1000
+
+192.168.60.6 | SUCCESS | rc=0 &gt;&gt;
+Filesystem           Size  Used Avail Use% Mounted on
+/dev/mapper/cl-root   50G  1.5G   49G   3% /
+devtmpfs             108M     0  108M   0% /dev
+tmpfs                119M     0  119M   0% /dev/shm
+tmpfs                119M  4.4M  114M   4% /run
+tmpfs                119M     0  119M   0% /sys/fs/cgroup
+/dev/sda1           1014M  166M  849M  17% /boot
+/dev/mapper/cl-home   28G   33M   28G   1% /home
+vagrant              233G  165G   68G  71% /vagrant
+tmpfs                 24M     0   24M   0% /run/user/0
+tmpfs                 24M     0   24M   0% /run/user/1000
+</pre>
+</li>
+<li>再来看看内存
+<pre class="example">
+$ ansible multi -a "free -m"
+192.168.60.5 | SUCCESS | rc=0 &gt;&gt;
+              total        used        free      shared  buff/cache   available
+Mem:            236          71           4           2         160         130
+Swap:          1023          23        1000
+
+192.168.60.6 | SUCCESS | rc=0 &gt;&gt;
+              total        used        free      shared  buff/cache   available
+Mem:            236          71           5           2         159         129
+Swap:          1023          22        1001
+
+192.168.60.4 | SUCCESS | rc=0 &gt;&gt;
+              total        used        free      shared  buff/cache   available
+Mem:            236          82          37           4         115         116
+Swap:          1023           0        1023
+</pre>
+</li>
+<li>最后来看看时间
+<pre class="example">
+$ ansible multi -a "date"
+
+192.168.60.4 | SUCCESS | rc=0 &gt;&gt;
+Mon Jun 26 10:10:26 UTC 2017
+
+192.168.60.5 | SUCCESS | rc=0 &gt;&gt;
+Mon Jun 26 10:10:26 UTC 2017
+
+192.168.60.6 | SUCCESS | rc=0 &gt;&gt;
+Mon Jun 26 10:10:26 UTC 2017
+</pre>
+</li>
+<li>大部分的app在设计的时候,都考虑到了不同的server之间的时间差异,但是如果能做到
+不同的server之间的时间差异越小,当然越好.在linux上面真正做到时间匹配的工具
+就是Network Time Protocol,我们会在后面做进一步介绍
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-3-4-3" class="outline-4">
+<h4 id="sec-3-4-3">Make changes using Ansible modules</h4>
+<div class="outline-text-4" id="text-3-4-3">
+<ul class="org-ul">
+<li>除了利用linux内置的的shell命令,我们ansible当然还提供了自己的特性,这些特性
+是通过一个个的module提供的,比如yum module,它就是对redhat的yum bash命令的包
+装,而且提供了更好的容错性
+</li>
+<li>命令如下,注意两个参数-s(alias for &#x2013;sudo)告诉ansible要用sudo权限来运行而-m
+自然是指定某个module啦(这里是yum)
+<pre class="example">
+$ ansible multi -s -m yum -a "name=ntp state=installed"
+192.168.60.6 | SUCCESS =&gt; {
+    "changed": true,
+    "msg": "",
+    "rc": 0,
+    "results": [
+        "..."
+    ]
+}
+192.168.60.5 | SUCCESS =&gt; {
+    "changed": true,
+    "msg": "",
+    "rc": 0,
+    "results": [
+        "..."
+    ]
+}
+192.168.60.4 | SUCCESS =&gt; {
+    "changed": true,
+    "msg": "",
+    "rc": 0,
+    "results": [
+        "..."
+    ]
+}
+</pre>
+</li>
+<li>安装好以后,我们就要确认daemon是否启动,并且有没有设置为开机启动,如果使用bash
+命令的话,是如下两个命令:
+<ul class="org-ul">
+<li>service ntp start
+</li>
+<li>chkconfig ntpd on
+</li>
+</ul>
+</li>
+<li>但是我们有ansible啊,由于上面两个命令的组合特别的常见,ansible为我们准备了以
+个module来完成上述两个操作,那就是service module
+<pre class="example">
+$ ansible multi -s -m service -a "name=ntpd state=started enabled=yes"
+192.168.60.4 | SUCCESS =&gt; {
+    "changed": true,
+    "enabled": true,
+    "name": "ntpd",
+    "state": "started",
+    "status": {
+    ...
+    }
+}
+192.168.60.5 | SUCCESS =&gt; {
+    "changed": true,
+    "enabled": true,
+    "name": "ntpd",
+    "state": "started",
+    "status": {
+    ...
+    }
+}
+192.168.60.6 | SUCCESS =&gt; {
+    "changed": true,
+    "enabled": true,
+    "name": "ntpd",
+    "state": "started",
+    "status": {
+    ...
+    }
+}
+</pre>
+</li>
+<li>如果我们想再运行一遍上面的代码,会看到changed这个项目从true变成了false,因为
+跟上次运行相比没有变化吗,可不就是false
+<pre class="example">
+192.168.60.6 | SUCCESS =&gt; {
+    "changed": false,
+    "enabled": true,
+    "name": "ntpd",
+    "state": "started",
+    "status": {
+    ...
+    }
+}
+</pre>
+</li>
+<li>ansible module相比于shell command的优势是在于两点:
+<ul class="org-ul">
+<li>更好的抽象性
+</li>
+<li>幂等性
+</li>
+</ul>
+</li>
+<li>所以,有些时候,为了达到这两个特性,我们甚至可以在本来可以运行shell command的
+时候"多此一举"的加上shell module
+<pre class="example">
+$ ansible multi -m shell -a "date"
+192.168.60.5 | SUCCESS | rc=0 &gt;&gt;
+Mon Jun 26 10:57:26 UTC 2017
+
+192.168.60.4 | SUCCESS | rc=0 &gt;&gt;
+Mon Jun 26 10:57:26 UTC 2017
+
+192.168.60.6 | SUCCESS | rc=0 &gt;&gt;
+Mon Jun 26 10:57:26 UTC 2017
+</pre>
+</li>
+<li>最后一件事情就是来测试一下我们的设置有没有效果啦,使用ntpdate命令来测试和基
+准时间的差距,由于测试需要关闭ntpd service,所以我们整个测试过程如下
+<pre class="example">
+$ ansible multi -s -a "service ntpd stop"
+ [WARNING]: Consider using service module rather than running service
+
+192.168.60.6 | SUCCESS | rc=0 &gt;&gt;
+Redirecting to /bin/systemctl stop  ntpd.service
+
+192.168.60.4 | SUCCESS | rc=0 &gt;&gt;
+Redirecting to /bin/systemctl stop  ntpd.service
+
+192.168.60.5 | SUCCESS | rc=0 &gt;&gt;
+Redirecting to /bin/systemctl stop  ntpd.service
+
+$ ansible multi -s -a "ntpdate -q 0.rhel.pool.ntp.org"
+192.168.60.4 | SUCCESS | rc=0 &gt;&gt;
+server 202.156.0.34, stratum 1, offset 0.004122, delay 0.37531
+server 118.189.177.157, stratum 2, offset 0.003388, delay 0.37759
+server 188.166.245.58, stratum 3, offset -0.002974, delay 0.37459
+server 203.123.48.219, stratum 1, offset 0.003859, delay 0.37943
+26 Jun 10:59:36 ntpdate[18779]: adjust time server 202.156.0.34 offset 0.004122 sec26 Jun 10:59:30 ntpdate[18779]: 203.123.48.219 rate limit response from server.
+
+192.168.60.5 | SUCCESS | rc=0 &gt;&gt;
+server 202.156.0.34, stratum 1, offset -0.006910, delay 0.37433
+server 118.189.177.157, stratum 0, offset 0.000000, delay 0.00000
+server 203.123.48.219, stratum 0, offset 0.000000, delay 0.00000
+server 188.166.245.58, stratum 0, offset 0.000000, delay 0.00000
+26 Jun 10:59:36 ntpdate[887]: adjust time server 202.156.0.34 offset -0.006910 sec26 Jun 10:59:28 ntpdate[887]: 118.189.177.157 rate limit response from server.
+26 Jun 10:59:28 ntpdate[887]: 203.123.48.219 rate limit response from server.
+
+192.168.60.6 | SUCCESS | rc=0 &gt;&gt;
+server 188.166.245.58, stratum 3, offset 0.003144, delay 0.37579
+server 203.123.48.219, stratum 0, offset 0.000000, delay 0.00000
+server 118.189.177.157, stratum 0, offset 0.000000, delay 0.00000
+server 202.156.0.34, stratum 1, offset 0.010433, delay 0.37636
+26 Jun 10:59:39 ntpdate[946]: adjust time server 202.156.0.34 offset 0.010433 sec26 Jun 10:59:32 ntpdate[946]: 203.123.48.219 rate limit response from server.
+26 Jun 10:59:37 ntpdate[946]: 118.189.177.157 rate limit response from server.
+
+$ ansible multi -s -a "service ntpd start"
+ [WARNING]: Consider using service module rather than running service
+
+192.168.60.5 | SUCCESS | rc=0 &gt;&gt;
+Redirecting to /bin/systemctl start  ntpd.service
+
+192.168.60.4 | SUCCESS | rc=0 &gt;&gt;
+Redirecting to /bin/systemctl start  ntpd.service
+
+192.168.60.6 | SUCCESS | rc=0 &gt;&gt;
+Redirecting to /bin/systemctl start  ntpd.service
+</pre>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-3-5" class="outline-3">
+<h3 id="sec-3-5">Configure groups of servers, or individual servers</h3>
+<div class="outline-text-3" id="text-3-5">
+</div><div id="outline-container-sec-3-5-1" class="outline-4">
+<h4 id="sec-3-5-1">Congigure the Application servers</h4>
+<div class="outline-text-4" id="text-3-5-1">
+<ul class="org-ul">
+<li>我们的app使用的django,所以我们要先安装django,而django不在CentOS的yum源里面,
+所以我们要使用easy_install来安装,ansible为easy_install准备了module,所以我们
+可以不用裸奔bash shell
+</li>
+<li>只是app需要安装django,所以我们的安装就只限定在app啦,除了python,我们还需要使
+用yum module安装一些和数据库相关的lib,已经easy_install命令本身
+<pre class="example">
+ $ ansible app -s -m yum -a "name=MySQL-python state=present"
+192.168.60.4 | SUCCESS =&gt; {
+    "changed": true,
+    "msg": "",
+    "rc": 0,
+    "results": [
+        "Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: mirror.vodien.com
+ * epel: mirrors.tuna.tsinghua.edu.cn
+ * extras: mirror.vodien.com
+ * updates: mirror.vodien.com
+Resolving Dependencies
+--&gt; Running transaction check
+---&gt; Package MySQL-python.x86_64 0:1.2.5-1.el7 will be installed
+--&gt; Finished Dependency Resolution
+Dependencies Resolved
+================================================================================
+ Package               Arch            Version              Repository     Size
+================================================================================
+Installing:
+ MySQL-python          x86_64          1.2.5-1.el7          base           90 k
+Transaction Summary
+================================================================================
+Install  1 Package
+Total download size: 90 k
+Installed size: 284 k
+Downloading packages:
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : MySQL-python-1.2.5-1.el7.x86_64                              1/1
+  Verifying  : MySQL-python-1.2.5-1.el7.x86_64                              1/1
+Installed:
+  MySQL-python.x86_64 0:1.2.5-1.el7
+Complete!
+"
+    ]
+}
+192.168.60.5 | SUCCESS =&gt; {
+    "changed": true,
+    "msg": "",
+    "rc": 0,
+    "results": [
+        "Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: mirror.vastspace.net
+ * epel: mirrors.tuna.tsinghua.edu.cn
+ * extras: mirror.vastspace.net
+ * updates: mirror.vastspace.net
+Resolving Dependencies
+--&gt; Running transaction check
+---&gt; Package MySQL-python.x86_64 0:1.2.5-1.el7 will be installed
+--&gt; Finished Dependency Resolution
+Dependencies Resolved
+================================================================================
+ Package               Arch            Version              Repository     Size
+================================================================================
+Installing:
+ MySQL-python          x86_64          1.2.5-1.el7          base           90 k
+Transaction Summary
+================================================================================
+Install  1 Package
+Total download size: 90 k
+Installed size: 284 k
+Downloading packages:
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : MySQL-python-1.2.5-1.el7.x86_64                              1/1
+  Verifying  : MySQL-python-1.2.5-1.el7.x86_64                              1/1
+Installed:
+  MySQL-python.x86_64 0:1.2.5-1.el7
+Complete!
+"
+    ]
+}
+ $ ansible app -s -m yum -a "name=python-setuptools state=present"
+192.168.60.4 | SUCCESS =&gt; {
+    "changed": false,
+    "msg": "",
+    "rc": 0,
+    "results": [
+        "python-setuptools-0.9.8-4.el7.noarch providing python-setuptools is already installed"
+    ]
+}
+192.168.60.5 | SUCCESS =&gt; {
+    "changed": false,
+    "msg": "",
+    "rc": 0,
+    "results": [
+        "python-setuptools-0.9.8-4.el7.noarch providing python-setuptools is already installed"
+    ]
+}
+ $ ansible app -s -m easy_install -a "name=django"
+192.168.60.5 | SUCCESS =&gt; {
+    "binary": "/bin/easy_install",
+    "changed": true,
+    "name": "django",
+    "virtualenv": null
+}
+192.168.60.4 | SUCCESS =&gt; {
+    "binary": "/bin/easy_install",
+    "changed": true,
+    "name": "django",
+    "virtualenv": null
+}
+</pre>
+</li>
+<li>安装之后,照例我们还是要测试下是否成功,还是使用ad-hoc命令如下(当然了其实本
+章的很多例子都是写到playbook更合适,但是为了ad-hoc的演示,这里都没有使用playbook)
+<pre class="example">
+$ ansible app -a "python -c 'import django; print django.get_version()'"
+192.168.60.5 | SUCCESS | rc=0 &gt;&gt;
+1.11.2
+
+192.168.60.4 | SUCCESS | rc=0 &gt;&gt;
+1.11.2
+</pre>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-3-5-2" class="outline-4">
+<h4 id="sec-3-5-2">Configure the Database servers</h4>
+<div class="outline-text-4" id="text-3-5-2">
+<ul class="org-ul">
+<li>配置数据库就相应的要使用db group了,完整的配置如下
+<pre class="example">
+hfeng@ ch03 (onebyone) $ ansible db -s -m yum -a "name=mariadb-server state=present"
+192.168.60.6 | SUCCESS =&gt; {
+    "changed": true,
+    "msg": "",
+    "rc": 0,
+    "results": [
+        "Loaded plugins: fastestmirror\nLoading mirror speeds from cached hostfile
+ * base: mirror.vastspace.net
+ * epel: kartolo.sby.datautama.net.id
+ * extras: mirror.vastspace.net
+ * updates: mirror.vastspace.net
+Resolving Dependencies
+--&gt; Running transaction check
+---&gt; Package mariadb-server.x86_64 1:5.5.52-1.el7 will be installed
+--&gt; Processing Dependency: mariadb(x86-64) = 1:5.5.52-1.el7 for package: 1:mariadb-server-5.5.52-1.el7.x86_64
+--&gt; Processing Dependency: perl-DBI for package: 1:mariadb-server-5.5.52-1.el7.x86_64
+--&gt; Processing Dependency: perl-DBD-MySQL for package: 1:mariadb-server-5.5.52-1.el7.x86_64
+--&gt; Processing Dependency: perl(Data::Dumper) for package: 1:mariadb-server-5.5.52-1.el7.x86_64
+--&gt; Processing Dependency: perl(DBI) for package: 1:mariadb-server-5.5.52-1.el7.x86_64
+--&gt; Running transaction check
+---&gt; Package mariadb.x86_64 1:5.5.52-1.el7 will be installed
+---&gt; Package perl-DBD-MySQL.x86_64 0:4.023-5.el7 will be installed
+---&gt; Package perl-DBI.x86_64 0:1.627-4.el7 will be installed
+--&gt; Processing Dependency: perl(RPC::PlServer) &gt;= 0.2001 for package: perl-DBI-1.627-4.el7.x86_64
+--&gt; Processing Dependency: perl(RPC::PlClient) &gt;= 0.2000 for package: perl-DBI-1.627-4.el7.x86_64
+---&gt; Package perl-Data-Dumper.x86_64 0:2.145-3.el7 will be installed
+--&gt; Running transaction check
+---&gt; Package perl-PlRPC.noarch 0:0.2020-14.el7 will be installed
+--&gt; Processing Dependency: perl(Net::Daemon) &gt;= 0.13 for package: perl-PlRPC-0.2020-14.el7.noarch
+--&gt; Processing Dependency: perl(Net::Daemon::Test) for package: perl-PlRPC-0.2020-14.el7.noarch
+--&gt; Processing Dependency: perl(Net::Daemon::Log) for package: perl-PlRPC-0.2020-14.el7.noarch
+--&gt; Processing Dependency: perl(Compress::Zlib) for package: perl-PlRPC-0.2020-14.el7.noarch
+--&gt; Running transaction check
+---&gt; Package perl-IO-Compress.noarch 0:2.061-2.el7 will be installed
+--&gt; Processing Dependency: perl(Compress::Raw::Zlib) &gt;= 2.061 for package: perl-IO-Compress-2.061-2.el7.noarch
+--&gt; Processing Dependency: perl(Compress::Raw::Bzip2) &gt;= 2.061 for package: perl-IO-Compress-2.061-2.el7.noarch
+---&gt; Package perl-Net-Daemon.noarch 0:0.48-5.el7 will be installed
+--&gt; Running transaction check
+---&gt; Package perl-Compress-Raw-Bzip2.x86_64 0:2.061-3.el7 will be installed
+---&gt; Package perl-Compress-Raw-Zlib.x86_64 1:2.061-4.el7 will be installed
+--&gt; Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================
+ Package                      Arch        Version               Repository
+                                                                           Size
+================================================================================
+Installing:
+ mariadb-server               x86_64      1:5.5.52-1.el7        base       11 M
+Installing for dependencies:
+ mariadb                      x86_64      1:5.5.52-1.el7        base      8.7 M
+ perl-Compress-Raw-Bzip2      x86_64      2.061-3.el7           base       32 k
+ perl-Compress-Raw-Zlib       x86_64      1:2.061-4.el7         base       57 k
+ perl-DBD-MySQL               x86_64      4.023-5.el7           base      140 k
+ perl-DBI                     x86_64      1.627-4.el7           base      802 k
+ perl-Data-Dumper             x86_64      2.145-3.el7           base       47 k
+ perl-IO-Compress             noarch      2.061-2.el7           base      260 k
+ perl-Net-Daemon              noarch      0.48-5.el7            base       51 k
+ perl-PlRPC                   noarch      0.2020-14.el7         base       36 k
+
+Transaction Summary
+================================================================================
+Install  1 Package (+9 Dependent packages)
+
+Total download size: 21 M
+Installed size: 107 M
+Downloading packages:
+--------------------------------------------------------------------------------
+Total                                              1.8 MB/s |  21 MB  00:11
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : perl-Data-Dumper-2.145-3.el7.x86_64                         1/10
+  Installing : perl-Net-Daemon-0.48-5.el7.noarch                           2/10
+  Installing : 1:perl-Compress-Raw-Zlib-2.061-4.el7.x86_64                 3/10
+  Installing : 1:mariadb-5.5.52-1.el7.x86_64                               4/10
+  Installing : perl-Compress-Raw-Bzip2-2.061-3.el7.x86_64                  5/10
+  Installing : perl-IO-Compress-2.061-2.el7.noarch                         6/10
+  Installing : perl-PlRPC-0.2020-14.el7.noarch                             7/10
+  Installing : perl-DBI-1.627-4.el7.x86_64                                 8/10
+  Installing : perl-DBD-MySQL-4.023-5.el7.x86_64                           9/10
+  Installing : 1:mariadb-server-5.5.52-1.el7.x86_64                       10/10
+  Verifying  : perl-Compress-Raw-Bzip2-2.061-3.el7.x86_64                  1/10
+  Verifying  : 1:mariadb-5.5.52-1.el7.x86_64                               2/10
+  Verifying  : perl-Data-Dumper-2.145-3.el7.x86_64                         3/10
+  Verifying  : 1:mariadb-server-5.5.52-1.el7.x86_64                        4/10
+  Verifying  : perl-PlRPC-0.2020-14.el7.noarch                             5/10
+  Verifying  : 1:perl-Compress-Raw-Zlib-2.061-4.el7.x86_64                 6/10
+  Verifying  : perl-Net-Daemon-0.48-5.el7.noarch                           7/10
+  Verifying  : perl-DBI-1.627-4.el7.x86_64                                 8/10
+  Verifying  : perl-IO-Compress-2.061-2.el7.noarch                         9/10
+  Verifying  : perl-DBD-MySQL-4.023-5.el7.x86_64                          10/10
+
+Installed:
+  mariadb-server.x86_64 1:5.5.52-1.el7
+
+Dependency Installed:
+  mariadb.x86_64 1:5.5.52-1.el7
+  perl-Compress-Raw-Bzip2.x86_64 0:2.061-3.el7
+  perl-Compress-Raw-Zlib.x86_64 1:2.061-4.el7
+  perl-DBD-MySQL.x86_64 0:4.023-5.el7
+  perl-DBI.x86_64 0:1.627-4.el7
+  perl-Data-Dumper.x86_64 0:2.145-3.el7
+  perl-IO-Compress.noarch 0:2.061-2.el7
+  perl-Net-Daemon.noarch 0:0.48-5.el7
+  perl-PlRPC.noarch 0:0.2020-14.el7
+
+Complete!
+"
+    ]
+}
+hfeng@ ch03 (onebyone) $ ansible db -s -m service -a "name=mariadb state=started enabled=yes"
+192.168.60.6 | SUCCESS =&gt; {
+    "changed": true,
+    "enabled": true,
+    "name": "mariadb",
+    "state": "started",
+    "status": {
+        "ActiveEnterTimestampMonotonic": "0",
+        "ActiveExitTimestampMonotonic": "0",
+        "ActiveState": "inactive",
+        "After": "-.mount syslog.target basic.target system.slice tmp.mount network.target systemd-journald.socket",
+        "AllowIsolate": "no",
+        "AssertResult": "no",
+        "AssertTimestampMonotonic": "0",
+        "Before": "shutdown.target",
+        "BlockIOAccounting": "no",
+        "BlockIOWeight": "18446744073709551615",
+        "CPUAccounting": "no",
+        "CPUQuotaPerSecUSec": "infinity",
+        "CPUSchedulingPolicy": "0",
+        "CPUSchedulingPriority": "0",
+        "CPUSchedulingResetOnFork": "no",
+        "CPUShares": "18446744073709551615",
+        "CanIsolate": "no",
+        "CanReload": "no",
+        "CanStart": "yes",
+        "CanStop": "yes",
+        "CapabilityBoundingSet": "18446744073709551615",
+        "ConditionResult": "no",
+        "ConditionTimestampMonotonic": "0",
+        "Conflicts": "shutdown.target",
+        "ControlPID": "0",
+        "DefaultDependencies": "yes",
+        "Delegate": "no",
+        "Description": "MariaDB database server",
+        "DevicePolicy": "auto",
+        "ExecMainCode": "0",
+        "ExecMainExitTimestampMonotonic": "0",
+        "ExecMainPID": "0",
+        "ExecMainStartTimestampMonotonic": "0",
+        "ExecMainStatus": "0",
+        "ExecStart": "{ path=/usr/bin/mysqld_safe ; argv[]=/usr/bin/mysqld_safe --basedir=/usr ; ignore_errors=no ; start_time=[n/a] ; stop_time=[n/a] ; pid=0 ; code=(null) ; status=0/0 }",
+        "ExecStartPost": "{ path=/usr/libexec/mariadb-wait-ready ; argv[]=/usr/libexec/mariadb-wait-ready $MAINPID ; ignore_errors=no ; start_time=[n/a] ; stop_time=[n/a] ; pid=0 ; code=(null) ; status=0/0 }",
+        "ExecStartPre": "{ path=/usr/libexec/mariadb-prepare-db-dir ; argv[]=/usr/libexec/mariadb-prepare-db-dir %n ; ignore_errors=no ; start_time=[n/a] ; stop_time=[n/a] ; pid=0 ; code=(null) ; status=0/0 }",
+        "FailureAction": "none",
+        "FileDescriptorStoreMax": "0",
+        "FragmentPath": "/usr/lib/systemd/system/mariadb.service",
+        "Group": "mysql",
+        "GuessMainPID": "yes",
+        "IOScheduling": "0",
+        "Id": "mariadb.service",
+        "IgnoreOnIsolate": "no",
+        "IgnoreOnSnapshot": "no",
+        "IgnoreSIGPIPE": "yes",
+        "InactiveEnterTimestampMonotonic": "0",
+        "InactiveExitTimestampMonotonic": "0",
+        "JobTimeoutAction": "none",
+        "JobTimeoutUSec": "0",
+        "KillMode": "control-group",
+        "KillSignal": "15",
+        "LimitAS": "18446744073709551615",
+        "LimitCORE": "18446744073709551615",
+        "LimitCPU": "18446744073709551615",
+        "LimitDATA": "18446744073709551615",
+        "LimitFSIZE": "18446744073709551615",
+        "LimitLOCKS": "18446744073709551615",
+        "LimitMEMLOCK": "65536",
+        "LimitMSGQUEUE": "819200",
+        "LimitNICE": "0",
+        "LimitNOFILE": "4096",
+        "LimitNPROC": "861",
+        "LimitRSS": "18446744073709551615",
+        "LimitRTPRIO": "0",
+        "LimitRTTIME": "18446744073709551615",
+        "LimitSIGPENDING": "861",
+        "LimitSTACK": "18446744073709551615",
+        "LoadState": "loaded",
+        "MainPID": "0",
+        "MemoryAccounting": "no",
+        "MemoryCurrent": "18446744073709551615",
+        "MemoryLimit": "18446744073709551615",
+        "MountFlags": "0",
+        "Names": "mariadb.service",
+        "NeedDaemonReload": "no",
+        "Nice": "0",
+        "NoNewPrivileges": "no",
+        "NonBlocking": "no",
+        "NotifyAccess": "none",
+        "OOMScoreAdjust": "0",
+        "OnFailureJobMode": "replace",
+        "PermissionsStartOnly": "no",
+        "PrivateDevices": "no",
+        "PrivateNetwork": "no",
+        "PrivateTmp": "yes",
+        "ProtectHome": "no",
+        "ProtectSystem": "no",
+        "RefuseManualStart": "no",
+        "RefuseManualStop": "no",
+        "RemainAfterExit": "no",
+        "Requires": "-.mount basic.target",
+        "RequiresMountsFor": "/var/tmp",
+        "Restart": "no",
+        "RestartUSec": "100ms",
+        "Result": "success",
+        "RootDirectoryStartOnly": "no",
+        "RuntimeDirectoryMode": "0755",
+        "SameProcessGroup": "no",
+        "SecureBits": "0",
+        "SendSIGHUP": "no",
+        "SendSIGKILL": "yes",
+        "Slice": "system.slice",
+        "StandardError": "inherit",
+        "StandardInput": "null",
+        "StandardOutput": "journal",
+        "StartLimitAction": "none",
+        "StartLimitBurst": "5",
+        "StartLimitInterval": "10000000",
+        "StartupBlockIOWeight": "18446744073709551615",
+        "StartupCPUShares": "18446744073709551615",
+        "StatusErrno": "0",
+        "StopWhenUnneeded": "no",
+        "SubState": "dead",
+        "SyslogLevelPrefix": "yes",
+        "SyslogPriority": "30",
+        "SystemCallErrorNumber": "0",
+        "TTYReset": "no",
+        "TTYVHangup": "no",
+        "TTYVTDisallocate": "no",
+        "TimeoutStartUSec": "5min",
+        "TimeoutStopUSec": "5min",
+        "TimerSlackNSec": "50000",
+        "Transient": "no",
+        "Type": "simple",
+        "UMask": "0022",
+        "UnitFilePreset": "disabled",
+        "UnitFileState": "disabled",
+        "User": "mysql",
+        "Wants": "system.slice",
+        "WatchdogTimestampMonotonic": "0",
+        "WatchdogUSec": "0"
+    }
+}
+hfeng@ ch03 (onebyone) $ ansible db -s -a "iptables -A INPUT -s 192.168.60.9/24 -p tcp -m tcp --dport 3306 -j ACCEPT"
+192.168.60.6 | SUCCESS | rc=0 &gt;&gt;
+</pre>
+</li>
+<li>上面的配置完成了,但是现在使用app去连接db会失败的,因为你还没有设置mariadb数
+据库,mariadb数据库的密码还是随机的.一般来说,这个时候我们要登录到每个机器上
+面,然后使用mysql_secure_instllation.幸运的是,这个步骤ansible也帮我们做了,
+还是通过module做的,module的名字叫做mysql_* module.比如我们这里就是创建用户
+的需求,所以需要的是mysql_user module
+</li>
+<li>mysql_* module是用python写的(ansible都是用python写的),所以我们还需要在机器
+上面安装yum的MySQL-python package,来让module能够工作
+<pre class="example">
+hfeng@ ch03 (onebyone) $ ansible db -s -m yum -a "name=MySQL-python state=present"
+192.168.60.6 | SUCCESS =&gt; {
+    "changed": true,
+    "msg": "",
+    "rc": 0,
+    "results": [
+        "Loaded plugins: fastestmirror\nLoading mirror speeds from cached hostfile
+ * base: mirror.vastspace.net
+ * epel: repo.ugm.ac.id
+ * extras: mirror.vastspace.net
+ * updates: mirror.vastspace.net
+Resolving Dependencies
+--&gt; Running transaction check
+---&gt; Package MySQL-python.x86_64 0:1.2.5-1.el7 will be installed
+--&gt; Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================
+ Package               Arch            Version              Repository     Size
+================================================================================
+Installing:
+ MySQL-python          x86_64          1.2.5-1.el7          base           90 k
+
+Transaction Summary
+================================================================================
+Install  1 Package
+
+Total download size: 90 k
+Installed size: 284 k
+Downloading packages:
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : MySQL-python-1.2.5-1.el7.x86_64                              1/1
+  Verifying  : MySQL-python-1.2.5-1.el7.x86_64                              1/1
+
+Installed:
+  MySQL-python.x86_64 0:1.2.5-1.el7
+
+Complete!
+"
+    ]
+}
+hfeng@ ch03 (onebyone) $ ansible db -s -m mysql_user -a "name=django host=% password=12345 priv=*.*:ALL state=present"
+192.168.60.6 | SUCCESS =&gt; {
+    "changed": true,
+    "user": "django"
+}
+</pre>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-3-5-3" class="outline-4">
+<h4 id="sec-3-5-3">Make changes to just one server</h4>
+<div class="outline-text-4" id="text-3-5-3">
+<ul class="org-ul">
+<li>到现在为止都非常的完美,我们在没有登录任意一台机器的情况下,完成了对app和db的
+配置.而且因为满足幂等性,上面所有的ansible命令都可以运行不止一次,只是结果里
+面的changed会变成false,其他任何东西都不会改动!
+</li>
+<li>配置app的时候,我们是一口气配置了两台,当然实际情况下可能是非常多台的server
+一起配置.但是,有时候我们也有这样的需要,更改特定的某一台的数据:比如某台机器
+的ntpd服务挂了,我们要重启下,这个时候需要&#x2013;limit参数,来限定命令运行的范围
+<pre class="example">
+hfeng@ ch03 (onebyone) $ ansible app -s -a "service ntpd restart" --limit "192.168.60.4"
+ [WARNING]: Consider using service module rather than running service
+
+192.168.60.4 | SUCCESS | rc=0 &gt;&gt;
+Redirecting to /bin/systemctl restart  ntpd.service
+</pre>
+</li>
+<li>limit的匹配不光是这种"精确"的匹配,还需要"宽泛"的匹配:
+<ul class="org-ul">
+<li>首先支持wildcard
+<pre class="example">
+hfeng@ ch03 (onebyone) $ ansible app -s -a "service ntpd restart" --limit "*.4"
+ [WARNING]: Consider using service module rather than running service
+
+192.168.60.4 | SUCCESS | rc=0 &gt;&gt;
+Redirecting to /bin/systemctl restart  ntpd.service
+</pre>
+</li>
+<li>其次支持正则表达式,这个时候需要在双引号之前,加个波浪号
+<pre class="example">
+hfeng@ ch03 (onebyone) $ ansible app -s -a "service ntpd restart" --limit ~".*\.4"
+ [WARNING]: Consider using service module rather than running service
+
+192.168.60.4 | SUCCESS | rc=0 &gt;&gt;
+Redirecting to /bin/systemctl restart  ntpd.service
+</pre>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-3-6" class="outline-3">
+<h3 id="sec-3-6">Manage users and groups</h3>
+<div class="outline-text-3" id="text-3-6">
+<ul class="org-ul">
+<li>以作者的经验来看,ad-hoc命令最常用的地方,是为server管理user和group.因为ansible
+的user和group module有一定的跨distribution性(可以同一个命令在redhat和ubuntu
+上都跑的对)
+</li>
+<li>先看一个例子,我们为app server group创建一个admin的用户组(只是名字叫admin,并
+不是超级管理员组,再说了,也没有超级管理员这个组,只是说某些组可能会不附加超级
+管理员的权限)
+<pre class="example">
+hfeng@ ch03 (onebyone) $ ansible app -s -m group -a "name=admin state=present"
+192.168.60.4 | SUCCESS =&gt; {
+    "changed": true,
+    "gid": 1001,
+    "name": "admin",
+    "state": "present",
+    "system": false
+}
+192.168.60.5 | SUCCESS =&gt; {
+    "changed": true,
+    "gid": 1001,
+    "name": "admin",
+    "state": "present",
+    "system": false
+}
+</pre>
+</li>
+<li>这里我们只给了name和state两个参数,如果我们想给这个group以超级管理员的话,我
+们需要加上第三个参数system=yes
+</li>
+<li>下面我们继续配置,为所有的app server都增加一个用户johndoe,并且为它们准备home
+目录
+<pre class="example">
+hfeng@ ch03 (onebyone) $ ansible app -s -m user -a "name=johndoe group=admin createhome=yes"
+192.168.60.4 | SUCCESS =&gt; {
+    "changed": true,
+    "comment": "",
+    "createhome": true,
+    "group": 1001,
+    "home": "/home/johndoe",
+    "name": "johndoe",
+    "shell": "/bin/bash",
+    "state": "present",
+    "system": false,
+    "uid": 1001
+}
+192.168.60.5 | SUCCESS =&gt; {
+    "changed": true,
+    "comment": "",
+    "createhome": true,
+    "group": 1001,
+    "home": "/home/johndoe",
+    "name": "johndoe",
+    "shell": "/bin/bash",
+    "state": "present",
+    "system": false,
+    "uid": 1001
+}
+</pre>
+</li>
+<li>除了name, group, creathome外,当然还有其他的参数:
+<ul class="org-ul">
+<li>生成SSH key: generate_ssh_key=yes
+</li>
+<li>设置uid: uid=[uid]
+</li>
+<li>设置shell: shell=[shell]
+</li>
+<li>设置密码: password=[encrypted-password]
+</li>
+</ul>
+</li>
+<li>删除用户的方法如下
+<pre class="example">
+hfeng@ ch03 (onebyone) $ ansible app -s -m user -a "name=johndoe state=absent remove=yes"
+192.168.60.5 | SUCCESS =&gt; {
+    "changed": true,
+    "force": false,
+    "name": "johndoe",
+    "remove": true,
+    "state": "absent"
+}
+192.168.60.4 | SUCCESS =&gt; {
+    "changed": true,
+    "force": false,
+    "name": "johndoe",
+    "remove": true,
+    "state": "absent"
+}
+</pre>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-3-7" class="outline-3">
+<h3 id="sec-3-7">Manage files and directories</h3>
+<div class="outline-text-3" id="text-3-7">
+</div><div id="outline-container-sec-3-7-1" class="outline-4">
+<h4 id="sec-3-7-1">Get information about a file</h4>
+<div class="outline-text-4" id="text-3-7-1">
+<ul class="org-ul">
+<li>如果你想要知道文件的permission,需要如下命令
+<pre class="example">
+hfeng@ ch03 (onebyone) $ ansible multi -m stat -a "path=/etc/environment"
+192.168.60.4 | SUCCESS =&gt; {
+    "changed": false,
+    "stat": {
+        "atime": 1498469208.6344497,
+        "attr_flags": "",
+        "attributes": [],
+        "block_size": 4096,
+        "blocks": 0,
+        "charset": "binary",
+        "checksum": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+        "ctime": 1492816033.2561555,
+        "dev": 64768,
+        "device_type": 0,
+        "executable": false,
+        "exists": true,
+        "gid": 0,
+        "gr_name": "root",
+        "inode": 67160180,
+        "isblk": false,
+        "ischr": false,
+        "isdir": false,
+        "isfifo": false,
+        "isgid": false,
+        "islnk": false,
+        "isreg": true,
+        "issock": false,
+        "isuid": false,
+        "md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "mimetype": "inode/x-empty",
+        "mode": "0644",
+        "mtime": 1478366375.0,
+        "nlink": 1,
+        "path": "/etc/environment",
+        "pw_name": "root",
+        "readable": true,
+        "rgrp": true,
+        "roth": true,
+        "rusr": true,
+        "size": 0,
+        "uid": 0,
+        "version": "18446744073065568051",
+        "wgrp": false,
+        "woth": false,
+        "writeable": false,
+        "wusr": true,
+        "xgrp": false,
+        "xoth": false,
+        "xusr": false
+    }
+}
+192.168.60.5 | SUCCESS =&gt; {
+    "changed": false,
+    "stat": {
+        "atime": 1498469722.2660801,
+        "attr_flags": "",
+        "attributes": [],
+        "block_size": 4096,
+        "blocks": 0,
+        "charset": "binary",
+        "checksum": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+        "ctime": 1492816033.2561555,
+        "dev": 64768,
+        "device_type": 0,
+        "executable": false,
+        "exists": true,
+        "gid": 0,
+        "gr_name": "root",
+        "inode": 67160180,
+        "isblk": false,
+        "ischr": false,
+        "isdir": false,
+        "isfifo": false,
+        "isgid": false,
+        "islnk": false,
+        "isreg": true,
+        "issock": false,
+        "isuid": false,
+        "md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "mimetype": "inode/x-empty",
+        "mode": "0644",
+        "mtime": 1478366375.0,
+        "nlink": 1,
+        "path": "/etc/environment",
+        "pw_name": "root",
+        "readable": true,
+        "rgrp": true,
+        "roth": true,
+        "rusr": true,
+        "size": 0,
+        "uid": 0,
+        "version": "18446744073065568051",
+        "wgrp": false,
+        "woth": false,
+        "writeable": false,
+        "wusr": true,
+        "xgrp": false,
+        "xoth": false,
+        "xusr": false
+    }
+}
+192.168.60.6 | SUCCESS =&gt; {
+    "changed": false,
+    "stat": {
+        "atime": 1498469976.2891982,
+        "attr_flags": "",
+        "attributes": [],
+        "block_size": 4096,
+        "blocks": 0,
+        "charset": "binary",
+        "checksum": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+        "ctime": 1492816033.2561555,
+        "dev": 64768,
+        "device_type": 0,
+        "executable": false,
+        "exists": true,
+        "gid": 0,
+        "gr_name": "root",
+        "inode": 67160180,
+        "isblk": false,
+        "ischr": false,
+        "isdir": false,
+        "isfifo": false,
+        "isgid": false,
+        "islnk": false,
+        "isreg": true,
+        "issock": false,
+        "isuid": false,
+        "md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "mimetype": "inode/x-empty",
+        "mode": "0644",
+        "mtime": 1478366375.0,
+        "nlink": 1,
+        "path": "/etc/environment",
+        "pw_name": "root",
+        "readable": true,
+        "rgrp": true,
+        "roth": true,
+        "rusr": true,
+        "size": 0,
+        "uid": 0,
+        "version": "18446744073065568051",
+        "wgrp": false,
+        "woth": false,
+        "writeable": false,
+        "wusr": true,
+        "xgrp": false,
+        "xoth": false,
+        "xusr": false
+    }
+}
+</pre>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-3-7-2" class="outline-4">
+<h4 id="sec-3-7-2">Copy a file to the servers</h4>
+<div class="outline-text-4" id="text-3-7-2">
+<ul class="org-ul">
+<li>或许你原来使用scp或者rsync来拷贝文件或者文件夹到remote server,但是现在你可
+以使用ansible的module来达到同样的功能(copy module)
+<pre class="example">
+hfeng@ ch03 (onebyone) $ ansible multi -m copy -a "src=/etc/hosts dest=/tmp/hosts"
+192.168.60.6 | SUCCESS =&gt; {
+    "changed": true,
+    "checksum": "937817ebae343df1b5ee5b43516a12aaa8dc50ad",
+    "dest": "/tmp/hosts",
+    "gid": 1000,
+    "group": "vagrant",
+    "md5sum": "1448d04eab10eed6a0c433374e615aa1",
+    "mode": "0664",
+    "owner": "vagrant",
+    "secontext": "unconfined_u:object_r:user_tmp_t:s0",
+    "size": 1814,
+    "src": "/home/vagrant/.ansible/tmp/ansible-tmp-1498531712.56-13429895371333/source",
+    "state": "file",
+    "uid": 1000
+}
+192.168.60.5 | SUCCESS =&gt; {
+    "changed": true,
+    "checksum": "937817ebae343df1b5ee5b43516a12aaa8dc50ad",
+    "dest": "/tmp/hosts",
+    "gid": 1000,
+    "group": "vagrant",
+    "md5sum": "1448d04eab10eed6a0c433374e615aa1",
+    "mode": "0664",
+    "owner": "vagrant",
+    "secontext": "unconfined_u:object_r:user_tmp_t:s0",
+    "size": 1814,
+    "src": "/home/vagrant/.ansible/tmp/ansible-tmp-1498531712.54-150233706333576/source",
+    "state": "file",
+    "uid": 1000
+}
+192.168.60.4 | SUCCESS =&gt; {
+    "changed": true,
+    "checksum": "937817ebae343df1b5ee5b43516a12aaa8dc50ad",
+    "dest": "/tmp/hosts",
+    "gid": 1000,
+    "group": "vagrant",
+    "md5sum": "1448d04eab10eed6a0c433374e615aa1",
+    "mode": "0664",
+    "owner": "vagrant",
+    "secontext": "unconfined_u:object_r:user_tmp_t:s0",
+    "size": 1814,
+    "src": "/home/vagrant/.ansible/tmp/ansible-tmp-1498531712.54-273194336806351/source",
+    "state": "file",
+    "uid": 1000
+}
+</pre>
+</li>
+<li>copy module只是在数目比价小的文件拷贝的时候比较管用,数目多的情况下,需要借助
+unarchive或者synchronize module
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-3-7-3" class="outline-4">
+<h4 id="sec-3-7-3">Retrieve a file from the servers</h4>
+<div class="outline-text-4" id="text-3-7-3">
+<ul class="org-ul">
+<li>就是和copy完全相对的,叫做fetch的module.注意,因为fetch会对应多个机器,fetch回
+来的时候,可能会设计到同一个文件怎么放的问题,默认情况下,ansible会增加一个
+hostname的文件夹
+<pre class="example">
+hfeng@ ch03 (onebyone) $ ansible multi -s -m fetch -a "src=/etc/hosts dest=/tmp"
+192.168.60.6 | success &gt;&gt; {
+    "changed": true,
+    "checksum": "d0540c22b3d6b5cc8853adb7b29d0998f5348336",
+    "dest": "/tmp/192.168.60.6/etc/hosts",
+    "md5sum": "4a3c9ded0f2ff2285ff21726f7fb1093",
+    "remote_checksum": "d0540c22b3d6b5cc8853adb7b29d0998f5348336",
+    "remote_md5sum": null
+}
+
+192.168.60.4 | success &gt;&gt; {
+    "changed": true,
+    "checksum": "678aa87e354d38b31f5b0d6c9760e790199b8858",
+    "dest": "/tmp/192.168.60.4/etc/hosts",
+    "md5sum": "24ff6627af0146ff05c77b4854db73cd",
+    "remote_checksum": "678aa87e354d38b31f5b0d6c9760e790199b8858",
+    "remote_md5sum": null
+}
+
+192.168.60.5 | success &gt;&gt; {
+    "changed": true,
+    "checksum": "94cb3b9a901e34f4a5ba9600ef283ad326e4de93",
+    "dest": "/tmp/192.168.60.5/etc/hosts",
+    "md5sum": "7312116fcbaf0bbd2522fcad91cf03fd",
+    "remote_checksum": "94cb3b9a901e34f4a5ba9600ef283ad326e4de93",
+    "remote_md5sum": null
+}
+
+hfeng@ ch03 (onebyone) $ ls -al /tmp/192.168.60.*/etc/hosts
+-rw-r--r--  1 hfeng  wheel  190 Jun 27 11:07 /tmp/192.168.60.4/etc/hosts
+-rw-r--r--  1 hfeng  wheel  190 Jun 27 11:07 /tmp/192.168.60.5/etc/hosts
+-rw-r--r--  1 hfeng  wheel  186 Jun 27 11:07 /tmp/192.168.60.6/etc/hosts
+</pre>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-3-7-4" class="outline-4">
+<h4 id="sec-3-7-4">Create directories and files</h4>
+<div class="outline-text-4" id="text-3-7-4">
+<ul class="org-ul">
+<li>创建文件和文件夹的module叫做file,除了完成类似touch和mkdir的功能,它还能完成
+permission和ownership的设置,类似chmod和chown
+<pre class="example">
+hfeng@ ch03 (onebyone) $ ansible multi -m file -a "dest=/tmp/test mode=644 state=directory"
+192.168.60.4 | success &gt;&gt; {
+    "changed": true,
+    "gid": 1000,
+    "group": "vagrant",
+    "mode": "0644",
+    "owner": "vagrant",
+    "path": "/tmp/test",
+    "secontext": "unconfined_u:object_r:user_tmp_t:s0",
+    "size": 6,
+    "state": "directory",
+    "uid": 1000
+}
+
+192.168.60.6 | success &gt;&gt; {
+    "changed": true,
+    "gid": 1000,
+    "group": "vagrant",
+    "mode": "0644",
+    "owner": "vagrant",
+    "path": "/tmp/test",
+    "secontext": "unconfined_u:object_r:user_tmp_t:s0",
+    "size": 6,
+    "state": "directory",
+    "uid": 1000
+}
+
+192.168.60.5 | success &gt;&gt; {
+    "changed": true,
+    "gid": 1000,
+    "group": "vagrant",
+    "mode": "0644",
+    "owner": "vagrant",
+    "path": "/tmp/test",
+    "secontext": "unconfined_u:object_r:user_tmp_t:s0",
+    "size": 6,
+    "state": "directory",
+    "uid": 1000
+}
+</pre>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-3-7-5" class="outline-4">
+<h4 id="sec-3-7-5">Delete directories and files</h4>
+<div class="outline-text-4" id="text-3-7-5">
+<ul class="org-ul">
+<li>删除也是使用file module,区别是设置state为absent.这种设置state的做法,从另外
+一个角度,诠释了ansible对于幂等性的重视
+<pre class="example">
+hfeng@ ch03 (onebyone) $ ansible multi -m file -a "dest=/tmp/test state=absent"
+192.168.60.6 | success &gt;&gt; {
+    "changed": true,
+    "path": "/tmp/test",
+    "state": "absent"
+}
+
+192.168.60.4 | success &gt;&gt; {
+    "changed": true,
+    "path": "/tmp/test",
+    "state": "absent"
+}
+
+192.168.60.5 | success &gt;&gt; {
+    "changed": true,
+    "path": "/tmp/test",
+    "state": "absent"
+}
+</pre>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-3-8" class="outline-3">
+<h3 id="sec-3-8">Run operations in the background</h3>
+<div class="outline-text-3" id="text-3-8">
+<ul class="org-ul">
+<li>有时候,你运行的命令需要非常长的时间,必须yum update,这个时间内你的命令行是没
+有响应的.为了应付这种情况,ansible设计了"异步运行"的模式
+</li>
+<li>异步运行的问题就是要设置超时,否则可能会在错误的情况下一直运行而不再返回:
+<ol class="org-ol">
+<li>-B &lt;seconds&gt;: job运行的最大时间
+</li>
+<li>-P &lt;seconds&gt;: job status 反馈给你的时间间隔,默认是10,也就是说每隔10秒会
+给你一个进度提示
+</li>
+</ol>
+</li>
+</ul>
+</div>
+<div id="outline-container-sec-3-8-1" class="outline-4">
+<h4 id="sec-3-8-1">Update servers asynchronously, monitoring progress</h4>
+<div class="outline-text-4" id="text-3-8-1">
+<ul class="org-ul">
+<li>我们以yum -y update为例子,如果不设置-P就是默认10秒一个反馈,而超时设置成3600
+秒
+<pre class="example">
+hfeng@ ch03 (onebyone) $ hfeng@ ch03 (onebyone) $ hfeng@ ch03 (onebyone) $ ansible multi -s -B 3600 -a "yum -y update"
+background launch...
+
+
+192.168.60.6 | success &gt;&gt; {
+    "ansible_job_id": "690477539867.27011",
+    "results_file": "/root/.ansible_async/690477539867.27011",
+    "started": 1
+}
+
+192.168.60.4 | success &gt;&gt; {
+    "ansible_job_id": "690477539867.31331",
+    "results_file": "/root/.ansible_async/690477539867.31331",
+    "started": 1
+}
+
+192.168.60.5 | success &gt;&gt; {
+    "ansible_job_id": "690477539867.26324",
+    "results_file": "/root/.ansible_async/690477539867.26324",
+    "started": 1
+}
+
+192.168.60.6 | success &gt;&gt; {
+    "ansible_job_id": "690477539867.27011",
+    "changed": true,
+    "cmd": [
+        "yum",
+        "-y",
+        "update"
+    ],
+    "delta": "0:00:01.447843",
+    "end": "2017-06-27 03:44:25.972875",
+    "finished": 1,
+    "rc": 0,
+    "start": "2017-06-27 03:44:24.525032",
+    "stderr": "",
+    "stdout": "Loaded plugins: fastestmirror\nLoading mirror speeds from cached hostfile\n * base: mirror.vastspace.net\n * epel: mirrors.ustc.edu.cn\n * extras: mirror.vastspace.net\n * updates: mirror.vastspace.net\nNo packages marked for update",
+    "warnings": [
+        "Consider using yum module rather than running yum"
+    ]
+}
+
+192.168.60.5 | success &gt;&gt; {
+    "ansible_job_id": "690477539867.26324",
+    "changed": true,
+    "cmd": [
+        "yum",
+        "-y",
+        "update"
+    ],
+    "delta": "0:00:01.494024",
+    "end": "2017-06-27 03:44:26.039310",
+    "finished": 1,
+    "rc": 0,
+    "start": "2017-06-27 03:44:24.545286",
+    "stderr": "",
+    "stdout": "Loaded plugins: fastestmirror\nLoading mirror speeds from cached hostfile\n * base: mirror.vastspace.net\n * epel: mirrors.tuna.tsinghua.edu.cn\n * extras: mirror.vastspace.net\n * updates: mirror.vastspace.net\nNo packages marked for update",
+    "warnings": [
+        "Consider using yum module rather than running yum"
+    ]
+}
+
+192.168.60.4 | success &gt;&gt; {
+    "ansible_job_id": "690477539867.31331",
+    "changed": true,
+    "cmd": [
+        "yum",
+        "-y",
+        "update"
+    ],
+    "delta": "0:00:01.449138",
+    "end": "2017-06-27 03:44:25.975913",
+    "finished": 1,
+    "rc": 0,
+    "start": "2017-06-27 03:44:24.526775",
+    "stderr": "",
+    "stdout": "Loaded plugins: fastestmirror\nLoading mirror speeds from cached hostfile\n * base: mirror.vodien.com\n * epel: mirrors.tuna.tsinghua.edu.cn\n * extras: mirror.vodien.com\n * updates: mirror.vodien.com\nNo packages marked for update",
+    "warnings": [
+        "Consider using yum module rather than running yum"
+    ]
+}
+
+&lt;job 690477539867.26324&gt; finished on 192.168.60.5 =&gt; {
+    "ansible_job_id": "690477539867.26324",
+    "changed": true,
+    "cmd": [
+        "yum",
+        "-y",
+        "update"
+    ],
+    "delta": "0:00:01.494024",
+    "end": "2017-06-27 03:44:26.039310",
+    "finished": 1,
+    "invocation": {
+        "module_args": "jid=690477539867.26324",
+        "module_name": "async_status"
+    },
+    "rc": 0,
+    "start": "2017-06-27 03:44:24.545286",
+    "stderr": "",
+    "stdout": "Loaded plugins: fastestmirror\nLoading mirror speeds from cached hostfile\n * base: mirror.vastspace.net\n * epel: mirrors.tuna.tsinghua.edu.cn\n * extras: mirror.vastspace.net\n * updates: mirror.vastspace.net\nNo packages marked for update",
+    "warnings": [
+        "Consider using yum module rather than running yum"
+    ]
+}
+&lt;job 690477539867.31331&gt; finished on 192.168.60.4 =&gt; {
+    "ansible_job_id": "690477539867.31331",
+    "changed": true,
+    "cmd": [
+        "yum",
+        "-y",
+        "update"
+    ],
+    "delta": "0:00:01.449138",
+    "end": "2017-06-27 03:44:25.975913",
+    "finished": 1,
+    "invocation": {
+        "module_args": "jid=690477539867.31331",
+        "module_name": "async_status"
+    },
+    "rc": 0,
+    "start": "2017-06-27 03:44:24.526775",
+    "stderr": "",
+    "stdout": "Loaded plugins: fastestmirror\nLoading mirror speeds from cached hostfile\n * base: mirror.vodien.com\n * epel: mirrors.tuna.tsinghua.edu.cn\n * extras: mirror.vodien.com\n * updates: mirror.vodien.com\nNo packages marked for update",
+    "warnings": [
+        "Consider using yum module rather than running yum"
+    ]
+}
+&lt;job 690477539867.27011&gt; finished on 192.168.60.6 =&gt; {
+    "ansible_job_id": "690477539867.27011",
+    "changed": true,
+    "cmd": [
+        "yum",
+        "-y",
+        "update"
+    ],
+    "delta": "0:00:01.447843",
+    "end": "2017-06-27 03:44:25.972875",
+    "finished": 1,
+    "invocation": {
+        "module_args": "jid=690477539867.27011",
+        "module_name": "async_status"
+    },
+    "rc": 0,
+    "start": "2017-06-27 03:44:24.525032",
+    "stderr": "",
+    "stdout": "Loaded plugins: fastestmirror\nLoading mirror speeds from cached hostfile\n * base: mirror.vastspace.net\n * epel: mirrors.ustc.edu.cn\n * extras: mirror.vastspace.net\n * updates: mirror.vastspace.net\nNo packages marked for update",
+    "warnings": [
+        "Consider using yum module rather than running yum"
+    ]
+}
+</pre>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-3-8-2" class="outline-4">
+<h4 id="sec-3-8-2">Fire-and-forget tasks</h4>
+<div class="outline-text-4" id="text-3-8-2">
+<ul class="org-ul">
+<li>由于我们使用了默认的-P 10,所以还是不时有参数返回,导致我们不是一个真正的
+background job,如果我们想不让后台命令不停的提示,我们可以设置-P为0,这样我们
+就可以全身心的投入到其他的工作当中去了.而我们可以选择去log文件里面看进度
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-3-9" class="outline-3">
+<h3 id="sec-3-9">Check log files</h3>
+<div class="outline-text-3" id="text-3-9">
+<ul class="org-ul">
+<li>对于unix-like的系统来说,log是非常重要的,而几乎所有的对log文件的操作(比如tail,
+cat,grep)都可以通过ansible来实现.但是需要注意以下几点:
+<ul class="org-ul">
+<li>不停的监控文件的方法tail -f并不能在ansible里面完整的工作,因为ansible只能
+在operation完成之后才能打印log
+</li>
+<li>通过ansible的stdout返回大量的输出不是一个好主意
+</li>
+<li>如果你从一个command里面redirect了输出,希望你使用shell module而不是ansible
+默认的command module(不加任何的-m就可以调用command module)
+</li>
+</ul>
+</li>
+<li>先看一个例子,我们来看看当前的server的message log file的最后几行
+<pre class="example">
+hfeng@ ch03 (onebyone) $ ansible multi -s -a "tail /var/log/messages"
+192.168.60.5 | success | rc=0 &gt;&gt;
+Jun 27 03:45:41 localhost systemd: Stopping user-1000.slice.
+Jun 27 03:51:26 localhost systemd: Created slice user-1000.slice.
+Jun 27 03:51:26 localhost systemd: Starting user-1000.slice.
+Jun 27 03:51:26 localhost systemd: Started Session 45 of user vagrant.
+Jun 27 03:51:26 localhost systemd-logind: New session 45 of user vagrant.
+Jun 27 03:51:26 localhost systemd: Starting Session 45 of user vagrant.
+Jun 27 03:51:27 localhost ansible-command: Invoked with creates=None executable=None chdir=None args=tail /var/log/messages removes=None NO_LOG=None shell=False warn=True
+Jun 27 03:52:17 localhost ansible-command: Invoked with creates=None executable=None chdir=None args=tail /var/log/messages removes=None NO_LOG=None shell=False warn=True
+Jun 27 03:52:24 localhost ansible-command: Invoked with creates=None executable=None chdir=None args=tail /var/log/messages removes=None NO_LOG=None shell=True warn=True
+Jun 27 03:52:34 localhost ansible-command: Invoked with creates=None executable=None chdir=None args=tail /var/log/messages removes=None NO_LOG=None shell=False warn=True
+
+192.168.60.4 | success | rc=0 &gt;&gt;
+Jun 27 03:45:41 localhost systemd: Stopping user-1000.slice.
+Jun 27 03:51:26 localhost systemd: Created slice user-1000.slice.
+Jun 27 03:51:26 localhost systemd: Starting user-1000.slice.
+Jun 27 03:51:26 localhost systemd: Started Session 49 of user vagrant.
+Jun 27 03:51:26 localhost systemd-logind: New session 49 of user vagrant.
+Jun 27 03:51:26 localhost systemd: Starting Session 49 of user vagrant.
+Jun 27 03:51:27 localhost ansible-command: Invoked with creates=None executable=None chdir=None args=tail /var/log/messages removes=None NO_LOG=None shell=False warn=True
+Jun 27 03:52:17 localhost ansible-command: Invoked with creates=None executable=None chdir=None args=tail /var/log/messages removes=None NO_LOG=None shell=False warn=True
+Jun 27 03:52:24 localhost ansible-command: Invoked with creates=None executable=None chdir=None args=tail /var/log/messages removes=None NO_LOG=None shell=True warn=True
+Jun 27 03:52:34 localhost ansible-command: Invoked with creates=None executable=None chdir=None args=tail /var/log/messages removes=None NO_LOG=None shell=False warn=True
+
+192.168.60.6 | success | rc=0 &gt;&gt;
+Jun 27 03:45:41 localhost systemd: Stopping user-1000.slice.
+Jun 27 03:51:26 localhost systemd: Created slice user-1000.slice.
+Jun 27 03:51:26 localhost systemd: Starting user-1000.slice.
+Jun 27 03:51:26 localhost systemd: Started Session 44 of user vagrant.
+Jun 27 03:51:26 localhost systemd-logind: New session 44 of user vagrant.
+Jun 27 03:51:26 localhost systemd: Starting Session 44 of user vagrant.
+Jun 27 03:51:27 localhost ansible-command: Invoked with creates=None executable=None chdir=None args=tail /var/log/messages removes=None NO_LOG=None shell=False warn=True
+Jun 27 03:52:17 localhost ansible-command: Invoked with creates=None executable=None chdir=None args=tail /var/log/messages removes=None NO_LOG=None shell=False warn=True
+Jun 27 03:52:24 localhost ansible-command: Invoked with creates=None executable=None chdir=None args=tail /var/log/messages removes=None NO_LOG=None shell=True warn=True
+Jun 27 03:52:34 localhost ansible-command: Invoked with creates=None executable=None chdir=None args=tail /var/log/messages removes=None NO_LOG=None shell=False warn=True
+</pre>
+</li>
+<li>如果你想对结果进行一些的处理,比如grep,那么你就要加上-m shell
+<pre class="example">
+$ ansible multi -s -m shell -a "tail /var/log/messages | grep ansible-command | wc -l"
+192.168.60.6 | success | rc=0 &gt;&gt;
+2
+
+192.168.60.5 | success | rc=0 &gt;&gt;
+2
+
+192.168.60.4 | success | rc=0 &gt;&gt;
+2
+</pre>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-3-10" class="outline-3">
+<h3 id="sec-3-10">Manage cron jobs</h3>
+<div class="outline-text-3" id="text-3-10">
+<ul class="org-ul">
+<li>对于常见工作cron,ansible也提供了相应的module.一个简单的例子,在每天下午四点
+运行一个脚本
+<pre class="example">
+$ ansible multi -s -m cron -a "name='daily-cron-all servers' hour=4 job='/path/to/daily-script.sh'"
+</pre>
+</li>
+<li>移除一个cron的工作,也是和前面一致,体现了幂等性
+<pre class="example">
+$ ansible multi -s -m cron -a "name='daily-cron-all-servers' state=absent"
+</pre>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-3-11" class="outline-3">
+<h3 id="sec-3-11">Deploy a version-controlled application</h3>
+<div class="outline-text-3" id="text-3-11">
+<ul class="org-ul">
+<li>git 是当下基本默认的版本管理工具,ansible也为它准备了一个module,例子如下
+<pre class="example">
+$ ansible app -s -m git -a "repo=git://example.com/path/to/repo.git dest=/opt/myapp update=yes version=1.2.4"
+</pre>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-3-12" class="outline-3">
+<h3 id="sec-3-12">Ansible's SSH connection history</h3>
+<div class="outline-text-3" id="text-3-12">
+<ul class="org-ul">
+<li>Ansible 的一大特性就是使用了ssh而不是额外的daemon在target机器上面,所以对于
+ansible来说,机器的ssh状态非常重要.ansible利用ssh的步骤是:
+<ul class="org-ul">
+<li>ansible首先连接上target
+</li>
+<li>ansible发送一些小的文件到target上面,file里面包含运行的命令
+</li>
+<li>file里面的命令会在target上面运行,结果会返回
+</li>
+<li>target上面的file会被删除
+</li>
+</ul>
+</li>
+<li>不管怎样,一个健壮的ssh实现,对于ansible来说最为重要,历史上,ansible使用的ssh
+实现有:
+<ul class="org-ul">
+<li>Paramiko
+</li>
+<li>OpenSSH
+</li>
+<li>Faster OpenSSH: 和原来不一样的地方在于,不再发送文件到target允许,而是直接
+运行,需要配置[ssh_connection]section里面的pipelining=True
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">Chapter 4: Ansible Playbooks</h2>
+<div class="outline-text-2" id="text-4">
+</div><div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1">Power plays</h3>
+<div class="outline-text-3" id="text-4-1">
+<ul class="org-ul">
+<li>ansible作为一个配置,最强大的地方还是在于其能够存储配置的过程,而不是每次去命
+令行打命令,存储配置文件的地方叫做playbook(ansible把它的每个task叫做一个play)
+</li>
+<li>playbook是一个人类友好的格式yaml来存储的
+</li>
+<li>playbook里面还可以包含:
+<ul class="org-ul">
+<li>其他的playbook
+</li>
+<li>metadata, options能够使得playbook有"跨distribution"的能力
+</li>
+</ul>
+</li>
+<li>ansible的一个特性是可以利用已有的证明过自己的shell script,方法如下:
+<ul class="org-ul">
+<li>我们原来的shell脚本
+<div class="org-src-container">
+
+<pre class="src src-sh"><span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">Install Apache</span>
+yum install --quiet -y httpd httpd-devel
+<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">Copy configuration files</span>
+cp /path/to/config/httpd.conf /etc/httpd/conf/httpd.conf
+cp /path/to/config/httpd-vhosts.conf /etc/httpd/conf/httpd-vhosts.conf
+<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">Start Apache and configure it to run at boot.</span>
+service httpd start
+chkconfig httpd on
+</pre>
+</div>
+</li>
+<li>我们改写后的ansible脚本, 注意我们这里的`&gt;`,它的意思是自动quote(就是python的""")
+<div class="org-src-container">
+
+<pre class="src src-yaml"><span style="color: #93a1a1;">---</span>
+- <span style="color: #268bd2;">hosts</span>: all
+  <span style="color: #268bd2;">tasks</span>:
+    - <span style="color: #268bd2;">name</span>: Install Apache
+      <span style="color: #268bd2;">command</span>: yum install --quiet -y httpd httpd-devel
+    - <span style="color: #268bd2;">name</span>: Copy configuration file
+      <span style="color: #268bd2;">command</span>: &gt;
+        <span style="color: #2aa198;">cp /path/to/config/httpd.conf /etc/httpd/conf/httpd.conf</span>
+    - <span style="color: #268bd2;">command</span>: &gt;
+      <span style="color: #2aa198;">cp /path/to/config/httpd-vhosts.conf /etc/httpd/conf/httpd-vhosts.conf</span>
+    - <span style="color: #268bd2;">name</span>: Start Apache and configure it to run at boot.
+      <span style="color: #268bd2;">command</span>: service httpd start
+    - <span style="color: #268bd2;">command</span>: chkconfig httpd on
+</pre>
+</div>
+</li>
+</ul>
+</li>
+<li>调用方法如下
+<pre class="example">
+$ ansible-playbook playbook.yml
+</pre>
+</li>
+<li>上面我们主要的是使用的command module来完成工作,你可以吧command module当做是
+一个专门为bash服务的module,如果有历史的sh脚本,用它来完成最简单的port工作
+</li>
+<li>如果你有新的任务要完成,那么我们推荐你使用其他的ansible module来完成工作,并且
+保证脚本的等幂性!下面是一次改写
+<div class="org-src-container">
+
+<pre class="src src-yaml"><span style="color: #93a1a1;">---</span>
+- <span style="color: #268bd2;">hosts</span>: all
+  <span style="color: #268bd2;">sudo</span>: <span style="color: #268bd2; font-weight: bold;">yes</span>
+  <span style="color: #268bd2;">tasks</span>:
+  - <span style="color: #268bd2;">name</span>: Install Apache.
+    <span style="color: #268bd2;">yum</span>: name={{ item }} state=present
+    <span style="color: #268bd2;">with_items</span>:
+    - httpd
+    - httpd-devel
+  - <span style="color: #268bd2;">name</span>: Copy configuration files.
+    <span style="color: #268bd2;">copy</span>:
+      <span style="color: #268bd2;">src</span>: <span style="color: #2aa198;">"{{ item.src }}"</span>
+      <span style="color: #268bd2;">dest</span>: <span style="color: #2aa198;">"{{ item.dest }}"</span>
+      <span style="color: #268bd2;">owner</span>: root
+      <span style="color: #268bd2;">group</span>: root
+      <span style="color: #268bd2;">mode</span>: 0644
+    <span style="color: #268bd2;">with_items</span>:
+    - {
+      <span style="color: #268bd2;">src</span>: <span style="color: #2aa198;">"/path/to/config/httpd.conf"</span>,
+      <span style="color: #268bd2;">dest</span>: <span style="color: #2aa198;">"/etc/httpd/conf/httpd.conf"</span>
+    }
+    - {
+      <span style="color: #268bd2;">src</span>: <span style="color: #2aa198;">"path/to/config/httpd-vhosts.conf"</span>,
+      <span style="color: #268bd2;">dest</span>: <span style="color: #2aa198;">"/etc/httpd/conf/httpd-vhosts.conf"</span>
+    <span style="color: #268bd2;">}</span>
+<span style="color: #268bd2;">  - name</span>: Make sure Apache is started and configure it to run at boot.
+    <span style="color: #268bd2;">service</span>: name=httpd state=started enabled=yes
+</pre>
+</div>
+</li>
+<li>我们来看看代码:
+<ul class="org-ul">
+<li>`&#x2014;`说明这个是yaml格式
+</li>
+<li>`- hosts:all`告诉我们在所有的host上面运行
+</li>
+<li>`sudo`告诉我们使用超级管理员权限运行
+</li>
+<li>`tasks`告诉我们下面都是一系列的play
+</li>
+<li>`name`不是一个module,而只是一个说明文字,去掉也可以,但是不建议
+</li>
+<li>`yum`是一个module,里面使用了变量item,注意item是一个关键字
+</li>
+<li>`with_items`里面定义了所有的item变量,这里有两个,它们会分别替代{{item}}
+</li>
+<li>`copy`也是一个module,这里也用到了变量,还用到了两个!这种情况下,我们采用了
+"hashmap式"的传参方式:也就是在定义参数的时候是{key: val}的格式,而使用的时
+候,则是item.val的方式
+</li>
+<li>`service`是最后一个使用的module,用来确认我们的服务已经开启
+</li>
+</ul>
+</li>
+<li>我们可以使用&#x2013;check来去服务器上检查,看看我们这次的工作"可能会产生什么结果!"
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-4-2" class="outline-3">
+<h3 id="sec-4-2">Running Playbook with ansible-playbook</h3>
+<div class="outline-text-3" id="text-4-2">
+</div><div id="outline-container-sec-4-2-1" class="outline-4">
+<h4 id="sec-4-2-1">Limiting playbooks to particular hosts and groups</h4>
+<div class="outline-text-4" id="text-4-2-1">
+<ul class="org-ul">
+<li>即便是我们设置了hosts: all,但是在实际的运行当中还是可以使用limit来限制使用
+范围
+<pre class="example">
+$ ansible-playbook playbook.yml --limit webservers
+</pre>
+</li>
+<li>如果你想只运行一个host,那么可以
+<pre class="example">
+$ ansible-playbook playbook.yml --limit xyz.example.com
+</pre>
+</li>
+<li>有时候你不知道自己有哪些host,那么可以
+<pre class="example">
+ansible-playbook playbook.yml --list-hosts
+</pre>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-4-2-2" class="outline-4">
+<h4 id="sec-4-2-2">Setting use rand sudo options with ansible-playbook</h4>
+<div class="outline-text-4" id="text-4-2-2">
+<ul class="org-ul">
+<li>可以设置用户
+<pre class="example">
+$ ansible-playbook playbook.yml --remote-user=johndoe
+</pre>
+</li>
+<li>还可以设置sudo用户,还会提示你输入sudo用户密码
+<pre class="example">
+$ ansible-playbook playbook.yml --sudo -sudo-user=janedoe --ask-sudo-pass
+</pre>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-4-2-3" class="outline-4">
+<h4 id="sec-4-2-3">other options for ansible-playbook</h4>
+<div class="outline-text-4" id="text-4-2-3">
+<ul class="org-ul">
+<li>ansible-playbook还是有很多其他有用的option:
+<ul class="org-ul">
+<li>`&#x2013;inventory`设置另外一个inventory path
+</li>
+<li>`&#x2013;versbos`详细情况运行
+</li>
+<li>`-extra-vars`设置另外的变量
+</li>
+<li>`&#x2013;forks`设置进程fork的数目
+</li>
+<li>`&#x2013;connection`设置不是ssh是什么类型
+</li>
+<li>`&#x2013;check`前面说过哦,这个是Dry Run,预测有可能发生的改变,但不真正运行命令
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-4-3" class="outline-3">
+<h3 id="sec-4-3">Real-wordk playbook: CentOS Node.js app server</h3>
+<div class="outline-text-3" id="text-4-3">
+<ul class="org-ul">
+<li>第一个例子是在centos上面配置nodejs server,由于是单机部署,所以难点并不多,抓哟
+就是要设置另外的repo来安装npm,并且要安装forever来运行nodejs服务
+<div class="org-src-container">
+
+<pre class="src src-yaml"><span style="color: #93a1a1;">---</span>
+- <span style="color: #268bd2;">hosts</span>: all
+
+  <span style="color: #268bd2;">vars</span>:
+    <span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">Vars can also be passed in via CLI with `--extra-vars="name=value"`.</span>
+    <span style="color: #268bd2;">node_apps_location</span>: /usr/local/opt/node
+
+  <span style="color: #268bd2;">tasks</span>:
+    - <span style="color: #268bd2;">name</span>: Install Remi repo.
+      <span style="color: #268bd2;">yum</span>:
+        <span style="color: #268bd2;">name</span>: <span style="color: #2aa198;">"http://rpms.remirepo.net/enterprise/remi-release-7.rpm"</span>
+        <span style="color: #268bd2;">state</span>: present
+
+    - <span style="color: #268bd2;">name</span>: Import Remi GPG key.
+      <span style="color: #268bd2;">rpm_key</span>:
+        <span style="color: #268bd2;">key</span>: <span style="color: #2aa198;">"http://rpms.remirepo.net/RPM-GPG-KEY-remi"</span>
+        <span style="color: #268bd2;">state</span>: present
+
+    - <span style="color: #268bd2;">name</span>: Install EPEL repo.
+      <span style="color: #268bd2;">yum</span>: name=epel-release state=present
+
+    - <span style="color: #268bd2;">name</span>: Ensure firewalld is stopped (since this is a test server).
+      <span style="color: #268bd2;">service</span>: name=firewalld state=stopped
+
+    - <span style="color: #268bd2;">name</span>: Install Node.js and npm.
+      <span style="color: #268bd2;">yum</span>: name=npm state=present enablerepo=epel
+
+    - <span style="color: #268bd2;">name</span>: Install Forever (to run our Node.js app).
+      <span style="color: #268bd2;">npm</span>: name=forever global=yes state=present
+
+    - <span style="color: #268bd2;">name</span>: Ensure Node.js app folder exists.
+      <span style="color: #268bd2;">file</span>: <span style="color: #2aa198;">"path={{ node_apps_location }} state=directory"</span>
+
+    - <span style="color: #268bd2;">name</span>: Copy example Node.js app to server.
+      <span style="color: #268bd2;">copy</span>: <span style="color: #2aa198;">"src=app dest={{ node_apps_location }}"</span>
+
+    - <span style="color: #268bd2;">name</span>: Install app dependencies defined in package.json.
+      <span style="color: #268bd2;">npm</span>: <span style="color: #2aa198;">"path={{ node_apps_location }}/app"</span>
+
+    - <span style="color: #268bd2;">name</span>: Check list of running Node.js apps.
+      <span style="color: #268bd2;">command</span>: forever list
+      <span style="color: #268bd2;">register</span>: forever_list
+      <span style="color: #268bd2;">changed_when</span>: <span style="color: #268bd2; font-weight: bold;">false</span>
+
+    - <span style="color: #268bd2;">name</span>: Start example Node.js app.
+      <span style="color: #268bd2;">command</span>: <span style="color: #2aa198;">"forever start {{ node_apps_location }}/app/app.js"</span>
+      <span style="color: #268bd2;">when</span>: <span style="color: #2aa198;">"forever_list.stdout.find('{{ node_apps_location }}/app/app.js') == -1"</span>
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-4-4" class="outline-3">
+<h3 id="sec-4-4">Real-world playbook: Ubuntu LAMP server with Drupal</h3>
+<div class="outline-text-3" id="text-4-4">
+<ul class="org-ul">
+<li>我们再来看一个在ubuntu上面部署lamp的例子
+</li>
+</ul>
+</div>
+<div id="outline-container-sec-4-4-1" class="outline-4">
+<h4 id="sec-4-4-1">Include a variables file, and discover pre_tasks and handlers</h4>
+<div class="outline-text-4" id="text-4-4-1">
+<ul class="org-ul">
+<li>这里我们进行一些进阶,不再从命令行传入参数,而是专门有一个文件来存储变量,文件
+名就叫vars.yml
+<div class="org-src-container">
+
+<pre class="src src-yaml"><span style="color: #93a1a1;">---</span>
+<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">The core version you want to use (e.g. 8.2.x, 8.3.x).</span>
+<span style="color: #268bd2;">drupal_core_version</span>: <span style="color: #2aa198;">"8.2.x"</span>
+
+<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">The path where Drupal will be downloaded and installed.</span>
+<span style="color: #268bd2;">drupal_core_path</span>: <span style="color: #2aa198;">"/var/www/drupal-{{ drupal_core_version }}-dev"</span>
+
+<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">The resulting domain will be [domain].dev (with .dev appended).</span>
+<span style="color: #268bd2;">domain</span>: <span style="color: #2aa198;">"drupaltest"</span>
+
+<span style="color: #93a1a1;"># </span><span style="color: #93a1a1;">Your Drupal site name.</span>
+<span style="color: #268bd2;">drupal_site_name</span>: <span style="color: #2aa198;">"Drupal Test"</span>
+</pre>
+</div>
+</li>
+<li>然后通过vars_files引入到playbook.yml, vrs_files是playbook的关键字和hosts,
+tasks一样
+<div class="org-src-container">
+
+<pre class="src src-yaml"><span style="color: #93a1a1;">---</span>
+- <span style="color: #268bd2;">hosts</span>: all
+
+  <span style="color: #268bd2;">vars_files</span>:
+    - vars.yml
+</pre>
+</div>
+</li>
+<li>下面一个关键字是pre_task,它是在运行ansible以前做一些准备工作,我们这里是使用
+apt module来更新我们的apt cache,如果超过3600秒没有更新过的情况下
+<div class="org-src-container">
+
+<pre class="src src-yaml"><span style="color: #268bd2;">pre_tasks</span>:
+  - <span style="color: #268bd2;">name</span>: Update apt cache if needed.
+    <span style="color: #268bd2;">apt</span>: update_cache=yes cache_valid_time=3600
+</pre>
+</div>
+</li>
+<li>再来一个关键字handlers:这个名字来源于linux内核的interrupt处理,有interrupt
+的才会去调用handler,我们这里的interrupt是指的某一个group的最后command明确
+的写了notify某个handler,那么才会调用:
+<ul class="org-ul">
+<li>创建handler
+<div class="org-src-container">
+
+<pre class="src src-yaml"><span style="color: #268bd2;">handlers</span>:
+  - <span style="color: #268bd2;">name</span>: restart apache
+    <span style="color: #268bd2;">service</span>: name=apache2 state=restarted
+</pre>
+</div>
+</li>
+<li>调用notify
+<div class="org-src-container">
+
+<pre class="src src-yaml">- <span style="color: #268bd2;">name</span>: Enable Apache rewrite module (required for Drupal).
+  <span style="color: #268bd2;">apache2_module</span>: name=rewrite state=present
+  <span style="color: #268bd2;">notify</span>: restart apache
+</pre>
+</div>
+</li>
+</ul>
+</li>
+<li>看了上面的例子,我们会发现这个是配置完以后重新启动apache的例子,这种重启的需
+求在linux上面还是蛮多的.注意,如果我们的taks失败了,那么就走不到notify这一步
+的,所以也不会去调用handler了
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-4-4-2" class="outline-4">
+<h4 id="sec-4-4-2">Basic LAMP server setup</h4>
+<div class="outline-text-4" id="text-4-4-2">
+<ul class="org-ul">
+<li>下面的配置,没有引入新的关键字,主要就是apt module用来安装,而service module
+用来确认服务运行
+<div class="org-src-container">
+
+<pre class="src src-yaml"><span style="color: #268bd2;">tasks</span>:
+  - <span style="color: #268bd2;">name</span>: Get software for apt repository management.
+    <span style="color: #268bd2;">apt</span>: <span style="color: #2aa198;">"name={{ item }} state=present"</span>
+    <span style="color: #268bd2;">with_items</span>:
+      - python-apt
+      - python-pycurl
+
+  - <span style="color: #268bd2;">name</span>: Add ondrej repository for later versions of PHP.
+    <span style="color: #268bd2;">apt_repository</span>: repo=<span style="color: #2aa198;">'ppa:ondrej/php'</span> update_cache=yes
+
+  - <span style="color: #268bd2;">name</span>: <span style="color: #2aa198;">"Install Apache, MySQL, PHP, and other dependencies."</span>
+    <span style="color: #268bd2;">apt</span>: <span style="color: #2aa198;">"name={{ item }} state=present"</span>
+    <span style="color: #268bd2;">with_items</span>:
+      - git
+      - curl
+      - unzip
+      - sendmail
+      - apache2
+      - php7.1-common
+      - php7.1-cli
+      - php7.1-dev
+      - php7.1-gd
+      - php7.1-curl
+      - php7.1-json
+      - php7.1-opcache
+      - php7.1-xml
+      - php7.1-mbstring
+      - php7.1-pdo
+      - php7.1-mysql
+      - php-apcu
+      - libpcre3-dev
+      - libapache2-mod-php7.1
+      - python-mysqldb
+      - mysql-server
+
+  - <span style="color: #268bd2;">name</span>: Disable the firewall (since this is for local dev only).
+    <span style="color: #268bd2;">service</span>: name=ufw state=stopped
+
+  - <span style="color: #268bd2;">name</span>: <span style="color: #2aa198;">"Start Apache, MySQL, and PHP."</span>
+    <span style="color: #268bd2;">service</span>: <span style="color: #2aa198;">"name={{ item }} state=started enabled=yes"</span>
+    <span style="color: #268bd2;">with_items</span>:
+      - apache2
+      - mysql
+</pre>
+</div>
+</li>
+<li>为了让apt module工作,还安装了python-apt, python-curl
+</li>
+<li>为了让测试通过,还关闭了防火墙
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-4-4-3" class="outline-4">
+<h4 id="sec-4-4-3">Configure Apache</h4>
+<div class="outline-text-4" id="text-4-4-3">
+<ul class="org-ul">
+<li>配置apache,动用了一些特别的module,比如:
+<ul class="org-ul">
+<li>apache2_module用来启动rewrite
+</li>
+<li>template: python 的Jinja2的语言来拷贝某些文件
+</li>
+</ul>
+</li>
+<li>这里就用到了vars.yaml里面定义的变量,以{{}}进行包裹
+<div class="org-src-container">
+
+<pre class="src src-yaml">- <span style="color: #268bd2;">name</span>: Enable Apache rewrite module (required for Drupal).
+  <span style="color: #268bd2;">apache2_module</span>: name=rewrite state=present
+  <span style="color: #268bd2;">notify</span>: restart apache
+
+- <span style="color: #268bd2;">name</span>: Add Apache virtualhost for Drupal 8.
+  <span style="color: #268bd2;">template</span>:
+    <span style="color: #268bd2;">src</span>: <span style="color: #2aa198;">"templates/drupal.dev.conf.j2"</span>
+    <span style="color: #268bd2;">dest</span>: <span style="color: #2aa198;">"/etc/apache2/sites-available/{{ domain }}.dev.conf"</span>
+    <span style="color: #268bd2;">owner</span>: root
+    <span style="color: #268bd2;">group</span>: root
+    <span style="color: #268bd2;">mode</span>: 0644
+  <span style="color: #268bd2;">notify</span>: restart apache
+
+- <span style="color: #268bd2;">name</span>: Symlink Drupal virtualhost to sites-enabled.
+  <span style="color: #268bd2;">file</span>:
+    <span style="color: #268bd2;">src</span>: <span style="color: #2aa198;">"/etc/apache2/sites-available/{{ domain }}.dev.conf"</span>
+    <span style="color: #268bd2;">dest</span>: <span style="color: #2aa198;">"/etc/apache2/sites-enabled/{{ domain }}.dev.conf"</span>
+    <span style="color: #268bd2;">state</span>: link
+  <span style="color: #268bd2;">notify</span>: restart apache
+
+- <span style="color: #268bd2;">name</span>: Remove default virtualhost file.
+  <span style="color: #268bd2;">file</span>:
+    <span style="color: #268bd2;">path</span>: <span style="color: #2aa198;">"/etc/apache2/sites-enabled/000-default.conf"</span>
+    <span style="color: #268bd2;">state</span>: absent
+  <span style="color: #268bd2;">notify</span>: restart apache
+
+- <span style="color: #268bd2;">name</span>: Adjust OpCache memory setting.
+  <span style="color: #268bd2;">lineinfile</span>:
+    <span style="color: #268bd2;">dest</span>: <span style="color: #2aa198;">"/etc/php/7.1/apache2/conf.d/10-opcache.ini"</span>
+    <span style="color: #268bd2;">regexp</span>: <span style="color: #2aa198;">"^opcache.memory_consumption"</span>
+    <span style="color: #268bd2;">line</span>: <span style="color: #2aa198;">"opcache.memory_consumption = 96"</span>
+    <span style="color: #268bd2;">state</span>: present
+  <span style="color: #268bd2;">notify</span>: restart apache
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-4-4-4" class="outline-4">
+<h4 id="sec-4-4-4">Configure PHP with lineinfile</h4>
+<div class="outline-text-4" id="text-4-4-4">
+<ul class="org-ul">
+<li>这一部分主要就是要介绍ansible非常有特点的lineinfile module,这个module有点
+类似sed,但是比sed还是要强大.
+</li>
+<li>sed是可以找到某一行,或者替换某一行,但是添加的时候,不是特别方便
+</li>
+<li>lineinfile可以找到某个文件是不是存在某一行(通过regex),如果不存在的情况下,
+还可以帮你添加,真正做到了幂等性(因为我运行多次的结果和运行一次是一样的)
+<div class="org-src-container">
+
+<pre class="src src-yaml">- <span style="color: #268bd2;">name</span>: Adjust OpCache memory setting.
+  <span style="color: #268bd2;">lineinfile</span>:
+    <span style="color: #268bd2;">dest</span>: <span style="color: #2aa198;">"/etc/php/7.1/apache2/conf.d/10-opcache.ini"</span>
+    <span style="color: #268bd2;">regexp</span>: <span style="color: #2aa198;">"^opcache.memory_consumption"</span>
+    <span style="color: #268bd2;">line</span>: <span style="color: #2aa198;">"opcache.memory_consumption = 96"</span>
+    <span style="color: #268bd2;">state</span>: present
+  <span style="color: #268bd2;">notify</span>: restart apache
+</pre>
+</div>
+</li>
+<li>这里的几个参数的意义:
+<ul class="org-ul">
+<li>dest:告诉我们文件的位置
+</li>
+<li>regexp:告诉我们要找到行的样子
+</li>
+<li>line:告诉我们,如果找不到这行,并且state要present的话怎么添加
+</li>
+<li>state:告诉我们希望这个字符串是什么状态
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-4-4-5" class="outline-4">
+<h4 id="sec-4-4-5">Configure Mysql</h4>
+<div class="outline-text-4" id="text-4-4-5">
+<ul class="org-ul">
+<li>就是删除test数据库,创建就我们的数据库啦
+<div class="org-src-container">
+
+<pre class="src src-yaml">- <span style="color: #268bd2;">name</span>: Remove the MySQL test database.
+  <span style="color: #268bd2;">mysql_db</span>: db=test state=absent
+
+- <span style="color: #268bd2;">name</span>: Create a MySQL database for Drupal.
+  <span style="color: #268bd2;">mysql_db</span>: <span style="color: #2aa198;">"db={{ domain }} state=present"</span>
+
+- <span style="color: #268bd2;">name</span>: Create a MySQL user for Drupal.
+  <span style="color: #268bd2;">mysql_user</span>:
+    <span style="color: #268bd2;">name</span>: <span style="color: #2aa198;">"{{ domain }}"</span>
+    <span style="color: #268bd2;">password</span>: <span style="color: #2aa198;">"1234"</span>
+    <span style="color: #268bd2;">priv</span>: <span style="color: #2aa198;">"{{ domain }}.*:ALL"</span>
+    <span style="color: #268bd2;">host</span>: localhost
+    <span style="color: #268bd2;">state</span>: present
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-4-4-6" class="outline-4">
+<h4 id="sec-4-4-6">Install Composer and Drush</h4>
+<div class="outline-text-4" id="text-4-4-6">
+<ul class="org-ul">
+<li>这些都是PHP的工具,值得注意的是我们都要使用shell module而不是command module
+来安装
+<div class="org-src-container">
+
+<pre class="src src-yaml">- <span style="color: #268bd2;">name</span>: Download Composer installer.
+  <span style="color: #268bd2;">get_url</span>:
+    <span style="color: #268bd2;">url</span>: https://getcomposer.org/installer
+    <span style="color: #268bd2;">dest</span>: /tmp/composer-installer.php
+    <span style="color: #268bd2;">mode</span>: 0755
+
+- <span style="color: #268bd2;">name</span>: Run Composer installer.
+  <span style="color: #268bd2;">command</span>: &gt;
+    <span style="color: #2aa198;">php composer-installer.php</span>
+<span style="color: #2aa198;">    chdir=/tmp</span>
+<span style="color: #2aa198;">    creates=/usr/local/bin/composer</span>
+
+- <span style="color: #268bd2;">name</span>: Move Composer into globally-accessible location.
+  <span style="color: #268bd2;">shell</span>: &gt;
+    <span style="color: #2aa198;">mv /tmp/composer.phar /usr/local/bin/composer</span>
+<span style="color: #2aa198;">    creates=/usr/local/bin/composer</span>
+
+- <span style="color: #268bd2;">name</span>: Check out drush master branch.
+  <span style="color: #268bd2;">git</span>:
+    <span style="color: #268bd2;">repo</span>: https://github.com/drush-ops/drush.git
+    <span style="color: #268bd2;">dest</span>: /opt/drush
+
+- <span style="color: #268bd2;">name</span>: Install Drush dependencies with Composer.
+  <span style="color: #268bd2;">shell</span>: &gt;
+    <span style="color: #2aa198;">/usr/local/bin/composer install</span>
+<span style="color: #2aa198;">    chdir=/opt/drush</span>
+<span style="color: #2aa198;">    creates=/opt/drush/vendor/autoload.php</span>
+
+- <span style="color: #268bd2;">name</span>: Create drush bin symlink.
+  <span style="color: #268bd2;">file</span>:
+    <span style="color: #268bd2;">src</span>: /opt/drush/drush
+    <span style="color: #268bd2;">dest</span>: /usr/local/bin/drush
+    <span style="color: #268bd2;">state</span>: link
+</pre>
+</div>
+</li>
+<li>这里使用shell module,而不是command module是因为command module可以看做是shell
+module的简化版本,但是它不支持通过remote shell /bin/sh运行,也不支持类似$HOME
+的环境变量
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-4-4-7" class="outline-4">
+<h4 id="sec-4-4-7">Install Drupal with Git and Drush</h4>
+<div class="outline-text-4" id="text-4-4-7">
+<ul class="org-ul">
+<li>最后,我们就可以使用git module来安装Drupal啦
+<div class="org-src-container">
+
+<pre class="src src-yaml">- <span style="color: #268bd2;">name</span>: Check out Drupal Core to the Apache docroot.
+  <span style="color: #268bd2;">git</span>:
+    <span style="color: #268bd2;">repo</span>: http://git.drupal.org/project/drupal.git
+    <span style="color: #268bd2;">version</span>: <span style="color: #2aa198;">"{{ drupal_core_version }}"</span>
+    <span style="color: #268bd2;">dest</span>: <span style="color: #2aa198;">"{{ drupal_core_path }}"</span>
+
+- <span style="color: #268bd2;">name</span>: Install Drupal dependencies with Composer.
+  <span style="color: #268bd2;">shell</span>: &gt;
+    <span style="color: #2aa198;">/usr/local/bin/composer install</span>
+<span style="color: #2aa198;">    chdir={{ drupal_core_path }}</span>
+<span style="color: #2aa198;">    creates={{ drupal_core_path }}/vendor/autoload.php</span>
+
+- <span style="color: #268bd2;">name</span>: Install Drupal.
+  <span style="color: #268bd2;">command</span>: &gt;
+    drush si -y --site-name=<span style="color: #2aa198;">"{{ drupal_site_name }}"</span>
+<span style="color: #2aa198;">    --account-name=admin</span>
+<span style="color: #2aa198;">    --account-pass=admin</span>
+<span style="color: #2aa198;">    --db-url=mysql://{{ domain }}:1234@localhost/{{ domain }}</span>
+<span style="color: #2aa198;">    chdir={{ drupal_core_path }}</span>
+<span style="color: #2aa198;">    creates={{ drupal_core_path }}/sites/default/settings.php</span>
+  <span style="color: #268bd2;">notify</span>: restart apache
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-4-5" class="outline-3">
+<h3 id="sec-4-5">Real-world playbook: Ubuntu Apache Tomcat server with Solr</h3>
+<div class="outline-text-3" id="text-4-5">
+<ul class="org-ul">
+<li>solr的配置相比于前面没有太多的难度了
+<div class="org-src-container">
+
+<pre class="src src-yaml"><span style="color: #93a1a1;">---</span>
+- <span style="color: #268bd2;">hosts</span>: all
+
+  <span style="color: #268bd2;">vars_files</span>:
+    - vars.yml
+
+  <span style="color: #268bd2;">pre_tasks</span>:
+    - <span style="color: #268bd2;">name</span>: Update apt cache if needed.
+      <span style="color: #268bd2;">apt</span>: update_cache=yes cache_valid_time=3600
+
+  <span style="color: #268bd2;">handlers</span>:
+    - <span style="color: #268bd2;">name</span>: restart solr
+      <span style="color: #268bd2;">service</span>: name=solr state=restarted
+
+  <span style="color: #268bd2;">tasks</span>:
+    - <span style="color: #268bd2;">name</span>: Install Java.
+      <span style="color: #268bd2;">apt</span>: name=openjdk-8-jdk state=present
+
+    - <span style="color: #268bd2;">name</span>: Download Solr.
+      <span style="color: #268bd2;">get_url</span>:
+        <span style="color: #268bd2;">url</span>: <span style="color: #2aa198;">"https://archive.apache.org/dist/lucene/solr/{{ solr_version }}/solr-{{ solr_version }}.tgz"</span>
+        <span style="color: #268bd2;">dest</span>: <span style="color: #2aa198;">"{{ download_dir }}/solr-{{ solr_version }}.tgz"</span>
+        <span style="color: #268bd2;">checksum</span>: <span style="color: #2aa198;">"{{ solr_checksum }}"</span>
+
+    - <span style="color: #268bd2;">name</span>: Expand Solr.
+      <span style="color: #268bd2;">unarchive</span>:
+        <span style="color: #268bd2;">src</span>: <span style="color: #2aa198;">"{{ download_dir }}/solr-{{ solr_version }}.tgz"</span>
+        <span style="color: #268bd2;">dest</span>: <span style="color: #2aa198;">"{{ download_dir }}"</span>
+        <span style="color: #268bd2;">copy</span>: <span style="color: #268bd2; font-weight: bold;">no</span>
+        <span style="color: #268bd2;">creates</span>: <span style="color: #2aa198;">"{{ download_dir }}/solr-{{ solr_version }}/README.txt"</span>
+
+    - <span style="color: #268bd2;">name</span>: Run Solr installation script.
+      <span style="color: #268bd2;">shell</span>: &gt;
+        <span style="color: #2aa198;">{{ download_dir }}/solr-{{ solr_version }}/bin/install_solr_service.sh</span>
+<span style="color: #2aa198;">        {{ download_dir }}/solr-{{ solr_version }}.tgz</span>
+<span style="color: #2aa198;">        -i /opt</span>
+<span style="color: #2aa198;">        -d /var/solr</span>
+<span style="color: #2aa198;">        -u solr</span>
+<span style="color: #2aa198;">        -s solr</span>
+<span style="color: #2aa198;">        -p 8983</span>
+<span style="color: #2aa198;">        creates={{ solr_dir }}/bin/solr</span>
+
+    - <span style="color: #268bd2;">name</span>: Ensure solr is started and enabled on boot.
+      <span style="color: #268bd2;">service</span>: name=solr state=started enabled=yes
+</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5">Chapter 5: Ansible Playbooks - Beyond this Basics</h2>
+</div>
+</div>
+<div id="postamble" class="status">
+
+         <!-- Disqus Comment BEGIN -->
+          <div id="disqus_thread"></div>
+          <script type="text/javascript">
+              var disqus_shortname = 'harrifeng';
+
+              (function() {
+                  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+              })();
+          </script>
+          <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+         <!-- Disqus Comment END -->
+</div>
+</body>
+</html>
